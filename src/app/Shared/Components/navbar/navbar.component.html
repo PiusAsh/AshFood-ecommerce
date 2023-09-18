@@ -1,0 +1,192 @@
+
+<nav  class="navbar navbar-expand-lg topbar bg-white sticky-top shadow">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/assets/images/logo1.png" style="width:
+        100px; height: 100%;" alt="Brand Logo">
+      </a>
+      <div class="search-input">
+        <input #s (keyup.enter)="search(s.value)" class="" type="text" [value]="searchTerm" placeholder="Search Products...">
+        <span  class="p-2 fa fa-search"></span>
+      </div>
+      <div class="user-cart-icons">
+        <span title="User Profile" data-bs-toggle="modal" data-bs-target="#login" class="shadow-sm fa fa-user"></span>
+        <div class="cart-icon-container">
+            <span class="cart-quantity">{{ cartQuantity }}</span>
+            <span title="View Your Shopping Cart" data-bs-toggle="offcanvas" data-bs-target="#cart" class="shadow-sm fa fa-shopping-cart"></span>
+          </div>
+          
+      </div>
+    </div>
+  </nav>
+  
+  
+  <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #00A149; height: 10vh; z-index: 1;">
+    <div class="container">
+      <form class="form-inline my-2 my-lg-0 mr-auto">
+        <select class=" py-2 p-5 mr-sm-2" style="height: 100%; width: 300px; box-sizing: border-box; background-color: #00683731; border: none; color: #fff; border-radius: 30px; ">
+          <option selected>Select Menu...</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+          <option value="option3">Option 3</option>
+        </select>
+      </form>
+      <div class="search-input">
+        <ul class="navbar-nav ml-auto justify-content-center">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Menu</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">FAQs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+      <div class="user-cart-icons">
+        <div class="navbar-nav justify-content-end" >
+          <a class="nav-link semiCall ">24/7 Support center<br><span class="call">+2349052794388</span></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  
+  
+  
+  
+      <!-- OFFCANVAS AND MODALS -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title card-header" id="exampleModalLabel">Signin</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-lg-1"></div>
+         <div class="col-lg-10">
+           <div class="card-body">
+             <div>
+               <label for="email" class="form-label">Username or Email</label>
+               <input
+               type="text" id="emailOrPhone" formControlName="emailOrPhone"
+               class="form-control"
+                 placeholder="enter your username or email"
+               />
+               <div *ngIf="loginForm.get('emailOrPhone')?.invalid && (loginForm.get('emailOrPhone')?.dirty || loginForm.get('emailOrPhone')?.touched)">
+                <!-- <div class="text-danger" *ngIf="loginForm.get('emailOrPhone')?.errors?.required">Please enter your email or phone number.</div> -->
+              </div>
+  
+             </div>
+             <div class="mt-2">
+               <label for="password" class="form-label">Password</label>
+               <input
+               class="form-control"
+               type="password" id="password" formControlName="password"
+                 placeholder="enter your password"
+               />
+               <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                <!-- <div class="text-danger" *ngIf="loginForm.get('password')?.errors?.required">Please enter your password.</div> -->
+              </div>
+  
+             </div>
+             <p class="text-end m-1">
+              <a class="dont" href="#">Forget Password</a>
+            </p>
+             <button  type="submit" [disabled]="loginForm.invalid" class="btn btn-primary login w-100 mt-1">
+               LOGIN
+             </button>
+             <p class="text-center  mt-3">
+               Don't Have Account? <a class="dont" href="#">Create Account</a>
+             </p>
+           </div>
+         </div>
+      <div class="col-lg-1"></div>
+  
+  
+  
+   </div>
+  </form>
+  
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  
+
+
+
+      <div class="offcanvas offcanvas-end"  id="cart" style="width: 340px;">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">SHOPPING CART</h5>
+  
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <hr/>
+        <div class="offcanvas-body" style="position: relative; max-height: calc(100vh - 190px); overflow-y: auto;">
+          <div>
+            <div style="display: flex; justify-content: center; flex-direction: column;">
+
+              <p class="text-center mt-5" *ngIf="cart.items.length == 0">
+                No product in the cart.
+              </p>
+  <button class="btn btn-primary backButton" *ngIf="cart.items.length == 0" (click)="shopRoute()">Back To Shop</button>
+            </div>
+
+            <div class="d-flex align-items-center py-2" *ngFor="let item of cart.items" style="border-bottom: 1px solid #ddd;">
+              <i (click)="removeFromCart(item)" class=" fa fa-times me-3 bg-danger" aria-hidden="true"></i>
+              <div class="me-3 position-relative">
+                <img [src]="item.food.thumbnail" style="height: 50px; width: 50x;" class="img-sm rounded border" />
+              </div>
+              <div class="">
+                <p (click)="viewFood(item.food.id)" class="itemName" style="margin-bottom: -1px;">
+                  {{ item.food.name}} 
+      
+                </p>
+                <p class="price text-muted">{{item.food.price | currency: '₦'}}</p>
+              </div>
+             
+            </div>
+          </div>
+  
+        </div>
+  
+        <div *ngIf="cart.items.length != 0" class=" offcanvas-footer mt-3 mx-3 bg-white" style="position: absolute; bottom: 15px; align-items: center;">
+          <hr/>
+          <div class="subAmount mt-2 mx-3">
+            <small>Total Count:</small>
+            <p>{{cart.totalCount}}</p>
+          </div>
+          <div class="subAmount mx-3">
+            <small>Total Price:</small>
+            <h5>{{cart.totalPrice | currency: '₦'}}</h5>
+          </div>
+          <div class="button py-1 mx-3">
+            <button (click)="checkoutRoute()" class="checkout w-100 mb-2">CHECKOUT</button>
+            <button (click)="cartRoute()" class="viewCart w-100">VIEW CART</button>
+          </div>
+        </div>
+      </div>
+  
+ 
+  

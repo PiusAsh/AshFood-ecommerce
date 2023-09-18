@@ -1,0 +1,137 @@
+.foodImage{
+    width: 700px; height: 500px; background: whitesmoke; cursor: pointer; border-radius: 20px;
+}
+
+.foodName{
+    font-size: 42px; font-weight: bold;
+    font-family: 'Nunito Sans', sans-serif!important;
+}
+
+.foodAmount{
+    font-size: 30px;
+    font-weight: 800;
+    font-family: 'Nunito Sans', sans-serif!important;
+    color: #ffc222;
+}
+
+.foodCartBtn{
+    padding-top: 9px;
+    padding-bottom: 9px;
+    white-space: nowrap;
+    background-color: #ffc222;
+    border-radius: 8px 8px 8px 8px;
+    padding: 10px 45px
+}
+
+.breadcrumb-item a{
+    text-decoration: none;
+    color: #ffc222;
+}
+.categoryLink{
+    text-decoration: none;
+    color: #ffc222;
+    font-weight: 600;
+}
+.quantity-selector input {
+    border: none; /* Remove the border */
+    padding: 0; /* Remove padding */
+    width: 20px;
+}
+
+
+/* Hide the default number input arrows */
+.quantity-selector input[type="number"]::-webkit-inner-spin-button,
+.quantity-selector input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.quantity-selector input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-button {
+    background-color: #ffc222;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 10px; /* Add some space between buttons */
+}
+
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    font-size: 16px;
+    margin-right: 10px; /* Add some space between input and buttons */
+}
+
+.add-to-cart-button {
+    background-color: #ffc222;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 130px; /* Adjust padding for a wider button */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+hr{
+    border: 1px solid #ccc;
+    background: none;
+    height: 0px;
+}
+
+.tabNavigation {
+    list-style-type: none;
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+  }
+  
+  .tabNavigation li {
+    padding: 15px 25px;
+    cursor: pointer;
+    border: 1px solid #FEA116;
+    border-radius: 0px 5px 0 0;
+    background-color: #fff;
+    font-weight: 600;
+    font-size: 17px;
+    color: #000; /* Default text color */
+  }
+  
+  .tabNavigation li.active {
+    background-color: #ffc222; /* Active tab background color */
+    color: black; /* Active tab text color */
+    border: none;
+    font-weight: 600;
+  }
+  .reviewTextArea{
+    padding: 0.68em 1em;
+    background-color: var(--background);
+    color: var(--body);
+    border-width: 1px;
+    border-style: solid;
+    /* border-color: var(--border); */
+    box-sizing: border-box;
+    font-weight: 400;
+    border-radius: 8px;
+    outline: 0;
+  }
+ 
+  .user-avatar img {
+    width: 50px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    border-radius: 50%; /* Creates a circular profile picture */
+    object-fit: cover; /* Ensures the image covers the entire area */
+}
+.user-details{
+    display: flex;
+}

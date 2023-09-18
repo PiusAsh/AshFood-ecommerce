@@ -1,0 +1,242 @@
+<div class="container px-5">
+    <!-- Card stats -->
+    <div class="row mb-2 container">
+        <div class="col-lg-2">
+            <button (click)="openAddModal(content)" class="btn btn-primary" style="font-size: 15px;">Add New
+                Room</button>
+        </div>
+        <div class="col-lg-10"></div>
+    </div>
+    <div class="card shadow-sm border-0 mb-7">
+        <!-- CONTENT HERE -->
+
+
+
+
+
+        <!-- ROOM TABLE -->
+        <section class="">
+            <div class="table-responsive  animate__animated animate__zoomIn">
+                <div *ngIf="hasSelectedRooms()" class="selected-category animate__animated animate__fadeInUp">
+                    <div class="row" style="width: 90%;">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <div class="button-group">
+                                <button class="view" *ngIf="canShowViewEditButtons()"
+                                    (click)="viewRoom(selectedRoom)">View</button>
+
+                                <button class="edit" *ngIf="canShowViewEditButtons()"
+                                    (click)="editRoom(selectedRoom)">Edit</button>
+
+                                <button class="delete" (click)="deleteSelectedRooms()">Delete</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="row-count text-white">
+                                <p>{{ selectedRooms.length }} {{ selectedRooms.length !== 1 ?
+                                    'Rooms' : 'Room' }} selected <span style="margin-left: 2px;">|</span> <span
+                                        style="margin-left: 8px;">{{ filteredRooms.length}} {{
+                                        filteredRooms.length !== 1 ? 'Rooms' : 'Room'
+                                        }}</span></p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-2"></div> -->
+                    </div>
+
+
+
+                </div>
+
+
+                <table class="table table-hover mb-0 shadow-sm ">
+                    <thead>
+                        <tr class="shadow-sm">
+                            <th scope="col"><input type="checkbox" class="shadow-sm form-check-input"
+                                    (change)="selectAllRows()" /></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Room Number</th>
+
+                            <th scope="col">Type</th>
+                            <th scope="col">Guest</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Availability</th>
+                            <th scope="col">Created By</th>
+
+                            <th scope="col">Status</th>
+                            <th scope="col">Date Created</th>
+                        </tr>
+                        <tr style="border: none; padding: 0%;">
+                            <th scope="col" colspan="17" style="border: none; padding: 5px 30px 5px 30px;">
+                                <input type="text" class="form-control shadow p-1" placeholder="Search Anything here..."
+                                    [(ngModel)]="searchText" (input)="applyFilter()"
+                                    style="border: none; padding: 0; width: 100%;" />
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngIf="filteredRooms.length > 0; else noRecords">
+                            <!-- Loop through the filteredCategories -->
+                            <tr class="shadow-sm"
+                                *ngFor="let room of filteredRooms | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+                                (click)="selectRow(room)">
+                                <td><input type="checkbox" class="shadow-sm form-check-input"
+                                        [(ngModel)]="room.selected" /></td>
+                                <td>{{ room.roomName }}</td>
+                                <td>{{ room.roomNumber }}</td>
+                                <td>{{ room.type }}</td>
+                                <td>{{ room.totalGuest }}</td>
+                                <td>{{ room.price | currency: '': '₦' }}</td>
+                                <!-- <td>{{ room.isAvailable }}</td> -->
+                                <td>
+                                    <ng-container *ngIf="room.isAvailable === true else notAvailable">Available </ng-container>
+                                    <ng-template #notAvailable>Unavailable</ng-template>
+                                </td>
+                                <td>{{ room.createdByName }}</td>
+                                <td>{{ room.status }}</td>
+                                <td>{{ room.dateCreated | date:'medium' }}</td>
+                            </tr>
+                        </ng-container>
+                        <ng-template #noRecords>
+
+                            <td class="bg-light" colspan="17" style="font-weight: 400; font-size: 15px; ">No
+                                record found.</td>
+
+                        </ng-template>
+                    </tbody>
+                </table>
+
+            </div>
+
+            <pagination-controls class="mt-2" *ngIf="filteredRooms?.length > itemsPerPage"
+                (pageChange)="currentPage = $event"></pagination-controls>
+        </section>
+
+
+
+    </div>
+</div>
+
+
+
+<!-- Define the modal content template -->
+<ng-template #content let-modal >
+    <form [formGroup]="roomForm" (ngSubmit)="addNewRoom()">
+        <div class="modal-content w3-animate-zoom" style="width: 700px;">
+            <div class="modal-header">
+                <h6 class="modal-title" id="roomDetailsModalLabel"><strong>Add New Room</strong></h6>
+                <button type="button" class="btn-close" (click)="modal.dismiss('Close click')"></button>
+            </div>
+            <div class="modal-body overflow-y-auto " style="width: 700px;">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="roomNumber" class="form-label">Room Number</label>
+                                <input type="text" class="form-control" id="roomNumber" formControlName="roomNumber">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="roomName" class="form-label">Room Name</label>
+                                <input type="text" class="form-control" id="roomName" formControlName="roomName">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="type" class="form-label">Room Type</label>
+
+                                <ng-select 
+                                class=""
+                                formControlName="type"
+                                (change)="populateFields()"
+                                [clearable]="false"
+                                placeholder="Select Room Type"
+                              >                                                        
+                             <ng-option *ngFor="let list of roomCategory" [value]="list.name" class="">
+                                    {{ list.name }}
+                                </ng-option>
+                              </ng-select>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" formControlName="description"
+                                    style="height: 70px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="totalGuest" class="form-label">Total Guests</label>
+                                <input type="number" class="form-control" id="totalGuest" formControlName="totalGuest">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="number" class="form-control" id="price" formControlName="price">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="duration" class="form-label">Amenity</label>
+                                <input type="text" class="form-control" id="duration" formControlName="duration">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-lg-12">
+                          <div class="form-group">
+                            <label for="featuredImage" class="form-label">Room Photos (Max 4)</label>
+                            <input type="file" class="form-control" id="featuredImage" 
+                                   (change)="onImageSelected($event)" multiple 
+                                   accept="image/jpeg, image/jpg, image/png">
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- Display selected images -->
+                      <div class="row mb-2">
+                        <div class="col-lg-3" *ngFor="let image of selectedImages; let i = index">
+                          <div class="image-container">
+                            <img [src]="image.url" alt="Selected Image {{ i + 1 }}" class="img-thumbnail">
+                            <div class="image-options d-flex justify-content-between mt-1">
+                              <button class="remove shadow-sm" (click)="removeImage(i)">Remove</button>
+                              <button class="featured shadow-sm" (click)="setAsFeatured(i)">As Thumbnail</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="submit" class="btn btn-primary" [disabled]="onSubmit || roomForm.invalid">
+                    <ng-container *ngIf="!onSubmit; else loadingTemplate">
+                        Save
+                    </ng-container>
+                    <ng-template #loadingTemplate>
+                        <i class="fa fa-circle-o-notch fa-spin"></i> Saving...
+                    </ng-template>
+                </button>
+                <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">Close</button>
+            </div>
+        </div>
+    </form>
+
+</ng-template>
+
+
+
+<app-admin-spinner *ngIf="loading"></app-admin-spinner>
+
+<!-- <app-spinner *ngIf="loading"></app-spinner> -->
+
+<!-- <div *ngIf="loading">    <i class="fa fa-circle-o-notch fa-spin"></i> Loading...</div> -->

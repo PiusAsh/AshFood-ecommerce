@@ -1,0 +1,41 @@
+/* FOOTER CSS */
+.logo{
+  color: #FFC222;
+  font-weight: 700;
+}
+
+.fb, .ln, .tw {
+  background-color: white;
+  color: black;
+  font-size: 25px;
+  margin: 5px;
+  text-align: center;
+  align-items: center;
+  padding: 6px;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+  .footerVisa {
+      display: none;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .footerVisa {
+      display: none;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .footerVisa {
+      display: none;
+  }
+}
+
+/* END OF FOOTER CSS */
+

@@ -1,0 +1,22 @@
+.notFound {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 45vh;
+  }
+  .notFound p{
+    font-size: 30px;
+    font-weight: 600;
+    font-family: 'Nunito Sans', sans-serif!important;
+  }
+
+  .notFound button a{
+    text-decoration: none;
+    color: black;
+    padding: 30px 20px;
+  }
+  .notFound button{
+    color: black;
+    padding: 10px 0px;
+  }

@@ -1,0 +1,120 @@
+
+
+<div class="">
+    <app-navbar></app-navbar>
+  
+    <!-- <div class="py-0">
+      <ul class="nav nav-tabs menu-tabs py-1">
+        <li style="cursor: pointer;" class="nav-item mb-2" *ngFor="let menu of menus">
+          <a class="nav-link text-center" (click)="selectMenu(menu)" [class.active]="selectedMenu?.id === menu.id">{{ menu.title }}</a>
+        </li>
+      </ul>
+  
+      <div class="tab-content menu-content container">
+        <div class="tab-pane container w3-animate-zoom" *ngFor="let menu of menus" [ngClass]="{ 'active': selectedMenu?.id === menu.id }">
+  
+          <div class="row container">
+            <div class="col-md-3 mb-2"  *ngFor="let menu of menu.menuDetails">
+              <div class="card shadow-sm" style="border-radius: 30px!important; width: 280px!important; border: 1px solid #e5e5e5;">
+                <div style="height: 220px; overflow: hidden; background-color: #fff; display: flex; justify-content: center;">
+                  <img [src]="menu.imageUrl" class="p-2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;">
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{ menu.name }}</h5>
+                  <p class="card-text">{{ menu.description }}</p>
+                  <p class="card-text">
+                    <i class="fa fa-star star-rating"></i>
+                    <i class="fa fa-star star-rating"></i>
+                    <i class="fa fa-star star-rating"></i>
+                    <i class="fa fa-star star-rating"></i>
+                  </p>
+                  <div class="add">
+                    <p style="font-weight: 800; font-size: 20px;" class="card-text price mt-2">{{ menu.price | currency: '₦' }}</p>
+                    <p routerLink="/food/{{menu.id}}"><i class="fa fa-cart-arrow-down faCart" aria-hidden="true"></i></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  
+    <div class="py-0">
+      <ul class="nav nav-tabs menu-tabs py-1">
+        <li style="cursor: pointer;" class="nav-item mb-2" *ngFor="let category of categories">
+          <a class="nav-link text-center" (click)="selectCategory(category)" [class.active]="selectedCategory === category">{{ category }}</a>
+        </li>
+      </ul>
+  
+      <div  class="tab-content menu-content container" style="display: flex; justify-content: center!important;">
+        <div  class="tab-pane container w3-animate-zoom" *ngFor="let category of categories" [ngClass]="{ 'active': selectedCategory === category }">
+          <div style="display: flex; justify-content: center!important;" class="row container">
+            <div class="card shadow-sm col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category)" style="border-radius: 30px!important; width: 280px!important; border: 1px solid #e5e5e5; margin-left: 15px;">
+              <!-- <div style="height: 220px; overflow: hidden; background-color: #ffc022d5;  display: flex; justify-content: center;">
+                <img [src]="product.imageUrl" class="p-2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;">
+              </div> -->
+  
+              <div class="mt-2" style="width: 100%; height: 250px;">
+                <img [src]="product.imageUrl" class="" style="width: 100%; height: 100%; object-fit: cover; border-radius: 30px; background-color: #ffc022d5;">
+              </div>
+  
+              <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text">
+                  <i class="fa fa-star star-rating"></i>
+                  <i class="fa fa-star star-rating"></i>
+                  <i class="fa fa-star star-rating"></i>
+                  <i class="fa fa-star star-rating"></i>
+                </p>
+                <div class="add">
+                  <p style="font-weight: 800; font-size: 20px;" class="card-text price mt-2">{{ product.price | currency: '₦' }}</p>
+                  <p routerLink="/food/{{product.id}}"><i class="fa fa-cart-arrow-down faCart" aria-hidden="true"></i></p>
+                </div>
+              </div>
+            </div>
+            <!-- <div style="border-radius: 30px!important;" class="col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category)">
+  
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <app-footer></app-footer>
+  </div>
+  
+  
+  <!-- OFF CAN
+  VAS -->
+  <div class="offcanvas offcanvas-end"  id="cart" style="width: 340px;">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">SHOPPING CART</h5>
+  
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <hr/>
+    <div class="offcanvas-body" style="position: relative; max-height: calc(100vh - 190px); overflow-y: auto;">
+      <div>
+        <p class="text-center">
+          No products in the cart.
+        </p>
+      </div>
+  
+    </div>
+  
+    <div class=" offcanvas-footer mt-3 mx-3" style="position: absolute; bottom: 15px; align-items: center;">
+      <hr/>
+      <div class="subAmount mt-3 mx-3">
+        <p>SUBTOTAL:</p>
+        <p>$45,789.00</p>
+      </div>
+      <div class="button py-1 mx-3">
+        <button class="checkout w-100 mb-2">CHECKOUT</button>
+        <button class="viewCart w-100">VIEW CART</button>
+      </div>
+    </div>
+  </div>
+  

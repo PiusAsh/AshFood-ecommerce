@@ -1,0 +1,278 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,200;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900&display=swap');
+
+* {
+  font-family: 'Heebo', sans-serif;
+}
+
+.TextHeading{
+  font-family: 'Nunito Sans', sans-serif!important;
+}
+
+.swal2-popup {
+  border-radius: 8px;
+  box-shadow: none;
+  padding: 10px;
+  width: 400px;
+
+}
+
+.swal2-title {
+  font-size: 25px;
+}
+
+.form-control {
+  box-shadow: none !important;
+  outline: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+
+
+.swal2-confirmButton {
+  background-color: #84245E;
+  box-shadow: none;
+  /* Remove box shadow */
+}
+
+.swal2-iconColor {
+  color: #84245E;
+}
+
+.accent {
+  color: #2e2e2ed3 !important;
+}
+
+/* strong{
+  color: #000!important;
+} */
+.text-primary {
+  color: #ffc222 !important;
+}
+.breadcrumb-text {
+  text-decoration: none;
+  color: #ffc222;
+  font-weight: 600;
+  font-family: 'Nunito Sans', sans-serif!important;
+}
+.btn-primary {
+  background-color: #ffc222 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.bg-primary {
+  background-color: #ffc222 !important;
+}
+
+/* Styling for checked state */
+input[type="checkbox"]:checked {
+  background-color: #ffc222 !important;
+  /* Change background color when checked */
+  border-color: #ffc222 !important;
+  /* Change border color when checked */
+  color: white;
+  /* Change text color when checked */
+  transform: scale(1.5);
+  margin-right: 6px;
+  cursor: pointer;
+
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+  margin-right: 6px;
+  cursor: pointer;
+
+}
+
+/* TABLE CSS ############################################### */
+table td,
+table th {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+table {
+  border-radius: 15px !important;
+}
+
+.table thead th,
+.table tbody td {
+  border: 1px solid rgba(0, 0, 0, 0.127);
+  /* Border with color */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  */
+  padding: 10px;
+  /* Add padding */
+  vertical-align: middle;
+  /* Align content vertically */
+}
+
+tbody td {
+  font-weight: 300;
+
+}
+
+/* box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important; */
+thead tr th {
+  font-weight: 600 !important;
+  color: black !important;
+  font-size: 12px !important;
+  background-color: whitesmoke !important;
+
+}
+
+table tr:hover {
+  cursor: pointer;
+}
+
+.selected-row {
+  background-color: #225483 !important;
+}
+
+.selected-category {
+  /* display: flex;
+    justify-content: space-around; */
+  padding: 8px;
+  border: 1px solid #ccc;
+  background-color: #2e2e2ed3;
+  /* background-color: #2e2e2ed3; */
+  margin-top: 10px;
+  /* border-radius: 6px; */
+}
+
+/* Target the placeholder text in the input field */
+::placeholder {
+  color: #999;
+  /* Set the color of the placeholder text */
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-start;
+  /* Align buttons to the left */
+  gap: 20px;
+  /* Add spacing between buttons */
+}
+
+.button-group button {
+  color: white;
+  /* Text color */
+  border: none;
+  padding: 0px 12px;
+  cursor: pointer;
+  background-color: transparent;
+  /* Transparent background */
+  border: 1px solid white;
+  /* White border for contrast */
+  border-radius: 4px;
+  transition: background-color 0.3s, border-color 0.3s;
+  /* Smooth transition */
+}
+
+
+
+.row-count {
+  display: flex;
+  justify-content: flex-start;
+  /* Align text to the left */
+  align-items: center;
+  /* Vertically center the text */
+  margin-right: 10px;
+  /* Add spacing from the right side */
+}
+
+.row-count p {
+  margin: 0;
+  /* Remove default margin */
+}
+
+
+
+/* Use the primary color for the view button */
+.view:hover {
+  background-color: white !important;
+  /* White background on hover */
+  color: #2e2e2ed3 !important;
+  /* Use secondary color for text on hover */
+  border-color: #2e2e2ed3 !important;
+  /* Use secondary color for border on hover */
+  cursor: pointer !important;
+}
+
+/* Use a shade of your secondary color for the edit button */
+.edit:hover {
+  background-color: white !important;
+  /* White background on hover */
+  color: #2e2e2ed3 !important;
+  /* Use secondary color for text on hover */
+  border-color: #2e2e2ed3 !important;
+  /* Use secondary color for border on hover */
+  cursor: pointer !important;
+}
+
+/* Use a shade of your secondary color for the delete button */
+.delete:hover {
+  background-color: white !important;
+  /* White background on hover */
+  color: #2e2e2ed3 !important;
+  /* Use secondary color for text on hover */
+  border-color: #2e2e2ed3 !important;
+  /* Use secondary color for border on hover */
+  cursor: pointer !important;
+}
+
+
+
+/* END OF TABLE CSS ############################################### */
+
+.ngx-pagination a,
+.ngx-pagination button,
+.ngx-pagination li {
+  color: #000 !important;
+  cursor: pointer;
+  font-size: 13px;
+
+}
+
+
+.ngx-pagination .current {
+  padding: 0.1875rem 0.625rem;
+  background: #2e2e2ed3 !important;
+  color: #fff !important;
+  cursor: default;
+}
+
+.modal-content {
+  /* border: 2px solid #2e2e2ed3!important; */
+  /* border-top: 5px solid #ffc222!important; */
+  border-radius: 10px !important;
+  box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075) !important;
+}
+
+.modal-header {
+  background-color: #deeaf042;
+}
+
+.modal-footer button {
+  font-size: 15px;
+
+}
+
+.modal-title {
+  color: #2e2e2ed3;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.btn-close:hover {
+  background-color: #fff;
+  color: white !important;
+}

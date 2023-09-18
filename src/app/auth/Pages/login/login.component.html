@@ -1,0 +1,64 @@
+
+
+  
+  
+  
+  <section class="background">
+
+    <div class="container ">
+        <div class="row" style="height: 100vh; align-items: center;">
+           
+            <div class="col-lg-5" style="border-right: 1px solid #ccc;  align-items: center;">
+            
+  
+             
+            <img style="width: 400px; height: 300px;" class="" src="/assets/images/logo.png" alt="">
+          </div>
+            <div class="col-lg-6 ">
+              <h5 class=" loginHeadings mb-4">Login in to your account</h5>
+              <div class="row  container w3-animate-zoom p-5">
+                <form [formGroup]="loginForm" (ngSubmit)="loginIn()">
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label logLabel">Email Address</label>
+                    <input type="email" placeholder="Enter your Email" formControlName="email" class="loginForm shadow-sm p-3" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+      
+                  <div class="mb-2">
+                    <label for="exampleInputPassword1" class="form-label logLabel">Password</label>
+                    <div class="password-wrapper">
+                      <input type="{{ showPassword ? 'text' : 'password' }}" placeholder="Enter your password" formControlName="password" class="loginForm shadow-sm p-3" id="exampleInputPassword1">
+                      <span class="password-toggle" (click)="togglePasswordVisibility()">
+                        <i style="color: #E87E04; font-size: 25px;" class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                  </div>
+      <div class="d-flex justify-content-between">
+      
+        <p class="mb-2">
+          <input type="checkbox" class="me-2 form-check-input" id="">
+          <span class="remember">Remember Me</span>
+        </p>
+        <p class="mb-2" style="text-align: right;">
+          <a href="#">Forget Password</a>
+        </p>
+      </div>
+                  <button style="height: 50px;" type="submit" class="btn btn-primary w-100" [disabled]="isLoading || loginForm.invalid">
+                    <ng-container *ngIf="!isLoading; else loadingTemplate">
+                      Login
+                    </ng-container>
+                    <ng-template #loadingTemplate>
+                      <i class="fa fa-circle-o-notch fa-spin"></i> Logging in... 
+                    </ng-template>
+                  </button>
+                </form>
+              </div>
+
+               
+                <p class="text-center mt-3 text-white">
+                   Don't Have An Account? <a routerLink="/register">Register</a>
+                  </p>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+  </section>

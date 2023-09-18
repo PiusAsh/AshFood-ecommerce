@@ -1,0 +1,25 @@
+.tab-navigation {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+  }
+  
+  .tab-navigation li {
+    padding: 6px 15px;
+    cursor: pointer;
+    border: 1px solid #FEA116;
+    border-radius: 0px 5px 0 0;
+    background-color: #fff;
+    font-weight: 400;
+    color: #2e2e2ed3; /* Default text color */
+  }
+  
+  .tab-navigation li.active {
+    background-color: #2e2e2ed3; /* Active tab background color */
+    color: white; /* Active tab text color */
+    border: none;
+    font-weight: 400;
+  }
+  
+ 
+  

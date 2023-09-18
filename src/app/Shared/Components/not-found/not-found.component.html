@@ -1,0 +1,11 @@
+
+
+<!-- <div *ngIf="visible">
+    {{notFoundMessage}}
+    <a routerLink="/">{{resetLinkText}}</a>
+</div> -->
+
+<div *ngIf="visible" class="notFound py-5">
+    <p>{{notFoundMessage}}</p>
+    <button class="btn btn-primary"><a routerLink="/">{{resetLinkText}}</a></button>
+</div>

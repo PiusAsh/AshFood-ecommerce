@@ -1,0 +1,56 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+#navbarVertical{
+    /* background-color: #ffffff7b!important; */
+    background-color: #2e2e2ef5!important;
+    width: 269px !important;
+    max-height: 100vh!important;
+}
+
+.nav-link{
+    color: #fff!important;
+    font-weight: 400!important;
+}
+.nav-link:hover{
+    color: #2e2e2ef5!important;
+    font-weight: 400!important;
+}
+.nav-item:hover{
+    color: #000!important;
+    font-weight: 400!important;
+    background-color: #FFF!important;
+    /* background-color: #6f73769d!important; */
+}
+
+.nav-link i{
+    color: #FEA116!important;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+
+/* Add this CSS to your stylesheet */
+.navbar-nav {
+    padding: 0; /* Remove padding to span the entire width */
+  }
+  
+  .nav-item {
+    border-bottom: 1px solid #ccc; /* Add a bottom border to each menu item */
+  }
+  
+  /* Optional: Add padding to the menu items for spacing */
+  .nav-item a.nav-link {
+    padding: 10px;
+  }
+  
+  /* Optional: Change the border color and style as desired */
+  .nav-item {
+    border-bottom: 1px solid #e3dede67; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Optional: Add spacing between menu items */
+  .nav-item + .nav-item {
+    /* margin-top: 5px;  */
+  }
+  
