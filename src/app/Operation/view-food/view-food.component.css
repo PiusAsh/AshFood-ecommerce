@@ -1,20 +1,25 @@
-.foodImage{
-    width: 700px; height: 500px; background: whitesmoke; cursor: pointer; border-radius: 20px;
+.foodImage {
+    width: 700px;
+    height: 500px;
+    background: whitesmoke;
+    cursor: pointer;
+    border-radius: 20px;
 }
 
-.foodName{
-    font-size: 42px; font-weight: bold;
-    font-family: 'Nunito Sans', sans-serif!important;
+.foodName {
+    font-size: 42px;
+    font-weight: bold;
+    font-family: 'Nunito Sans', sans-serif !important;
 }
 
-.foodAmount{
-    font-size: 30px;
+.foodAmount {
+    font-size: 25px;
     font-weight: 800;
-    font-family: 'Nunito Sans', sans-serif!important;
-    color: #ffc222;
+    font-family: 'Nunito Sans', sans-serif !important;
+    color: #000;
 }
 
-.foodCartBtn{
+.foodCartBtn {
     padding-top: 9px;
     padding-bottom: 9px;
     white-space: nowrap;
@@ -23,18 +28,22 @@
     padding: 10px 45px
 }
 
-.breadcrumb-item a{
+.breadcrumb-item a {
     text-decoration: none;
     color: #ffc222;
 }
-.categoryLink{
+
+.categoryLink {
     text-decoration: none;
     color: #ffc222;
     font-weight: 600;
 }
+
 .quantity-selector input {
-    border: none; /* Remove the border */
-    padding: 0; /* Remove padding */
+    border: none;
+    /* Remove the border */
+    padding: 0;
+    /* Remove padding */
     width: 20px;
 }
 
@@ -42,13 +51,13 @@
 /* Hide the default number input arrows */
 .quantity-selector input[type="number"]::-webkit-inner-spin-button,
 .quantity-selector input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 .quantity-selector input[type="number"] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 .quantity-selector {
@@ -64,26 +73,41 @@
     height: 30px;
     font-size: 20px;
     cursor: pointer;
-    margin-right: 10px; /* Add some space between buttons */
+    margin-right: 10px;
+    /* Add some space between buttons */
 }
 
 .quantity-input {
     width: 50px;
     text-align: center;
     font-size: 16px;
-    margin-right: 10px; /* Add some space between input and buttons */
+    margin-right: 10px;
+    /* Add some space between input and buttons */
 }
 
 .add-to-cart-button {
     background-color: #ffc222;
     border: none;
     border-radius: 10px;
-    padding: 10px 130px; /* Adjust padding for a wider button */
+    padding: 10px 130px;
+    /* Adjust padding for a wider button */
     color: white;
     font-size: 16px;
     cursor: pointer;
 }
-hr{
+
+.add-to-cart-button-sm {
+    background-color: #ffc222;
+    border: none;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+hr {
     border: 1px solid #ccc;
     background: none;
     height: 0px;
@@ -94,9 +118,9 @@ hr{
     display: flex;
     padding: 10px;
     justify-content: center;
-  }
-  
-  .tabNavigation li {
+}
+
+.tabNavigation li {
     padding: 15px 25px;
     cursor: pointer;
     border: 1px solid #FEA116;
@@ -104,16 +128,20 @@ hr{
     background-color: #fff;
     font-weight: 600;
     font-size: 17px;
-    color: #000; /* Default text color */
-  }
-  
-  .tabNavigation li.active {
-    background-color: #ffc222; /* Active tab background color */
-    color: black; /* Active tab text color */
+    color: #000;
+    /* Default text color */
+}
+
+.tabNavigation li.active {
+    background-color: #ffc222;
+    /* Active tab background color */
+    color: black;
+    /* Active tab text color */
     border: none;
     font-weight: 600;
-  }
-  .reviewTextArea{
+}
+
+.reviewTextArea {
     padding: 0.68em 1em;
     background-color: var(--background);
     color: var(--body);
@@ -124,14 +152,19 @@ hr{
     font-weight: 400;
     border-radius: 8px;
     outline: 0;
-  }
- 
-  .user-avatar img {
-    width: 50px; /* Adjust the width as needed */
-    height: 50px; /* Adjust the height as needed */
-    border-radius: 50%; /* Creates a circular profile picture */
-    object-fit: cover; /* Ensures the image covers the entire area */
 }
-.user-details{
+
+.user-avatar img {
+    width: 50px;
+    /* Adjust the width as needed */
+    height: 50px;
+    /* Adjust the height as needed */
+    border-radius: 50%;
+    /* Creates a circular profile picture */
+    object-fit: cover;
+    /* Ensures the image covers the entire area */
+}
+
+.user-details {
     display: flex;
 }

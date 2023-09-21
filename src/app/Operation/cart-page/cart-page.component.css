@@ -124,3 +124,23 @@ hr{
    .prodTitle{
     margin-left: 28px;
    }
+
+   /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .hide-on-mobile{
+        display: none!important;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .hide-on-mobile{
+        display: block!important;
+    }
+}
+
+/* X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {}
+
+/* XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {}

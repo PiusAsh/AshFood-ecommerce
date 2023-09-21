@@ -26,7 +26,7 @@
       <div class="col-lg-1"></div>
       <div class="col-lg-10">
         <div class=" row">
-          <h6 class="mb-3 "> <a href="#!" class="back"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to
+          <h6 class="mb-3 "> <a (click)="shoRoute()" class="back cursor-pointer"> <i class="fa fa-arrow-left" aria-hidden="true"></i> Back to
             Shopping</a></h6>
     
     
@@ -48,57 +48,60 @@
       <!-- cart -->
     
       <div class="col-lg-6">
-        <div class="row mt-2">
-          <div class="col-lg-5">            <p class="prodTitle">Product Name</p></div>
-          <div class="col-lg-3">            <p class="prodTitle"> Quantity </p></div>
-          <div class="col-lg-2">            <p class="prodTitle">Price</p></div>
-          <div class="col-lg-2">            <p></p></div>
-        </div>
+        <div class="d-none d-sm-block">
 
-        <!-- DESKTOP -->
-        <div class="row p-3 itemDetails mb-2" *ngFor="let item of cart.items">
-          <div class="col-lg-5">
-
-            <div class="d-flex flex-row align-items-center product-detail">
-              <div class="">
-                <img [src]="item.food.thumbnail" class="img-fluid rounded-3 img-thumbnail me-2" [alt]="item.food.name"
-                  style="width: 65px;">
+          <div class="row mt-2">
+            <div class="col-lg-5">            <p class="prodTitle">Product Name</p></div>
+            <div class="col-lg-3">            <p class="prodTitle"> Quantity </p></div>
+            <div class="col-lg-2">            <p class="prodTitle">Price</p></div>
+            <div class="col-lg-2">            <p></p></div>
+          </div>
+  
+          <!-- DESKTOP -->
+          <div class="row p-3 itemDetails mb-2" *ngFor="let item of cart.items">
+            <div class="col-lg-5">
+  
+              <div class="d-flex flex-row align-items-center product-detail">
+                <div class="">
+                  <img [src]="item.food.thumbnail" class="img-fluid rounded-3 img-thumbnail me-2" [alt]="item.food.name"
+                    style="width: 65px;">
+                </div>
+                <div class="">
+                  <h5 class="CartItemText"><a routerLink="/view-food/{{item.food.id}}"></a>{{item.food.name}}</h5>
+                  <p class="small mb-0">{{item.food.category}}</p>
+                </div>
               </div>
-              <div class="">
-                <h5 class="CartItemText"><a routerLink="/view-food/{{item.food.id}}"></a>{{item.food.name}}</h5>
-                <p class="small mb-0">{{item.food.category}}</p>
+            </div>
+            <div class="col-lg-3">
+             
+              <div class="quantity-selector">
+  
+                <button (click)="changeQuantity(-1, item)" class="quantity-button">-</button>
+                <input type="number" [(ngModel)]="item.quantity" readonly class="quantity-input no-border-padding">
+                <button (click)="changeQuantity(1, item)" class="quantity-button">+</button>
+          
               </div>
             </div>
-          </div>
-          <div class="col-lg-3">
-           
-            <div class="quantity-selector">
-
-              <button (click)="changeQuantity(-1, item)" class="quantity-button">-</button>
-              <input type="number" [(ngModel)]="item.quantity" readonly class="quantity-input no-border-padding">
-              <button (click)="changeQuantity(1, item)" class="quantity-button">+</button>
-        
+            <div class="col-lg-2">
+             
+              <div class="product-price">
+  
+                <h5 class="mb-0 CartItemPrice me-5">{{item.price | currency: '₦'}}</h5>
+              </div>
             </div>
-          </div>
-          <div class="col-lg-2">
-           
-            <div class="product-price">
-
-              <h5 class="mb-0 CartItemPrice me-5">{{item.price | currency: '₦'}}</h5>
-            </div>
-          </div>
-          <div class="col-lg-2">
-            <!-- <p>Product Name</p> -->
-            <div class="remove-action">
-
-              <i (click)="removeFromCart(item)" class="btn btn-danger fa fa-trash" aria-hidden="true"></i>
+            <div class="col-lg-2">
+              <!-- <p>Product Name</p> -->
+              <div class="remove-action">
+  
+                <i (click)="removeFromCart(item)" class="btn btn-danger fa fa-trash" aria-hidden="true"></i>
+              </div>
             </div>
           </div>
         </div>
 
 
         <!-- MOBILE -->
-        <div class="card mb-3 p-2 d-lg-none" *ngFor="let item of cart.items">
+        <div class="card mb-3 p-2 d-block d-sm-none" *ngFor="let item of cart.items">
           <div class="card-body">
 
 <!-- MOBILE -->

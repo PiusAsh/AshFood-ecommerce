@@ -23,12 +23,12 @@ resetLink="Go To HomePage"> -->
     <div class="row">
         <div class="col-lg-6">
             <div class=" container">
-                <img  [src]="food?.thumbnail" class="img-thumbnail foodImage" [alt]="food?.name">
+                <img  [src]="food?.thumbnail" class="img-thumbnail foodImage" [alt]="food?.name" style="width: 100%;cursor: pointer; height: 100%; object-fit: cover;">
             </div>
         </div>
         <div class="col-lg-6">
             <div class="container">
-                <p class="foodName">{{food?.name}}</p>
+                <p class="foodName mt-2">{{food?.name}}</p>
                 <div class="mr-2 d-flex">
                     <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
                     <p class="text-muted">( 5 Customer Reviews )</p>
@@ -39,26 +39,14 @@ resetLink="Go To HomePage"> -->
             
             <hr>
             <div class="quantity-selector">
-                <!-- <button (click)="changeQuantity(-1)" class="quantity-button">-</button>
-                <input type="number" [(ngModel)]="quantity" class="quantity-input no-border-padding">
-                <button (click)="changeQuantity(1)" class="quantity-button">+</button> -->
-                <button class="add-to-cart-button" (click)="addToCart(food)">Add to Cart</button>
+               
+                <button class="add-to-cart-button-sm w-100 d-block d-sm-none" (click)="addToCart(food)">Add to Cart </button>
+                <button class="add-to-cart-button d-none d-sm-block" (click)="addToCart(food)">Add to Cart</button>
+                
             </div>
             
             
-            <!-- <div class="row">
-                <div class="col-lg-2">
-
-                    <div class="quantity-selector">
-                        <button (click)="changeQuantity(-1)" class="quantity-button">-</button>
-                        <input type="number" [(ngModel)]="quantity" class="quantity-input">
-                        <button (click)="changeQuantity(1)" class="quantity-button">+</button>
-                    </div>
-                    
-                    
-                </div>
-                <div class="col-lg-10"><button class="btn foodCartBtn"><i class="fa fa-shopping-cart"></i> Add to Cart</button></div>
-            </div> -->
+     
             <hr>
 
             <p>Category:  <span><a class="categoryLink" routerLink="/">{{food?.category}}</a></span></p>

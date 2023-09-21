@@ -99,4 +99,8 @@ plusQuantity: any;
     this.route.navigate(['checkout']);
     window.scrollTo(0, 0);
       }
+  shoRoute(){
+    this.route.navigate(['shop']);
+    window.scrollTo(0, 0);
+      }
 }

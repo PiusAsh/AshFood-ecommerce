@@ -1,4 +1,4 @@
-/* @import '~font-awesome/css/font-awesome.css';
+@import '~font-awesome/css/font-awesome.css';
 
 
 .background{
@@ -59,6 +59,7 @@ font-size: 20px;
 
  }
  
+ 
  .centered-div {
   display: flex;
   justify-content: center;
@@ -96,4 +97,4 @@ a{
   right: 10px; 
   transform: translateY(-50%);
   cursor: pointer;
-} */
+}
