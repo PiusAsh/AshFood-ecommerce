@@ -23,7 +23,7 @@ this.toast.error({
 });
     this.cart.items.push(new CartItem(food));
     this.setCartToLocalStorage();
-    this.toast.success({detail: "Added to Cart", summary: "Room added successfully", duration: 4000})
+    this.toast.success({detail: "Cart Update!", summary: "Product Added Successfully", duration: 4000})
   }
   getCartObservable(): Observable<Cart> {
     return this.cartSubject.asObservable();
@@ -60,15 +60,22 @@ this.toast.error({
     this.setCartToLocalStorage();
   }
 
-  changeQuantity(foodId: string, quantity: number) {
-    let cartItem = this.cart.items.find((item) => item.food.id === parseInt(foodId));
+  changeQuantity1(foodId: number, quantity: number) {
+    let cartItem = this.cart.items.find((item) => item.food.id === foodId);
     if (!cartItem) return;
     cartItem.quantity = quantity;
     cartItem.price = quantity * cartItem.food.price;
     this.setCartToLocalStorage();
   }
 
+  changeQuantity(foodId: number, quantity: number) {
+    let cartItem = this.cart.items.find((item) => item.food.id === foodId);
+    if (!cartItem) return;
+    cartItem.quantity = quantity;
+    cartItem.price = quantity * cartItem.food.price;
+    this.setCartToLocalStorage();
 
+  }
   
 //   changeQuantity3(foodId: string, quantity: number) {
 //     let cartItem = this.cart.items.find((item) => item.food.id === foodId);

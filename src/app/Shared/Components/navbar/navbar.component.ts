@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
 import { NgToastService } from 'ng-angular-popup';
 import { Cart } from 'src/app/Models/cart';
 import { CartItem } from 'src/app/Models/cartItem';
@@ -19,31 +20,48 @@ export class NavbarComponent {
   searchTerm = "";
   loginForm: FormGroup;
   cartQuantity: number = 1;
-  constructor(private operationService: OperationService , private toast: NgToastService, private adminService: AdminService, private activatedRoute: ActivatedRoute, private route: Router, private formBuilder: FormBuilder, private cartService: CartService){
+  @ViewChild('content') content: NgbOffcanvas;
+  previousCartQuantity: number = 0;
+  searchMenu: FormGroup;
+  offcanvasRef: NgbOffcanvas;
+  constructor(private operationService: OperationService , private offcanvasService: NgbOffcanvas,  private toast: NgToastService, private adminService: AdminService, private activatedRoute: ActivatedRoute, private route: Router, private formBuilder: FormBuilder, private cartService: CartService){
 
     
     this.loginForm = this.formBuilder.group({
       emailOrPhone: ['', Validators.required],
       password: ['', Validators.required]
     });
-
-    cartService.getCartObservable().subscribe((newCart) => {
-      this.cartQuantity = newCart.totalCount;
-      console.log(this.cartQuantity, "this.cartQuantity");
-      console.log(newCart, "newCart");
+    
+    this.searchMenu = this.formBuilder.group({
+      menuName: ['Select Menu Category'],
     });
-    // userService.userObservable.subscribe((newUser) => {
-    //   this.globaluser = newUser;
 
-    //   this.adminService.getUserById(this.globaluser.userData).subscribe({
-    //     next: (res) => {
-    //       this.resp = res;
-    //       // console.log('Checking current user', this.resp.firstName);
-    //       // console.log('Checkin--- user', newUser);
-    //     },
-    //   });
+    // this.cartService.getCartObservable().subscribe((newCart) => {
+    //   this.cartQuantity = newCart.totalCount;
+    //   console.log(this.cartQuantity, "this.cartQuantity");
+    //   console.log(newCart, "newCart");
+  
+    //   // Make sure this.content is defined before attempting to open the offcanvas
+    //   if (this.content) {
+    //     this.offcanvasService.open(this.content, { position: 'end' });
+    //   }
+    
     // });
-
+ 
+    this.cartService.getCartObservable().subscribe((newCart) => {
+      this.cartQuantity = newCart.totalCount;
+      const newQuantity = newCart.totalCount;
+      console.log(newQuantity, "newQuantity");
+      console.log(newCart, "newCart");
+    
+      if (newQuantity > this.previousCartQuantity) {
+        if (this.content) {
+           this.offcanvasService.open(this.content, { position: 'end' });
+            }
+      }
+    
+      this.previousCartQuantity = newQuantity; // Update previous quantity
+    });
 
 
 
@@ -76,7 +94,11 @@ this.route.navigateByUrl('/search/'+ term)
     }
   }
 
+  showSideMenu = false;
 
+  toggleSideMenu() {
+    this.showSideMenu = !this.showSideMenu;
+  }
   onSubmit(): void {
     if (this.loginForm.invalid) {
       return;
@@ -103,6 +125,16 @@ this.route.navigateByUrl('/search/'+ term)
     //     break;
     // }
   }
+
+  closeCartOffCanvas() {
+    if (this.content) {
+        this.content.dismiss();
+    }
+}
+
+  openCartOffCanvas(content) {
+		this.offcanvasService.open(content, { position: 'end' });
+	}
   viewFood(route: number){
     this.route.navigate(['view-food/',`${route}`]);
     window.scrollTo(0, 0);
@@ -111,14 +143,17 @@ this.route.navigateByUrl('/search/'+ term)
   checkoutRoute(){
     this.route.navigate(['checkout']);
     window.scrollTo(0, 0);
+    this.closeCartOffCanvas();
       }
   cartRoute(){
     this.route.navigate(['cart']);
     window.scrollTo(0, 0);
+    this.closeCartOffCanvas();
       }
   shopRoute(){
     this.route.navigate(['cart']);
     window.scrollTo(0, 0);
+    this.closeCartOffCanvas();
       }
 
 
@@ -126,8 +161,14 @@ this.route.navigateByUrl('/search/'+ term)
     this.cartService.removeFromCart(cartItem.food.id);
     this.toast.success({
       detail: 'Cart Update!',
-      summary: 'Product has been removed successfully',
+      summary: 'Product removed Successfully',
       duration: 3000,
     });
   }
+
+  
+  categories: string[] = ['Category 1', 'Category 2', 'Category 3']; // Add more categories as needed
+  selectedCategory: string = '';
+
+ 
 }

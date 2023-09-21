@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,200;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900&display=swap');
+/* styles.css */
+
 
 * {
   font-family: 'Heebo', sans-serif;
@@ -13,13 +15,7 @@
   font-family: 'Nunito Sans', sans-serif!important;
 }
 
-.swal2-popup {
-  border-radius: 8px;
-  box-shadow: none;
-  padding: 10px;
-  width: 400px;
 
-}
 
 .swal2-title {
   font-size: 25px;
@@ -31,8 +27,21 @@
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+.offcanvas {
+width: 340px !important;
+}
+::-webkit-scrollbar {
+  width: 3px; /* Set the width of the scrollbar */
+}
 
+::-webkit-scrollbar-thumb {
+  background-color: #FEA116!important; /* Set the color of the scrollbar thumb */
+  border-radius: 5px; /* Rounded corners for the thumb */
+}
 
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Set the color of the scrollbar track */
+}
 .swal2-confirmButton {
   background-color: #84245E;
   box-shadow: none;
@@ -50,6 +59,10 @@
 /* strong{
   color: #000!important;
 } */
+
+.text-muted{
+  font-size: 14px !important;
+}
 .text-primary {
   color: #ffc222 !important;
 }
@@ -152,6 +165,88 @@ table tr:hover {
   /* Set the color of the placeholder text */
   font-size: 13px;
   font-weight: 400;
+}
+
+/* For Chrome, Safari, and other WebKit browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+
+
+.swal2-popup {
+  border-radius: 8px;
+  box-shadow: none; 
+  padding: 12px;
+  width: 400px;
+  border-bottom: 2px solid #FEA116;
+  border-top: 2px solid #FEA116;
+  font-family:  'Heebo', sans-serif;
+ 
+}
+.swal2-title {
+  font-size: 20px;
+  font-family:  'Heebo', sans-serif;
+}
+.swal2-text {
+  font-size: 13px!important;
+  color: #555;
+  font-family:  'Heebo', sans-serif;
+}
+/* .swal2-icon {
+  background-color: #2e2e2ed3!important;
+  border: 3px solid #FEA116!important;
+  color: white!important;
+} */
+/* .swal2-error {
+  border: 3px solid #FEA116!important;
+  background-color: white!important;
+} */
+/* Change dropdown icon color */
+.ng-select .ng-arrow-wrapper {
+  color: #FEA116!important;
+  font-family:  'Heebo', sans-serif;
+}
+
+/* Change background color of the dropdown */
+.ng-dropdown-panel {
+  background-color: whitesmoke!important;
+  font-family:  'Heebo', sans-serif;
+  /* padding: 20px; */
+}
+
+/* Add hover effect for options */
+.ng-option:hover {
+  background-color: #2e2e2ed3!important;
+  color: white!important;
+  font-size: 13.5px!important;
+}
+
+.ng-select.ng-select-single .ng-select-container .ng-value-container {
+  box-shadow: none!important;
+  font-family:  'Heebo', sans-serif;
+}
+
+.swal2-confirm {
+  box-shadow: none !important;
+  border: none !important;
+  padding: 6px 15px;
+  cursor: pointer;
+  background-color: #FEA116!important;
+  transition: background-color 0.3s ease;
+  font-family:  'Heebo', sans-serif;
+}
+.swal2-cancel {
+  box-shadow: none !important;
+  border: none !important;
+  padding: 8px 20px;
+  cursor: pointer;
+  background-color: #2e2e2ed3!important;
+  transition: background-color 0.3s ease;
+  font-family:  'Heebo', sans-serif;
 }
 
 .button-group {
@@ -276,3 +371,6 @@ table tr:hover {
   background-color: #fff;
   color: white !important;
 }
+
+
+

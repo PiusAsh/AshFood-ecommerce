@@ -10,6 +10,7 @@ import { CheckoutComponent } from './Operation/checkout/checkout.component';
 import { FoodListComponent } from './Operation/food-list/food-list.component';
 import { ViewFoodComponent } from './Operation/view-food/view-food.component';
 import { CartPageComponent } from './Operation/cart-page/cart-page.component';
+import { ShopPageComponent } from './Operation/shop-page/shop-page.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'list', component: FoodListComponent },
   { path: 'cart', component: CartPageComponent },
+  { path: 'shop', component: ShopPageComponent },
 
  
   // { path: '**', component: PageNotFoundComponent },

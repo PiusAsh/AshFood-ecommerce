@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -39,6 +39,7 @@ import { CartPageComponent } from './Operation/cart-page/cart-page.component';
 import { FoodListComponent } from './Operation/food-list/food-list.component';
 import { ViewFoodComponent } from './Operation/view-food/view-food.component';
 import { NotFoundComponent } from './Shared/Components/not-found/not-found.component';
+import { ShopPageComponent } from './Operation/shop-page/shop-page.component';
 
 
 
@@ -64,7 +65,8 @@ import { NotFoundComponent } from './Shared/Components/not-found/not-found.compo
     CheckoutComponent,
     CartPageComponent,
     FoodListComponent,
-    ViewFoodComponent
+    ViewFoodComponent,
+    ShopPageComponent
     //  AdminSpinnerComponent,
 
 
@@ -85,6 +87,7 @@ import { NotFoundComponent } from './Shared/Components/not-found/not-found.compo
     NgToastModule,
     NgSelectModule,
     AuthModule,
+    NgbTypeaheadModule
     
   ],
   providers: [

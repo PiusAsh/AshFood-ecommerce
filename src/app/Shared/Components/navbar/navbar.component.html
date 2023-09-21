@@ -1,46 +1,59 @@
 
-<nav  class="navbar navbar-expand-lg topbar bg-white sticky-top shadow">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="/assets/images/logo1.png" style="width:
-        100px; height: 100%;" alt="Brand Logo">
-      </a>
-      <div class="search-input">
-        <input #s (keyup.enter)="search(s.value)" class="" type="text" [value]="searchTerm" placeholder="Search Products...">
-        <span  class="p-2 fa fa-search"></span>
-      </div>
-      <div class="user-cart-icons">
-        <span title="User Profile" data-bs-toggle="modal" data-bs-target="#login" class="shadow-sm fa fa-user"></span>
-        <div class="cart-icon-container">
-            <span class="cart-quantity">{{ cartQuantity }}</span>
-            <span title="View Your Shopping Cart" data-bs-toggle="offcanvas" data-bs-target="#cart" class="shadow-sm fa fa-shopping-cart"></span>
-          </div>
-          
-      </div>
+
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #00A149; height: 5vh; z-index: 1;">
+  <div class="container topSection">
+    <div >
+
+  <i class="fa fa-motorcycle" aria-hidden="true"> <span class="deliveryText"> 100% Secure delivery without contacting the courier</span></i>
+<!-- <i class="fas fa-truck-loading    "></i> -->
     </div>
-  </nav>
-  
-  
-  <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #00A149; height: 10vh; z-index: 1;">
-    <div class="container">
-      <form class="form-inline my-2 my-lg-0 mr-auto">
-        <select class=" py-2 p-5 mr-sm-2" style="height: 100%; width: 300px; box-sizing: border-box; background-color: #00683731; border: none; color: #fff; border-radius: 30px; ">
-          <option selected>Select Menu...</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
-          <option value="option3">Option 3</option>
-        </select>
-      </form>
+    
+    <div class="search-inpuet">
+     
+    </div>
+    <div class="social-icons">
+   
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+    </div>
+  </div>
+</nav>
+
+
+
+<nav class="navbar navbar-expand-lg topbar bg-white sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="/assets/images/logo1.png" style="width: 100px; height: 100%;" alt="Brand Logo">
+    </a>
+
+    <button (click)="toggleSideMenu()" class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+      <span class="" *ngIf="!showSideMenu">
+        &#9776; <!-- Unicode character for hamburger -->
+      </span>
+      <span  *ngIf="showSideMenu" data-bs-dismiss="offcanvas" aria-label="Close">
+        &#10006; <!-- Unicode character for close (X) -->
+      </span>
+      
+    </button>
+    
+    
+    
+    
+    <!-- <button type="button"  class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+
+    <div class="collapse navbar-collapse " id="navbarNave">
       <div class="search-input">
         <ul class="navbar-nav ml-auto justify-content-center">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Menu</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Shop</a>
+            <a class="nav-link" routerLink="/shop">Shop</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About</a>
@@ -53,13 +66,81 @@
           </li>
         </ul>
       </div>
+
       <div class="user-cart-icons">
-        <div class="navbar-nav justify-content-end" >
-          <a class="nav-link semiCall ">24/7 Support center<br><span class="call">+2349052794388</span></a>
+        <div class="navbar-nav justify-content-end">
+          <a class="nav-link semiCall ">Call and Order In<br><span class="call">+2349052794388</span></a>
+        </div>
+      </div>
+
+      <div class="user-cart-icons">
+        <span title="User Profile" data-toggle="modal" data-target="#login" class=" fa fa-user"> &nbsp; Hi, Ashogbon</span>
+        <div class="cart-icon-container">
+          <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
+          <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class=" fa fa-shopping-cart">&nbsp; My Cart  &nbsp; &nbsp;</span>
         </div>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>
+
+
+
+
+
+<!-- SIDE MENU FOR MOBILE -->
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasExample"
+  aria-labelledby="offcanvasExampleLabel">
+  <div class="offcanvas-header shadow-sm">
+ <!-- Logo -->
+ <a class="navbar-brand " href="#">
+  <img src="/assets/images/logo1.png" style="width: 100px; height: 100%;" alt="Brand Logo">
+</a>
+
+    <button type="button"  (click)="toggleSideMenu()" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <!-- <hr style="border-bottom: 3px solid #ffc222; height: 0px;"> -->
+  <div class="offcanvas-body mt-3">
+   
+    <!-- Menu Links -->
+    <ul class="navbar-nav ml-auto justify-content-center">
+      <li class="nav-item active offcanvas-menu-item">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item offcanvas-menu-item">
+        <a class="nav-link" href="#">Menu</a>
+      </li>
+      <li class="nav-item offcanvas-menu-item">
+        <a class="nav-link" href="#">Shop</a>
+      </li>
+      <li class="nav-item offcanvas-menu-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+      <li class="nav-item offcanvas-menu-item">
+        <a class="nav-link" href="#">FAQs</a>
+      </li>
+      <li class="nav-item offcanvas-menu-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+
+    <!-- Call and Order In Text -->
+    <div class=" text-center footerOffcanvas card p-4 shadow-sm">
+      <p class="semiCallSide">Call and Order In</p>
+      <p class="callSide"> <i class="fa fa-phone text-black" aria-hidden="true"></i> 09052794388</p>
+      <div class="social-icons-offcanvas text-center">
+     
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+    </div>
+    </div>
+  </div>
+</div>
+  
+  
+
   
   
   
@@ -136,57 +217,63 @@
 
 
 
-      <div class="offcanvas offcanvas-end"  id="cart" style="width: 340px;">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">SHOPPING CART</h5>
-  
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <hr/>
-        <div class="offcanvas-body" style="position: relative; max-height: calc(100vh - 190px); overflow-y: auto;">
-          <div>
-            <div style="display: flex; justify-content: center; flex-direction: column;">
-
-              <p class="text-center mt-5" *ngIf="cart.items.length == 0">
-                No product in the cart.
-              </p>
-  <button class="btn btn-primary backButton" *ngIf="cart.items.length == 0" (click)="shopRoute()">Back To Shop</button>
-            </div>
-
-            <div class="d-flex align-items-center py-2" *ngFor="let item of cart.items" style="border-bottom: 1px solid #ddd;">
-              <i (click)="removeFromCart(item)" class=" fa fa-times me-3 bg-danger" aria-hidden="true"></i>
-              <div class="me-3 position-relative">
-                <img [src]="item.food.thumbnail" style="height: 50px; width: 50x;" class="img-sm rounded border" />
-              </div>
-              <div class="">
-                <p (click)="viewFood(item.food.id)" class="itemName" style="margin-bottom: -1px;">
-                  {{ item.food.name}} 
-      
-                </p>
-                <p class="price text-muted">{{item.food.price | currency: '₦'}}</p>
-              </div>
-             
-            </div>
-          </div>
-  
-        </div>
-  
-        <div *ngIf="cart.items.length != 0" class=" offcanvas-footer mt-3 mx-3 bg-white" style="position: absolute; bottom: 15px; align-items: center;">
-          <hr/>
-          <div class="subAmount mt-2 mx-3">
-            <small>Total Count:</small>
-            <p>{{cart.totalCount}}</p>
-          </div>
-          <div class="subAmount mx-3">
-            <small>Total Price:</small>
-            <h5>{{cart.totalPrice | currency: '₦'}}</h5>
-          </div>
-          <div class="button py-1 mx-3">
-            <button (click)="checkoutRoute()" class="checkout w-100 mb-2">CHECKOUT</button>
-            <button (click)="cartRoute()" class="viewCart w-100">VIEW CART</button>
-          </div>
-        </div>
-      </div>
+     
   
  
   
+
+
+    <ng-template #content let-offcanvas >
+      
+
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">SHOPPING CART</h5>
+    
+          <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+        </div>
+        <hr>
+         <div class="offcanvas-body" style="position: relative; max-height: calc(91vh - 190px); overflow-y: auto;">
+              <div>
+                <div style="display: flex; justify-content: center; flex-direction: column;">
+    
+                  <p class="text-center mt-5" *ngIf="cart.items.length == 0">
+                    No product in the cart.
+                  </p>
+      <button class="btn btn-primary backButton" *ngIf="cart.items.length == 0" (click)="shopRoute()">Back To Shop</button>
+                </div>
+    
+                <div class="d-flex align-items-center py-2" *ngFor="let item of cart.items" style="border-bottom: 1px solid #ddd;">
+                  <i (click)="removeFromCart(item)" class=" fa fa-times me-3 bg-danger" aria-hidden="true"></i>
+                  <div class="me-3 position-relative">
+                    <img [src]="item.food.thumbnail" style="height: 50px; width: 50x;" class="img-sm rounded border" />
+                  </div>
+                  <div class="">
+                    <p (click)="viewFood(item.food.id)" class="itemName" style="margin-bottom: -1px;">
+                      {{ item.food.name}} 
+          
+                    </p>
+                    <p class="price text-muted">{{item.food.price | currency: '₦'}} x <span>{{item.quantity}}</span></p>
+                  </div>
+                 
+                </div>
+              </div>
+      
+            </div>
+      
+            <div *ngIf="cart.items.length != 0" class=" offcanvas-footer mt-3 mx-3 bg-white" style="position: absolute; bottom: 15px; align-items: center;">
+              <hr/>
+              <div class="subAmount mt-2 mx-3">
+                <small>Total Count:</small>
+                <p>{{cart.totalCount}}</p>
+              </div>
+              <div class="subAmount mx-3">
+                <small>Total Price:</small>
+                <h5>{{cart.totalPrice | currency: '₦'}}</h5>
+              </div>
+              <div class="button py-1 mx-3">
+                <button (click)="checkoutRoute()" class="checkout w-100 mb-2">CHECKOUT</button>
+                <button (click)="cartRoute()" class="viewCart w-100">VIEW CART</button>
+              </div>
+            </div>
+     
+    </ng-template>

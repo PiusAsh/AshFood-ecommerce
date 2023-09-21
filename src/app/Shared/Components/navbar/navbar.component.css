@@ -3,9 +3,46 @@
 
 .navbar{
   height: 10vh;
+ 
 }
 
 
+.hamburger-container {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger, .close-icon {
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 2;
+}
+
+.dropdown-menu li {
+  list-style-type: none;
+}
+
+.menuCartButton{
+  padding: 10px 35px;
+  border-radius: 5px;
+  background-color: #ffffffc7;
+  color: #000;
+  /* font-family: 'Nunito Sans', sans-serif!important; */
+  font-size: 15px;
+  font-weight: 400;
+
+
+}
+/* Add any additional styling you need */
 
 
 
@@ -110,7 +147,7 @@
 
 .search-input {
   position: relative;
-  width: 450px;
+  width: 400px;
   height: 45px;
   margin: 0 auto;
 }
@@ -216,14 +253,21 @@ border-radius: 8px;
 #menu-scroll::-webkit-scrollbar {
   background-color: transparent;
 }
-.card {
-  width: 300px;
-  height: 120px;
-  border-radius: 10px!important;
-  border: none;
+.deliveryText{
+  font-size: 13px;
+  color: white;
+  font-weight: 300;
 }
 
-
+.topSection .fa{
+color: #ffc222;
+font-size: 20px;
+}
+.topSection button{
+color: #fff;
+font-weight: 200;
+background-color: transparent;
+}
 
 .subAmount{
   display: flex;
@@ -261,7 +305,14 @@ border-radius: 8px;
   cursor: pointer;
   /* background-color: black; */
 }
+/* styles.css */
 
+.offcanvas {
+  max-width: 340px;
+}
+.offcanvas-title{
+  font-family: 'Nunito Sans', sans-serif!important;
+}
 .backButton{
   color: black;
   padding: 10px 0px;
@@ -284,21 +335,92 @@ border-radius: 8px;
   display: flex;
   align-items: center;
 }
+.social-icons {
+  display: flex;
+  align-items: center;
+}
+.social-icons-offcanvas {
+  display: flex;
+  justify-content: center;
+  
+}
 
-.user-cart-icons .fa {
-  margin-left: 15px;
+.footerOffcanvas{
+  margin-top: 100px;
+}
+.social-icons-offcanvas .fa {
+  margin-left: 10px;
   color: #000;
-  border-radius: 50%;
-  height: 48px;
+  height: 20px;
   font-size: 16px;
-  width: 48px;
-  border: 1px solid #e5e5e5;
+  width: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
+
+.user-cart-icons .fa {
+  margin-left: 15px;
+  color: #000;
+  /* border-radius: 50%; */
+  height: 40px;
+  font-size: 16px;
+  /* width: 48px; */
+  padding: 15px;
+  max-width: max-content;
+  border: 1px solid #cccccc5d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* font-family: 'Nunito Sans', sans-serif ; */
+  border-radius: 3px;
+}
+
 .user-cart-icons .fa:hover {
+  margin-left: 15px;
+  color: #000;
+  /* border-radius: 50%; */
+  height: 35px;
+  font-size: 16px;
+  /* width: 48px; */
+  padding: 15px;
+  max-width: max-content;
+  background-color: #ffc222;
+  /* border: 1px solid #cccccca6; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.social-icons .fa {
+  margin-left: 10px;
+  color: #ffc222;
+  height: 20px;
+  font-size: 16px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.social-icons .fa:hover {
+  margin-left: 10px;
+  color: #fff;
+  /* border-radius: 50%; */
+  height: 20px;
+  font-size: 16px;
+  width: 20px;
+  /* border: 1px solid #fff; */
+  display: flex;
+  align-items: center;
+  /* background-color: #000; */
+  justify-content: center;
+  cursor: pointer;
+}
+/* .user-cart-icons .fa:hover {
   cursor: pointer;
   margin-left: 15px;
   color: #000;
@@ -311,7 +433,7 @@ border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .heroSection {
   /* height: 80vh; */
@@ -320,15 +442,70 @@ border-radius: 8px;
 }
 
 
-.nav-item .nav-link{
-  /* padding: 1em; */
+/* .nav-item .nav-link{
+
     display: block;
     font-weight: 700;
     font-size: 16px;
-    color: #fff!important;
+    color: #000!important;
     padding-left: 30px!important;
 
+} */
+.nav-item .nav-link {
+  display: block;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000!important;
+  padding-left: 30px!important;
+  position: relative; /* Add position relative for pseudo-element */
+  margin-bottom: 35px!important;
+  overflow: hidden; /* Hide overflow to prevent initial border visibility */
 }
+
+.nav-item .nav-link::before {
+  content: "";
+  position: absolute;
+  left: -100%; /* Initial position off-screen to the left */
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #00a149;
+  transition: left 0.3s; /* Add transition for left property */
+}
+
+.nav-item .nav-link:hover::before {
+  left: 0; /* Move the border in from the left on hover */
+}
+
+
+.offcanvas-menu-item .nav-link {
+  text-align: left; /* Center the text */
+  border-bottom: 1px solid #ccc; /* Add a bottom border */
+  margin-bottom: 5px !important; /* Set maximum margin-bottom */
+  padding: 10px 15px 10px 15px !important; /* Adjust padding */
+  font-size: 15px !important; 
+}
+.offcanvas-header .navbar-brand {
+  display: block;
+  margin: 0 auto; /* Center the logo */
+  text-align: center; /* Center the text inside the brand */
+}
+
+.offcanvas-menu-item .nav-link::before {
+  content: "";
+  position: absolute;
+  left: -100%; /* Initial position off-screen to the left */
+  bottom: 0;
+  width: 30%;
+  height: 5px;
+  background-color: #ffc222;
+  transition: left 0.3s; /* Add transition for left property */
+}
+
+.offcanvas-menu-item .nav-link:hover::before {
+  left: 0; /* Move the border in from the left on hover */
+}
+
 .navb{
   text-align: end!important;
 }
@@ -353,20 +530,29 @@ align-items: center;
 .call{
   text-align: end!important;
   color: #ffc222;
-  font-weight: 700;
-    font-size: 20px;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: 'Nunito Sans', sans-serif!important;
 }
 .semiCall{
-  /* text-align: end!important; */
-  color: #fff;
-  font-weight: 300;
-    font-size: 13px;
-    color: white!important;
-}
-/* .semiCall{
-  font-size: 13px;
   font-weight: 400;
-} */
+    font-size: 13px;
+    color: black!important;
+}
+.callSide{
+  /* text-align: end!important; */
+  color: #ffc222;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: 'Nunito Sans', sans-serif!important;
+}
+.semiCallSide{
+  font-weight: 400;
+    font-size: 13px;
+    color: black!important;
+}
+
+
 .middle{
   display: flex;
   justify-content: center;
@@ -384,3 +570,88 @@ select{
   padding-left: 10px;
   padding-right: 10px;
 }
+
+
+.mega-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.category-item {
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.show {
+  display: block;
+}
+
+/* Add this CSS in your component's CSS file or in your global styles */
+
+.custom-select {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  padding: 10px 10px;
+  border-radius: 20px;
+}
+
+.custom-select option:hover {
+  background-color: #ffc; /* Yellow background on hover */
+  color: #000; /* Black text on hover */
+}
+
+.custom-select option {
+  padding: 5px; /* Add padding to the options */
+}
+
+.custom-select option {
+  padding: 8px; /* Add padding to the options */
+  border-bottom: 1px solid #ccc; /* Add a border between options */
+}
+
+.custom-select option:last-child {
+  border-bottom: none; /* Remove border from the last option */
+}
+
+
+.custom-select option:hover {
+  background-color: #ffc; /* Yellow background on hover */
+  color: #000; /* Black text on hover */
+}
+
+
+/* Remove box shadow and border on click for hamburger */
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: none;
+  /* border: 1px solid #ffc222; */
+
+}
+
+/* Remove box shadow and border on click for close (X) */
+.btn-close:focus {
+  box-shadow: none;
+  outline: none;
+  border: 3px solid #ffc222;
+}
+
+/* Remove box shadow and border on click for hamburger */
+.navbar-toggler {
+  box-shadow: none;
+  outline: none;
+  border: none;
+  font-size: 30px !important;
+}
+
+/* Remove box shadow and border on click for close (X) */
+/* .btn-close {
+  box-shadow: none;
+  outline: none;
+  border: none;
+} */

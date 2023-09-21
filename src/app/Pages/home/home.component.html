@@ -1,17 +1,22 @@
 
 
 <div class="">
+
+
+  <!-- Navbar ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]-->
+  
+  <!--end of  Navbar ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]-->
     <app-navbar></app-navbar>
     <div class=" py-3 bg-black hero-header">
         <div class="container my-5 py-3">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 text-center text-lg-start">
                     <h1 class="display-3 text-white animated slideInLeft TextHeading heroTitle">Enjoy Our<br>Delicious Meal</h1>
-                    <p class="text-white animated slideInLeft mb-4 pb-2">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                    <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A Table</a>
+                    <p class="text-white animated slideInLeft mb-4 pb-2">Treat yourself to an extraordinary dining journey as you explore our extensive range of delectable offerings. Our menu is a celebration of flavors, with each dish thoughtfully prepared to bring you a delightful fusion of taste, texture, and aroma.</p>
+                    <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft text-black fw-bold">Order Now</a>
                 </div>
                 <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                    <img class="img-fluid" src="/assets/images/26-1-450x450.png" alt="">
+                    <img class="img-fluid" src="/assets/images/noodles.png" alt="">
                 </div>
             </div>
         </div>
@@ -20,67 +25,12 @@
    <div class="upper mb-5">
 
        <button class="btn btn-primary menu-button">MENUS</button>
-       <div class="row bg-light py-3">
-        <div class="row py-2" style="width: 70%; margin: 0 auto;">
-    
-            <div class="col-lg-2">
-                <div class="container category">
-                    <div class="">
-        
-                        <img class="img-thumbnail categoryImg" src="/assets/images/16-1-450x450.png" alt="">
-                        <p class="categoryText mt-2">Pizza</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="container category">
-                    <div class="">
-        
-                        <img class="img-thumbnail categoryImg" src="/assets/images/16-1-450x450.png" alt="">
-                        <p class="categoryText mt-2">Pizza</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="container category">
-                    <div class="">
-        
-                        <img class="img-thumbnail categoryImg" src="/assets/images/16-1-450x450.png" alt="">
-                        <p class="categoryText mt-2">Pizza</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="container category">
-                    <div class="">
-        
-                        <img class="img-thumbnail categoryImg" src="/assets/images/16-1-450x450.png" alt="">
-                        <p class="categoryText mt-2">Pizza</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="container category">
-                    <div class="">
-        
-                        <img class="img-thumbnail categoryImg" src="/assets/images/16-1-450x450.png" alt="">
-                        <p class="categoryText mt-2">Pizza</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2">
-                <div class="container category">
-                    <div class="">
-        
-                        <img class="img-thumbnail categoryImg" src="/assets/images/16-1-450x450.png" alt="">
-                        <p class="categoryText mt-2">Pizza</p>
-                    </div>
-                </div>
-            </div>
-        </div>
       
-       </div>
+      <!-- category -->
    </div>
+
+
+
     
     <div class="mt-5">
         <p class="text-center" style="color: #1e1d24; font-size: 36px; font-weight: 700;">Popular dishes</p>
@@ -89,42 +39,36 @@
           <a class="nav-link text-center TextHeading" (click)="selectCategory(category)" [class.active]="selectedCategory === category">{{ category }}</a>
         </li>
       </ul>
+      
   
       <div  class="tab-content menu-content " style="display: flex; justify-content: center!important;">
         <div  class="tab-pane  w3-animate-zoom" *ngFor="let category of categories" [ngClass]="{ 'active': selectedCategory === category }">
-          <div style="display: flex; justify-content: center!important;" class="row container">
-            <div class="card shadow-sm col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category)" style="border-radius: 30px!important; width: 280px!important; border: 1px solid #e5e5e5; margin-left: 15px;">
-              <!-- <div style="height: 220px; overflow: hidden; background-color: #ffc022d5;  display: flex; justify-content: center;">
-                <img [src]="product.imageUrl" class="p-2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 25px;">
-              </div> -->
-  
-              <div class="mt-2" style="width: 100%; height: 250px;">
-                <img [src]="product.imageUrl" (click)="viewFood(product.id)" class="" style="width: 100%;cursor: pointer; height: 100%; object-fit: cover; border-radius: 30px; background-color: #ffc0223a;">
-                <!-- <a class="productName" routerLink="/view-food/{{ product.id}}"><img [src]="product.imageUrl" class="" style="width: 100%; height: 100%; object-fit: cover; border-radius: 30px; background-color: #ffc0223a;"></a> -->
-            </div>
-  
-              <div class="card-body" >
-                <h5 class="card-title TextHeading cursor-pointer productName" (click)="viewFood(product.id)">{{ product.name }}</h5>
-                <p class="text-muted">{{ product.description }}</p>
-                <!-- <p class="card-text">
-                  <i class="fa fa-star star-rating"></i>
-                  <i class="fa fa-star star-rating"></i>
-                  <i class="fa fa-star star-rating"></i>
-                  <i class="fa fa-star star-rating"></i>
-                </p> -->
-                <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                <div class="cart" style="display: flex; justify-content: space-between;">
-
-                    <p style="font-weight: 800; font-size: 20px;" class="card-text price mt-2 textHeading">{{ product.price | currency: '₦' }}</p>
-                    <p class="btn btn-primary addToCartBtn" (click)="addToCart(product)">Add To Cart</p>
+          <div class="container py-3">
+            <div class="row">
+              <div class="col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category)">
+                <div class="card shadow-sm" style="border-radius: 30px!important; border: 1px solid #e5e5e5;">                                          <div class="p-1" style="width: 100%; ">
+                    <img [src]="product.thumbnail" (click)="viewFood(product.id)" class="" style="width: 100%;cursor: pointer; height: 100%; object-fit: cover; border-radius: 30px; background-color: #ffc0223a;">
+                  </div>
+          
+                  <div class="card-body">
+                      <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                    <h5 class="card-title TextHeading cursor-pointer productName" (click)="viewFood(product.id)">{{ product.name }}</h5>
+                    <p class="text-muted">{{ product.description }}</p>
+          
+                    <div class="cart px-2" style="display: flex; justify-content: space-between;">
+                      <p style="font-weight: 800; font-size: 20px;" class="card-text price textHeading">{{ product.price | currency: '₦' }}</p>
+                      <p class="btn btn-primary shadow-sm text-black" (click)="cartRoute()" type="button" *ngIf="ifAddedToCart(product)">Added  </p>
+                      <p *ngIf="!ifAddedToCart(product)" class="btn btn-primary addToCartBtn text-black" (click)="addToCart(product)">Add To Cart</p>
+                    </div>
+                  </div>
                 </div>
-               
               </div>
             </div>
-            <!-- <div style="border-radius: 30px!important;" class="col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category)">
-  
-            </div> -->
           </div>
+        
+       
+          
+         
         </div>
       </div>
     </div>

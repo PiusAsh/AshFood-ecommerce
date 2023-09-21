@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {  ActivatedRoute, Router } from '@angular/router';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { AdminService } from 'src/app/Services/admin.service';
-import { BookingService } from 'src/app/Services/booking.service';
+import { NgbModal, NgbModalRef, NgbOffcanvas } from '@ng-bootstrap/ng-bootstrap';
+import { NgToastService } from 'ng-angular-popup';
+import { Cart } from 'src/app/Models/cart';
+import { CartItem } from 'src/app/Models/cartItem';
 import { CartService } from 'src/app/Services/cart.service';
 import { OperationService } from 'src/app/Services/operation.service';
+
 
 @Component({
   selector: 'app-home',
@@ -19,13 +21,51 @@ export class HomeComponent implements OnInit {
   menus: any[] = [];
   // selectedCategory: string | null = null;
   categories: string[] = [];
+  @ViewChild('content') content: NgbOffcanvas;
+  cartQuantity: number = 1;
   products: any;
+  cart!: Cart;
+  AllAddedItems: any;
+  searchTerm = "";
   
+  search(term: string){
+    if(term){
+this.route.navigateByUrl('/search/'+ term)
+    }
+  }
+
   private modalRef: NgbModalRef | undefined;
-    constructor( private activatedRoute: ActivatedRoute,   private cartService: CartService, private modalService: NgbModal, private operationService: OperationService, private route: Router) { }
+  // ifAddedToCart: boolean = false;
+  NotInCart: boolean = false;
+    constructor( private activatedRoute: ActivatedRoute, private offcanvasService: NgbOffcanvas, private toast: NgToastService,  private cartService: CartService, private modalService: NgbModal, private operationService: OperationService, private route: Router) {
+
+
+      this.cartService.getCartObservable().subscribe((cart) => {
+        this.cart = cart;
+this.AllAddedItems = cart.items;
+        console.log(this.AllAddedItems, "AllAddedItems");
+        
+      });
+
+
+
+     }
   foodResult: any;
   food: any;
-  
+  onSubmit: boolean = false;
+  removeFromCart(cartItem: CartItem) {
+    this.cartService.removeFromCart(cartItem.food.id);
+    this.toast.success({
+      detail: 'Cart Update!',
+      summary: 'Product has been removed successfully',
+      duration: 3000,
+    });
+  }
+
+
+
+
+
     ngOnInit() {
   
       this.products = this.operationService.getAllProducts();
@@ -51,7 +91,7 @@ export class HomeComponent implements OnInit {
     loadCategories(): void {
       this.categories = Array.from(new Set(this.products.map(product => product.category)));
     }
-  
+    
     getProductsByCategory(category: string): any[] {
       return this.products.filter(product => product.category === category);
     }
@@ -65,7 +105,14 @@ export class HomeComponent implements OnInit {
       this.selectedMenu = menu;
     }
 
-
+    ifAddedToCart(product: any): boolean {
+      // Check if the product is in the list of added items (cart)
+      const cartItem = this.AllAddedItems.find((item) => item.food.id === product.id);
+      
+      // Return true if the product is in the cart, otherwise, return false
+      return !!cartItem;
+    }
+    
     
   // addToCart() {
   //   if(this.isAuth){
@@ -77,15 +124,16 @@ export class HomeComponent implements OnInit {
   //     this.route.navigateByUrl('/login');
   //   }
   // }
-
-
+  buttonText = "Add To Cart";
+  isLoading = false;
+  
+productCart: any;
   addToCart(product){
+    this.onSubmit = true;
      this.cartService.addToCart(product);
-      this.route.navigateByUrl('/cart');
   }
-  // get isAuth() {
-  //   return this.resp;
-  // }
+
+
 
 
   
@@ -93,4 +141,164 @@ export class HomeComponent implements OnInit {
     this.route.navigate(['view-food/',`${route}`]);
     window.scrollTo(0, 0);
       }
+
+
+
+      
+  closeCartOffCanvas() {
+    if (this.content) {
+        this.content.dismiss();
+    }
+}
+
+  openCartOffCanvas(content) {
+		this.offcanvasService.open(content, { position: 'end' });
+	}
+ 
+
+  checkoutRoute(){
+    this.route.navigate(['checkout']);
+    window.scrollTo(0, 0);
+    this.closeCartOffCanvas();
+      }
+  cartRoute(){
+    this.route.navigate(['cart']);
+    window.scrollTo(0, 0);
+    this.closeCartOffCanvas();
+      }
+  shopRoute(){
+    this.route.navigate(['cart']);
+    window.scrollTo(0, 0);
+    this.closeCartOffCanvas();
+      }
+
+
+ 
+
+      menusCat = [
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 1',
+          items: [
+            { name: 'Item 1', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 2', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 2',
+          items: [
+            { name: 'Item 3', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 4', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 3',
+          items: [
+            { name: 'Item 5', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 6', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 4',
+          items: [
+            { name: 'Item 7', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 8', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        },
+        {
+          name: 'Menu 5',
+          items: [
+            { name: 'Item 9', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            { name: 'Item 10', image: 'https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png' },
+            // Add more items as needed
+          ]
+        }
+        // Add more menus as needed
+      ];
+ 
+
+ 
 }
