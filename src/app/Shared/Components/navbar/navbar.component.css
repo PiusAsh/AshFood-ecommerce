@@ -136,7 +136,7 @@
 
 .nav-tabs .nav-link {
   font-weight: 700!important;
-  font-size: 16px!important;
+  font-size: 14px!important;
 }
 
 /* .tab-content{
@@ -360,39 +360,47 @@ background-color: transparent;
   cursor: pointer;
 }
 
-.user-cart-icons .fa {
+.user-cart-icons .bio {
   margin-left: 15px;
   color: #000;
   /* border-radius: 50%; */
   height: 40px;
-  font-size: 16px;
+  font-size: 14px;
   /* width: 48px; */
   padding: 15px;
+  font-weight: 600;
   max-width: max-content;
   border: 1px solid #cccccc5d;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  /* font-family: 'Nunito Sans', sans-serif ; */
+  font-family: 'Nunito Sans', sans-serif ;
   border-radius: 3px;
 }
 
-.user-cart-icons .fa:hover {
+.user-cart-icons i{
+ font-size: 20px !important;
+ color: #00A149; 
+}
+.user-cart-icons .bio:hover {
   margin-left: 15px;
   color: #000;
   /* border-radius: 50%; */
-  height: 35px;
-  font-size: 16px;
+  height: 40px;
+  font-size: 14px;
   /* width: 48px; */
   padding: 15px;
+  font-weight: 600;
   max-width: max-content;
-  background-color: #ffc222;
-  /* border: 1px solid #cccccca6; */
+  border: 1px solid #cccccc5d;
   display: flex;
   align-items: center;
+  background-color: #ffc222;
   justify-content: center;
   cursor: pointer;
+  font-family: 'Nunito Sans', sans-serif ;
+  border-radius: 3px;
 }
 .social-icons .fa {
   margin-left: 10px;
@@ -454,7 +462,7 @@ background-color: transparent;
 .nav-item .nav-link {
   display: block;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 15px;
   color: #000!important;
   padding-left: 30px!important;
   position: relative; /* Add position relative for pseudo-element */
