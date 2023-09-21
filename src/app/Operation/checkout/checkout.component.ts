@@ -31,4 +31,8 @@ export class CheckoutComponent {
       this.cart = cart;
     });
   }
+  viewFood(route: number){
+    this.route.navigate(['view-food/',`${route}`]);
+    window.scrollTo(0, 0);
+      }
 }

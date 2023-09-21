@@ -25,25 +25,59 @@ export class CartPageComponent implements OnInit {
 
   }
 
-  quantity: number = 1;
-
-  // changeQuantity(delta: number, cartItem: CartItem, quantity: number): void {
-  //   this.quantity += delta;
-  //   if (this.quantity < 1) {
-  //     this.quantity = 1;
-  //   }
-  
-  //   // Call the service method to update the cart
-  //   this.cartService.changeQuantity(cartItem.food.id, this.quantity);
-  // }
-  
-
-
-//   changeQuantity2(cartItem: CartItem, quantityInString: string){
-// const quantity = parseInt(quantityInString)
-// this.cartService.changeQuantity(cartItem.food.id, quantity)
+ 
+ 
+//   changeQuantity(delta: number, cartItem: CartItem, quantity: number): void {
+// console.log(quantity, "quantity")
+//     // this.quantity = cartItem.quantity;
+//     this.quantity += delta;
+//     if (this.quantity < 1) {
+//       this.quantity = 1;
+//     }
+//       quantity = this.quantity;
+//     // Call the service method to update the cart
+//     this.cartService.changeQuantity(cartItem.food.id, quantity);
 //   }
+  
 
+// changeQuantity(delta: number, cartItem: CartItem): void {
+//   cartItem.quantity += delta;
+//   if (cartItem.quantity < 1) {
+//     cartItem.quantity = 1;
+//   }
+//   this.cartService.changeQuantity(cartItem.food.id, cartItem.quantity);
+// }
+quantity: number = 1;
+changeQuantity(delta: number, cartItem: CartItem) {
+  
+  cartItem.quantity += delta;
+  if (cartItem.quantity < 1) {
+    cartItem.quantity = 1;
+  }
+  this.cartService.changeQuantity(cartItem.food.id, cartItem.quantity);
+}
+  changeQuantity1(cartItem: CartItem, quantityInString: string){
+const quantity = parseInt(quantityInString)
+this.cartService.changeQuantity(cartItem.food.id, quantity)
+  }
+minusQuantity: any;
+plusQuantity: any;
+// changeQuantity(cartItem: CartItem) {
+//     const minus = this.minusQuantity;
+
+//     const plus = this.plusQuantity;
+
+//     let difference = plus - minus;
+//     cartItem.quantity = difference;
+
+//     this.cartService.changeQuantity(cartItem.food.id, difference);
+//     this.toast.success({
+//       detail: 'Duration Update',
+//       summary: 'Count changed',
+//       duration: 3000,
+//     });
+//   }
+  
   ngOnInit(): void {
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
@@ -60,4 +94,9 @@ export class CartPageComponent implements OnInit {
   }
 
   
+
+  checkoutRoute(){
+    this.route.navigate(['checkout']);
+    window.scrollTo(0, 0);
+      }
 }

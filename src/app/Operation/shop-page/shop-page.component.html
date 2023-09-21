@@ -1,0 +1,245 @@
+<!--Main Navigation-->
+<!-- HEADER -->
+<app-navbar></app-navbar>
+<!-- HEADER END -->
+  
+<!-- BREADCRUMB -->
+<div class="text-center">
+    <nav aria-label="breadcrumb">
+        <div class="py-5 bg-light">
+            <h2 class="mb-4 cart">Shop</h2>
+            <div class="text-center" style="display: flex; justify-content: center;"> <!-- Added a new div for centering -->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item breadcrumb-text">Home</li>
+                    <li class="breadcrumb-item active" aria-current="page">Shop</li>
+                </ol>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- BREADCRUMB END -->
+  <!-- sidebar + content -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row py-3">
+        <!-- sidebar -->
+        <div class="col-lg-3">
+          <!-- Toggle button -->
+         
+          <!-- Collapsible wrapper -->
+          <div class="card d-lg-block mb-5">
+            <ul class="list-group">
+                <p  class="list-group-item list-group-item-action active" aria-current="true">
+                    Categories
+                  </p>
+                <li *ngFor="let item of categories" class="list-group-item d-flex justify-content-between align-items-center">
+                {{item}}
+                  <span class="badge bg-primary rounded-pill">14</span>
+                </li>
+                
+              </ul>
+           
+
+
+
+
+
+            <div class="accordion">
+
+              <!-- SEARCH -->
+              
+              <!-- END OF SEARCH -->
+              <div class="accordion-item">
+                <ul class="list-group">
+                    <p  class="list-group-item list-group-item-action active" aria-current="true">
+                        Price
+                      </p>
+                    
+                  </ul>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree">
+                  <div class="accordion-body">
+                    <div class="range">
+                      <input type="range" class="form-range" id="customRange1" />
+                    </div>
+                    <div class="row mb-3">
+                      <div class="col-6">
+                        <p class="mb-0">
+                          Min
+                        </p>
+                        <div class="form-outline">
+                          <input type="number" id="typeNumber" class="form-control" />
+                          <label class="form-label" for="typeNumber">$0</label>
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <p class="mb-0">
+                          Max
+                        </p>
+                        <div class="form-outline">
+                          <input type="number" id="typeNumber" class="form-control" />
+                          <label class="form-label" for="typeNumber">$1,0000</label>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" class="btn btn-primary w-100 border text-black">Apply</button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <!-- sidebar -->
+        <!-- content -->
+        <div class="col-lg-9">
+          <header class="d-sm-flex align-items-center px-3">
+            <h1 class="d-block found">{{products?.length}} Items found </h1>
+            <div class="ms-auto ">
+              <select class="form-select d-inline-block w-auto border pt-1 me-4">
+                <option value="0">Best match</option>
+                <option value="1">Recommended</option>
+                <option value="2">High rated</option>
+                <option value="3">Randomly</option>
+              </select>
+              <div class="btn-group shadow-0 border">
+                <a (click)="currentTab = 'list'" [class.active]="currentTab === 'list'" [class.btn-primary]="currentTab === 'list'" [class.btn-secondary]="currentTab !== 'list'" class="btn me-2" title="List view">
+                  <i class="fa fa-bars fa-lg"></i>
+                </a>
+                <a (click)="currentTab = 'grid'" [class.active]="currentTab === 'grid'" [class.btn-primary]="currentTab === 'grid'" [class.btn-secondary]="currentTab !== 'grid'" class="btn" title="Grid view">
+                  <i class="fa fa-th fa-lg"></i>
+                </a>
+              </div>
+              
+            </div>
+          </header>
+
+
+          <div class="mb-3" [ngSwitch]="currentTab">
+
+            <!-- LIST VIEW ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~##### -->
+            <div *ngSwitchCase="'list'">
+                <div class="row justify-content-center mb-1 p-3" *ngFor="let item of products">
+                    <div class="col-md-12">
+                      <div class="card shadow-0 border">
+                        <div class="card-body">
+                          <div class="row g-0">
+                            <div class="col-xl-3 col-md-4 d-flex justify-content-center">
+                              <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0 mt-3" style="align-items: center;">
+                                <img [src]="item.thumbnail" class="w-50 img-thumbnail" [alt]="item.name" />
+                                <a href="#!">
+                                  <div class="hover-overlay">
+                                    <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="col-xl-6 col-md-5 col-sm-7">
+                              <h5 class="card-title TextHeading cursor-pointer productName">{{item.name}}</h5>
+                              <div class="d-flex flex-row">
+                                <div class="text-warning mb-1 me-2">
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fa fa-star"></i>
+                                  <i class="fas fa-star-half-alt"></i>
+                                  <span class="ms-1">
+                                    4.5
+                                  </span>
+                                </div>
+                                <!-- <span class="text-muted">154 orders</span> -->
+                              </div>
+          
+                              <p class="text-muted mb-4 mb-md-0 p-2">
+                                {{item.description}}
+                              </p>
+                              <p>Category: <span class=" text-primary">{{item.category}}</span></p>
+                            </div>
+                            <div class="col-xl-3 col-md-3 col-sm-5">
+                              <div class="d-flex flex-row align-items-center mb-1">
+                                <h4  class=" card-text price textHeading">{{item.price | currency: '₦'}}</h4>
+                                <!-- <span class="text-danger"><s>$49.99</s></span> -->
+                              </div>
+                              <!-- <h6 class="text-success">{{item.category}}</h6> -->
+                              <div class="mt-4">
+                                <button class="btn btn-primary shadow-sm text-black" type="button" *ngIf="!ifAddedToCart(item)" (click)="addToCart(item)">Add To Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </button>
+                                <button class="btn btn-primary shadow-sm text-black" (click)="cartRoute()" type="button" *ngIf="ifAddedToCart(item)">Added <i class="fa fa-shopping-cart" aria-hidden="true"></i> </button>
+                                <!-- <a href="#!" class="btn btn-light border px-2 pt-2 icon-hover"><i class="fas fa-heart fa-lg px-1"></i></a> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <!-- END OF LIST }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}]-->
+
+            <!-- GRID VIEW ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]-->
+            <div *ngSwitchCase="'grid'">
+                <div class="container py-3">
+                    <div class="row">
+                      <div class="col-md-4 mb-3" *ngFor="let product of products">
+                        <div class="card shadow-sm" style="border-radius: 30px!important; border: 1px solid #e5e5e5;">                                          <div class="p-1" style="width: 100%; ">
+                            <img [src]="product.thumbnail" (click)="viewFood(product.id)" class="" style="width: 100%;cursor: pointer; height: 100%; object-fit: cover; border-radius: 30px; background-color: #ffc0223a;">
+                          </div>
+                  
+                          <div class="card-body">
+                              <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                            <h5 class="card-title TextHeading cursor-pointer productName" (click)="viewFood(product.id)">{{ product.name }}</h5>
+                            <p class="text-muted">{{ product.description }}</p>
+                  
+                            <div class="cart px-2" style="display: flex; justify-content: space-between;">
+                              <p style="font-weight: 800; font-size: 20px;" class="card-text price textHeading">{{ product.price | currency: '₦' }}</p>
+                              <p class="btn btn-primary shadow-sm text-black" (click)="cartRoute()" type="button" *ngIf="ifAddedToCart(product)">Added <i class="fa fa-shopping-cart" aria-hidden="true"></i> </p>
+                              <p *ngIf="!ifAddedToCart(product)" class="btn btn-primary addToCartBtn text-black" (click)="addToCart(product)">Add To Cart</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <!-- END OF GRID VIEW ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]-->
+            <div *ngSwitchDefault>
+              <!-- Default content when no tab is selected -->
+              <!-- <p>Select a tab to view its content.</p> -->
+            </div>
+          </div>
+
+
+
+  
+         
+  
+        
+  
+          <hr />
+  
+          <!-- Pagination -->
+          <nav aria-label="Page navigation example" class="d-flex justify-content-center mt-3">
+            <ul class="pagination">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <!-- Pagination -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <app-footer></app-footer>
+  <!-- Footer -->

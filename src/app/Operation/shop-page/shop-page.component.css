@@ -1,0 +1,73 @@
+.cart {
+    font-size: 35px;
+    font-weight: 800;
+    color: black;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: #ffc222;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+
+
+.shop-category {
+    background-color: #ffc0221b;
+    padding: 0px 10px;
+
+}
+
+.shop-category .row {
+    border-bottom: 3px dotted #ccc;
+    /* align-items: center;
+    margin-top: 20px; */
+}
+
+.list-group p {
+    background-color: #f8f9fa !important;
+    border-radius: 0px;
+    border: none !important;
+    font-size: 17px !important;
+    color: black !important;
+    font-weight: 700;
+    font-family: 'Nunito Sans', sans-serif !important;
+    padding: 15px !important;
+}
+
+.found {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.mb-1 .price {
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.productName {
+    text-decoration: none;
+    color: #000;
+}
+
+.productName:hover {
+    text-decoration: none;
+    color: #FFC222;
+}
+
+.list-group li {
+    font-size: 15px !important;
+    cursor: pointer;
+    padding: 15px !important;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.list-group li:hover {
+    font-size: 15px !important;
+    cursor: pointer;
+    color: #ffc222;
+    padding: 15px !important;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
