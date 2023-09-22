@@ -11,12 +11,12 @@
         <div class="container my-5 py-3">
             <div class="row align-items-center g-5">
                 <div class="col-lg-6 text-center text-lg-start">
-                    <h1 class="display-3 text-white animated slideInLeft TextHeading heroTitle">Enjoy Our<br>Delicious Meal</h1>
-                    <p class="text-white animated slideInLeft mb-4 pb-2">Treat yourself to an extraordinary dining journey as you explore our extensive range of delectable offerings. Our menu is a celebration of flavors, with each dish thoughtfully prepared to bring you a delightful fusion of taste, texture, and aroma.</p>
-                    <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft text-black fw-bold">Order Now</a>
+                    <h1 class="display-3 text-white TextHeading heroTitle  animate__animated animate__fadeInDown">Enjoy Our<br>Delicious Meal</h1>
+                    <p class="text-white animate__animated animate__fadeInLeft mb-4 pb-2">Treat yourself to an extraordinary dining journey as you explore our extensive range of delectable offerings. Our menu is a celebration of flavors, with each dish thoughtfully prepared to bring you a delightful fusion of taste, texture, and aroma.</p>
+                    <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animate__animated animate__fadeInLeft text-black  text-uppercase">Order Now</a>
                 </div>
                 <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                    <img class="img-fluid" src="/assets/images/noodles.png" alt="">
+                    <img class="img-fluid animate__animated animate__zoomInRight" src="/assets/images/noodles.png" alt="">
                 </div>
             </div>
         </div>
@@ -41,8 +41,8 @@
       </ul>
       
   
-      <div  class="tab-content menu-content " style="display: flex; justify-content: center!important;">
-        <div  class="tab-pane  w3-animate-zoom" *ngFor="let category of categories" [ngClass]="{ 'active': selectedCategory === category }">
+      <div  class="tab-content menu-content  "  style="display: flex; justify-content: center!important;">
+        <div  class="tab-pane  w3-animate-zoom" scrollReveal *ngFor="let category of categories" [ngClass]="{ 'active': selectedCategory === category }">
           <div class="container py-3">
             <div class="row">
               <div class="col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category)">

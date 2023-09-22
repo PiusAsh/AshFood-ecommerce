@@ -8,6 +8,7 @@ import { CartService } from 'src/app/Services/cart.service';
 import { OperationService } from 'src/app/Services/operation.service';
 
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
 this.route.navigateByUrl('/search/'+ term)
     }
   }
-
+ 
   private modalRef: NgbModalRef | undefined;
   // ifAddedToCart: boolean = false;
   NotInCart: boolean = false;

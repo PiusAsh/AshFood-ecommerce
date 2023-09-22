@@ -73,6 +73,14 @@
 /* Add your other styles as needed */
 
 /* NAVBAR CSS */
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.fade-in.active {
+  opacity: 1;
+}
 
 
 .heroTitle {
