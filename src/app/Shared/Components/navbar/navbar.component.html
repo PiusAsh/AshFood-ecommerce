@@ -11,7 +11,7 @@
     <div class="search-inpuet">
      
     </div>
-    <div class="social-icons">
+    <div class="social-icons d-sm-none">
    
         <i class="fa fa-linkedin" aria-hidden="true"></i>
         <i class="fa fa-facebook" aria-hidden="true"></i>
@@ -50,19 +50,19 @@
             <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Menu</a>
+            <a class="nav-link" routerLink="/our-menu">Our&nbsp;Menu</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/shop">Shop</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" routerLink="/about-us">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">FAQs</a>
+            <a class="nav-link" routerLink="/faq">FAQs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" routerLink="/contact-us">Contact</a>
           </li>
         </ul>
       </div>
@@ -74,7 +74,7 @@
       </div>
 
       <div class="user-cart-icons">
-        <span title="User Profile" data-toggle="modal" data-target="#login" class="bio"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Hi, Ashogbon</span>
+        <span title="User Profile" data-toggle="modal" data-target="#login" class="bio"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
         <div class="cart-icon-container">
           <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
           <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Cart&nbsp;&nbsp;&nbsp;</span>
@@ -92,7 +92,7 @@
 
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasExample"
   aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header shadow-sm">
+  <div class="offcanvas-header shadow-sm" style="border-bottom: 1px solid #00A149;">
  <!-- Logo -->
  <a class="navbar-brand " href="#">
   <img src="/assets/images/logo1.png" style="width: 100px; height: 100%;" alt="Brand Logo">
@@ -109,26 +109,33 @@
         <a class="nav-link" routerLink="">Home <span class="sr-only"></span></a>
       </li>
       <li class="nav-item offcanvas-menu-item">
-        <a class="nav-link" href="#">Menu</a>
+        <a class="nav-link" routerLink="/our-menu">Our Menu</a>
       </li>
       <li class="nav-item offcanvas-menu-item">
-        <a class="nav-link" href="#">Shop</a>
+        <a class="nav-link" routerLink="/shop">Shop</a>
       </li>
       <li class="nav-item offcanvas-menu-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" routerLink="/about-us">About</a>
       </li>
       <li class="nav-item offcanvas-menu-item">
-        <a class="nav-link" href="#">FAQs</a>
+        <a class="nav-link" routerLink="/faq">FAQs</a>
       </li>
       <li class="nav-item offcanvas-menu-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" routerLink="/contact-us">Contact</a>
       </li>
     </ul>
+    <div class="user-cart-icons-canvas mt-5">
+      <span title="User Profile" data-toggle="modal" data-target="#login" class="bio me-3"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
+      <div class="cart-icon-container">
+        <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
+        <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Cart&nbsp;&nbsp;&nbsp;</span>
+      </div>
+    </div>
 
     <!-- Call and Order In Text -->
-    <div class=" text-center footerOffcanvas card p-4 shadow-sm">
+    <div class=" text-center footerOffcanvas card p-4 shadow-sm mt-5">
       <p class="semiCallSide">Call and Order In</p>
-      <p class="callSide"> <i class="fa fa-phone text-black" aria-hidden="true"></i> 09052794388</p>
+      <p class="callSide"> <i class="fa fa-phone text-black fw-bold" aria-hidden="true"></i> 09052794388</p>
       <div class="social-icons-offcanvas text-center">
      
         <i class="fa fa-linkedin" aria-hidden="true"></i>

@@ -35,4 +35,8 @@ export class CheckoutComponent {
     this.route.navigate(['view-food/',`${route}`]);
     window.scrollTo(0, 0);
       }
+  shopRoute(){
+    this.route.navigate(['shop']);
+    window.scrollTo(0, 0);
+      }
 }

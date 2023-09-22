@@ -12,7 +12,6 @@ import { HomeComponent } from './Pages/home/home.component';
 import { AboutComponent } from './Pages/about/about.component';
 import { FAQComponent } from './Pages/faq/faq.component';
 import { ServiceComponent } from './Pages/service/service.component';
-import { RoomsComponent } from './Pages/rooms/rooms.component';
 import { ApiErrorInterceptor } from './Interceptors/api-error.interceptor';
 import { HeaderComponent } from './Shared/Layout/header/header.component';
 import { SidebarComponent } from './Shared/Layout/sidebar/sidebar.component';
@@ -40,6 +39,11 @@ import { FoodListComponent } from './Operation/food-list/food-list.component';
 import { ViewFoodComponent } from './Operation/view-food/view-food.component';
 import { NotFoundComponent } from './Shared/Components/not-found/not-found.component';
 import { ShopPageComponent } from './Operation/shop-page/shop-page.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContactPageComponent } from './Pages/contact-page/contact-page.component';
+import { MenuPageComponent } from './Pages/menu-page/menu-page.component';
+import { SearchResultPageComponent } from './Pages/search-result-page/search-result-page.component';
+
 
 
 
@@ -50,8 +54,6 @@ import { ShopPageComponent } from './Operation/shop-page/shop-page.component';
     AboutComponent,
     FAQComponent,
     ServiceComponent,
-    RoomsComponent,
-
     FooterComponent,
     NavbarComponent,
     BookingComponent,
@@ -66,7 +68,10 @@ import { ShopPageComponent } from './Operation/shop-page/shop-page.component';
     CartPageComponent,
     FoodListComponent,
     ViewFoodComponent,
-    ShopPageComponent
+    ShopPageComponent,
+    ContactPageComponent,
+    MenuPageComponent,
+    SearchResultPageComponent
     //  AdminSpinnerComponent,
 
 
@@ -87,7 +92,9 @@ import { ShopPageComponent } from './Operation/shop-page/shop-page.component';
     NgToastModule,
     NgSelectModule,
     AuthModule,
-    NgbTypeaheadModule
+    NgbTypeaheadModule,
+   
+
     
   ],
   providers: [

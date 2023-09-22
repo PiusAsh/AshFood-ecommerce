@@ -11,18 +11,18 @@ import { OperationService } from 'src/app/Services/operation.service';
 })
 export class ViewFoodComponent implements OnInit {
   food: any;
+  cart: any;
+  AllAddedItems: any;
   constructor(private activatedRoute: ActivatedRoute,
     private operationService: OperationService,
     private route: Router, private cartService: CartService,){
 
-    //   activatedRoute.params.subscribe((params) =>{
-    //     console.log(params, 'activated');
-    //     if(params['id']){
-    //         const foodId = params['id'].id; // Extract id from the object
-    //         this.food = operationService.getFoodById(foodId);
-    //         console.log(this.food, "food")
-    //     }
-    // })
+      this.cartService.getCartObservable().subscribe((cart) => {
+        this.cart = cart;
+this.AllAddedItems = cart.items;
+        console.log(this.AllAddedItems, "AllAddedItems");
+        
+      });
     
     activatedRoute.params.subscribe((params) => {
       const foodID = params['id'];
@@ -35,6 +35,14 @@ export class ViewFoodComponent implements OnInit {
   
   }
 
+
+  ifAddedToCart(product: any): boolean {
+    // Check if the product is in the list of added items (cart)
+    const cartItem = this.AllAddedItems.find((item) => item.food.id === product.id);
+    
+    // Return true if the product is in the cart, otherwise, return false
+    return !!cartItem;
+  }
   ngOnInit(): void {
   
   }
@@ -60,4 +68,7 @@ export class ViewFoodComponent implements OnInit {
   //     this.quantity = 1;
   //   }
   // }
+  cartRoute(){
+    this.route.navigateByUrl('/cart');
+  }
 }
