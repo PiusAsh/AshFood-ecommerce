@@ -84,8 +84,8 @@ this.loadMore();
   }
 
 
-  currentTab: string = 'list';
-  activeTab: string = 'grid'; // Default active tab
+  activeTab: string = 'list';
+  currentTab: string = 'grid'; // Default active tab
 
   // Function to switch to a specific tab
   switchTab(tabName: string) {

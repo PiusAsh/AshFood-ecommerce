@@ -32,8 +32,8 @@ const routes: Routes = [
   { path: 'list', component: FoodListComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'shop', component: ShopPageComponent },
-  { path: '**', pathMatch: 'full', 
-  component: PageNotFoundComponent },
+  // { path: '**', pathMatch: 'full', 
+  // component: PageNotFoundComponent },
 
  
   // { path: '**', component: PageNotFoundComponent },
