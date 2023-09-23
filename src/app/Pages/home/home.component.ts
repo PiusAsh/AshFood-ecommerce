@@ -72,6 +72,7 @@ this.AllAddedItems = cart.items;
       this.products = this.operationService.getAllProducts();
       this.loadCategories();
       this.selectedCategory = this.categories[0];
+      this.loadMore()
   
       this.activatedRoute.params.subscribe((params) =>{
         if(params['searchTerm']){
@@ -92,8 +93,9 @@ this.AllAddedItems = cart.items;
     loadCategories(): void {
       this.categories = Array.from(new Set(this.products.map(product => product.category)));
     }
-    
+    productsToDisplay: any; 
     getProductsByCategory(category: string): any[] {
+      this.productsToDisplay = this.products.filter(product => product.category === category)
       return this.products.filter(product => product.category === category);
     }
   
@@ -114,6 +116,32 @@ this.AllAddedItems = cart.items;
       return !!cartItem;
     }
     
+    displayedProducts: any[] = [];
+    itemsToShow = 6;
+    loadMoreButtonText = 'Load More';
+    isLoadMoreDisabled: Boolean = false;
+    loadMore() {
+      const startIndex = this.displayedProducts.length;
+      const endIndex = startIndex + this.itemsToShow;
+      const remainingItems = this.productsToDisplay.slice(startIndex, endIndex);
+    
+      if (remainingItems.length === 0) {
+        this.loadMoreButtonText = 'Reached Maximum';
+        this.isLoadMoreDisabled = true;
+      }
+    
+      this.displayedProducts.push(...remainingItems);
+    }
+    
+  
+    loadLess() {
+      const minItemsToShow = Math.min(this.itemsToShow, this.displayedProducts.length);
+  
+      if (this.displayedProducts.length > minItemsToShow) {
+        this.loadMoreButtonText = 'Load More'
+        this.displayedProducts = this.displayedProducts.slice(0, -this.itemsToShow);
+      }
+    }
     
   // addToCart() {
   //   if(this.isAuth){
