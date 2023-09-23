@@ -38,7 +38,7 @@ this.AllAddedItems = cart.items;
   ngOnInit(): void {
     this.products = this.operationService.getAllProducts();
     console.log(this.products, "products")
-
+this.loadMore();
       this.loadCategories();
   }
   loadCategories(): void {
@@ -50,7 +50,38 @@ this.AllAddedItems = cart.items;
     // this.onSubmit = true;
      this.cartService.addToCart(product);
   }
+  displayedProducts: any[] = [];
+  itemsToShow = 6;
 
+  // loadMore() {
+  //   const startIndex = this.displayedProducts.length;
+  //   const endIndex = startIndex + this.itemsToShow;
+  //   this.displayedProducts.push(...this.products.slice(startIndex, endIndex));
+  // }
+  loadMoreButtonText = 'Load More';
+  isLoadMoreDisabled: Boolean = false;
+  loadMore() {
+    const startIndex = this.displayedProducts.length;
+    const endIndex = startIndex + this.itemsToShow;
+    const remainingItems = this.products.slice(startIndex, endIndex);
+  
+    if (remainingItems.length === 0) {
+      this.loadMoreButtonText = 'Reached Maximum';
+      this.isLoadMoreDisabled = true;
+    }
+  
+    this.displayedProducts.push(...remainingItems);
+  }
+  
+
+  loadLess() {
+    const minItemsToShow = Math.min(this.itemsToShow, this.displayedProducts.length);
+
+    if (this.displayedProducts.length > minItemsToShow) {
+      this.loadMoreButtonText = 'Load More'
+      this.displayedProducts = this.displayedProducts.slice(0, -this.itemsToShow);
+    }
+  }
 
 
   currentTab: string = 'list';
@@ -65,4 +96,9 @@ this.AllAddedItems = cart.items;
     this.route.navigate(['view-food/',`${route}`]);
     window.scrollTo(0, 0);
       }
+
+
+
+
+      
 }

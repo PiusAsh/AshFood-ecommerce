@@ -13,6 +13,7 @@ import { ShopPageComponent } from './Operation/shop-page/shop-page.component';
 import { ContactPageComponent } from './Pages/contact-page/contact-page.component';
 import { MenuPageComponent } from './Pages/menu-page/menu-page.component';
 import { SearchResultPageComponent } from './Pages/search-result-page/search-result-page.component';
+import { PageNotFoundComponent } from './Shared/Components/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,8 @@ const routes: Routes = [
   { path: 'list', component: FoodListComponent },
   { path: 'cart', component: CartPageComponent },
   { path: 'shop', component: ShopPageComponent },
+  { path: '**', pathMatch: 'full', 
+  component: PageNotFoundComponent },
 
  
   // { path: '**', component: PageNotFoundComponent },

@@ -29,7 +29,7 @@ import { AdminSpinnerComponent } from './Admin-Panel/admin-spinner/admin-spinner
 import { NgToastModule } from 'ng-angular-popup';
 import { ErrorHandlingInterceptor } from './Interceptors/error-handling.interceptor';
 import { DraggableModalDirective } from './Shared/Directives/draggable-modal.directive';
-import { TruncatePipe } from './Shared/Pipes/truncate.pipe';
+import { ProductDescriptionPipe, TruncatePipe } from './Shared/Pipes/truncate.pipe';
 import { SpinnerComponent } from './Shared/Components/spinner/spinner.component';
 
 import { AuthModule } from './auth/auth/auth.module';
@@ -71,7 +71,8 @@ import { SearchResultPageComponent } from './Pages/search-result-page/search-res
     ShopPageComponent,
     ContactPageComponent,
     MenuPageComponent,
-    SearchResultPageComponent
+    SearchResultPageComponent,
+    ProductDescriptionPipe
     //  AdminSpinnerComponent,
 
 
@@ -93,6 +94,7 @@ import { SearchResultPageComponent } from './Pages/search-result-page/search-res
     NgSelectModule,
     AuthModule,
     NgbTypeaheadModule,
+    
    
 
     

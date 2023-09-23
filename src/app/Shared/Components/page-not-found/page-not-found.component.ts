@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-not-found.component.css']
 })
 export class PageNotFoundComponent {
-
+  pageName = ("Page not found").toUpperCase()
 }
