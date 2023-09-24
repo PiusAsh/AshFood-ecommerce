@@ -15,7 +15,7 @@
             dining journey as you explore our extensive range of delectable offerings. Our menu is a celebration of
             flavors, with each dish thoughtfully prepared to bring you a delightful fusion of taste, texture, and aroma.
           </p>
-          <a routerLink="/our-menu"
+          <a (click)="viewAllProduct()"
             class="btn btn-primary py-3 px-5 me-3 animate__animated animate__fadeInLeft text-black  text-uppercase">Order
             Now</a>
         </div>
@@ -51,7 +51,7 @@
         [ngClass]="{ 'active': selectedCategory === category }">
         <div class="container py-3">
           <div class="row">
-            <div class="col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category) | paginate: { itemsPerPage: listPageSize, currentPage: listCurrentPage } ">
+            <div class="col-md-4 col-lg-3 mb-3" *ngFor="let product of getProductsByCategory(category) | paginate: { itemsPerPage: listPageSize, currentPage: listCurrentPage } ">
               <div class="card shadow-sm"
                 style="border-radius: 30px!important; border: 1px solid #e5e5e5; height: max-content;">
                 <div class="p-1" style="width: 100%; align-items: center; margin: 0 auto;">
@@ -77,7 +77,10 @@
               </div>
             </div>
 
-            <pagination-controls (click)="scrollTop()" class="text-center" 
+            <div class="text-center view-button mt-2">
+              <button class="btn btn-primary" (click)="viewAllProduct()">VIEW ALL PRODUCTS</button>
+            </div>
+            <!-- <pagination-controls (click)="scrollTop()" class="text-center" 
             (pageChange)="listCurrentPage = $event"
             
             
@@ -85,7 +88,7 @@
             nextLabel=""
             screenReaderPaginationLabel="Pagination"
             screenReaderPageLabel="page"
-          ></pagination-controls>
+          ></pagination-controls> -->
 
             <!-- <div class="d-flex text-center justify-content-center load-more mt-3">
 
@@ -127,17 +130,56 @@
     </div>
   </div>
 </section> -->
-<section class=" py-5 bg-light text-center">
-  <div class="guarantee py-3 p-2">
+<section class="container py-5">
+  <div class="row p-4 container align-items-center">
+    
+    <div class="col-lg-4 mb-1">
+      <div class="d-flex justify-content-between desDiv p-3">
+        <div class="icon mt-3 me-3">
+          <i class="fa fa-motorcycle" aria-hidden="true"></i>
+        </div>
+        <div class="iconText p-2">
+          <h5>Free Shipping</h5>
+          <p class="text-muted">Sign up for updates and get free shipping for 30 days</p>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-1">
+      <div class="d-flex justify-content-between desDiv p-3">
+        <div class="icon mt-3 me-3">
+         <i class="fa fa-clock-o" aria-hidden="true"></i>
+        </div>
+        <div class="iconText p-2">
+          <h5 >30 Minutes Delivery</h5>
+          <p class="text-muted">Everything you order will quickly delivered to your door.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-1">
+      <div class="d-flex justify-content-between desDiv p-3">
+        <div class="icon mt-3 me-3">
+          <i class="fa fa-superpowers" aria-hidden="true"></i>
+        </div>
+        <div class="iconText p-2">
+          <h5>Best Quality Guarantee</h5>
+          <p class="text-muted">Ash food is an international chain of family restaurants.</p>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</section>
+<section class="guarantee py-5 bg-light text-center">
+  <div class=" py-5 p-3">
     <p class="gua">We Guarantee</p>
     <h5>
-      Fast delivery <br class="mb-0"> to your door
+      30 Minutes Delivery!
     </h5>
     <p class="mb-3">
-      Ash Food offers a delivery service straight to your door. <br>
-No need to travel, you just have to order on the site.
+      If you’re having a meeting, working late at night and need an extra push. <br> Let us know and we will be there
     </p>
-    <button class="btn btn-primary text-black">ORDER NOW</button>
+    <button class="btn btn-primary text-black">MAKE AN ORDER</button>
   </div>
 </section>
   <app-footer></app-footer>

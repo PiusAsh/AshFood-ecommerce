@@ -173,6 +173,11 @@ productCart: any;
     this.route.navigate(['view-food/',`${route}`]);
     window.scrollTo(0, 0);
       }
+  
+  viewAllProduct(){
+    this.route.navigate(['our-menu']);
+    window.scrollTo(0, 0);
+      }
 
 
 
