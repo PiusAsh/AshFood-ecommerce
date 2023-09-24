@@ -100,3 +100,15 @@ background-color: #FFC222;
     padding: 15px !important;
     font-family: 'Nunito Sans', sans-serif !important;
 }
+
+.firstCol, .secondCol, .thirdCol{
+    height: 50vh;
+    
+}
+
+.menu-body .price{
+    font-weight: 700; font-size: 21px;
+    font-family: 'Nunito Sans', sans-serif !important;
+    
+
+}

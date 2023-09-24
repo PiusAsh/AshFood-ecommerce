@@ -10,7 +10,7 @@
         
         <!-- content -->
         <div class="col-lg-12">
-          <header class="d-sm-flex align-items-center container mb-3" >
+          <header class="d-sm-flex align-items-center container mb-3 " >
             <!-- <h1 class="d-block found ">Showing 10 of {{products?.length}} Items </h1> -->
             <h1 class="d-block found " *ngIf="currentTab == 'list' && products?.length > 0">Showing {{ getListDisplayedItemsRange() }} of {{ totalItems }} Items </h1>
             <h1 class="d-block found " *ngIf="currentTab == 'grid' && products?.length > 0">Showing {{ geGridDisplayedItemsRange() }} of {{ totalItems }} Items </h1>
@@ -62,7 +62,7 @@
                 
                 <div class="row p-2 " >
                    
-                    <div class="col-lg-4 mb-3 animate__animated animate__fadeInDown" *ngFor="let item of products | paginate: { itemsPerPage: listPageSize, currentPage: listCurrentPage }"> 
+                    <div class="col-lg-4 col-md-6 mb-3 animate__animated animate__fadeInDown" *ngFor="let item of products | paginate: { itemsPerPage: listPageSize, currentPage: listCurrentPage }"> 
                         <div class="card shadow-0 border p-2" style="border-radius: 30px; height: max-content; align-items: center;">
                         <div class="card-body">
                           <div class="row">
@@ -94,7 +94,7 @@
                                 {{item.description | truncateDescription}}
                               </p>
                               <p class="mb-1">Category: <span class=" text-primary">{{item.category}}</span></p>
-                              <div class="row">
+                              <div class="row menu-body">
                                 <div class="col-lg-6">
                                 <h4  class=" card-text price textHeading mb-2">{{item.price | currency: '₦' :'symbol':'1.0-0'}}</h4>
 
@@ -183,68 +183,6 @@
                   screenReaderPageLabel="page"
                 ></pagination-controls>
                  
-                
-
-
-                <!-- <div class="row justify-content-center  p-3" *ngFor="let item of displayedProducts">
-                    <div class="col-md-4 animate__animated animate__fadeInDown">
-                      <div class="card shadow-0 border">
-                        <div class="card-body">
-                          <div class="row g-0">
-                            <div class="col-xl-3 col-md-4 d-flex justify-content-center">
-                              <div class="bg-image hover-zoom ripple rounded ripple-surface me-md-3 mb-3 mb-md-0 mt-3" style="align-items: center;">
-                                <img [src]="item.thumbnail" class="w-50 img-thumbnail" [alt]="item.name" />
-                                <a href="#!">
-                                  <div class="hover-overlay">
-                                    <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
-                                  </div>
-                                </a>
-                              </div>
-                            </div>
-                            <div class="col-xl-6 col-md-5 col-sm-7">
-                              <h5 class="card-title TextHeading cursor-pointer productName">{{item.name}}</h5>
-                              <div class="d-flex flex-row">
-                                <div class="text-warning mb-1 me-2">
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fa fa-star"></i>
-                                  <i class="fas fa-star-half-alt"></i>
-                                  <span class="ms-1">
-                                    4.5
-                                  </span>
-                                </div>
-
-                              </div>
-          
-                              <p class="text-muted mb-4 mb-md-0 p-2">
-                                {{item.description | truncateDescription}}
-                              </p>
-                              <p>Category: <span class=" text-primary">{{item.category}}</span></p>
-                            </div>
-                            <div class="col-xl-3 col-md-3 col-sm-5">
-                              <div class="d-flex flex-row align-items-center mb-1">
-                                <h4  class=" card-text price textHeading">{{item.price | currency: '₦' :'symbol':'1.0-0'}}</h4>
-                             
-                              </div>
-                             
-                              <div class="mt-4">
-                                <button class="btn btn-primary shadow-sm text-black" type="button" *ngIf="!ifAddedToCart(item)" (click)="addToCart(item)">Add To Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i> </button>
-                                <button class="btn btn-primary shadow-sm text-black" (click)="cartRoute()" type="button" *ngIf="ifAddedToCart(item)">Added <i class="fa fa-shopping-cart" aria-hidden="true"></i> </button>
-                               
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-                  <!-- <div class="d-flex text-center justify-content-center load-more">
-
-                    <button class="btn btn-primary me-3" (click)="loadMore()">{{loadMoreButtonText}}</button>
-                    
-  <button class="btn btn-primary" *ngIf="displayedProducts.length > itemsToShow" (click)="loadLess()">Load Less</button>
-                  </div> -->
             </div>
             <!-- END OF LIST }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}]-->
 
@@ -252,19 +190,19 @@
             <div *ngSwitchCase="'grid'">
                 <div class="container py-3">
                     <div class="row">
-                      <div class="col-md-3 mb-3" *ngFor="let product of products | paginate: { itemsPerPage: gridPageSize, currentPage: gridCurrentPage }">
+                      <div class="col-md-6 col-lg-3 mb-3" *ngFor="let product of products | paginate: { itemsPerPage: gridPageSize, currentPage: gridCurrentPage }">
                         <div class="card shadow-sm animate__animated animate__fadeInDown" style="border-radius: 30px!important; border: 1px solid #e5e5e5;">                                         
                            <div class="p-1" style="width: 100%; ">
                             <img [src]="product.thumbnail" (click)="viewFood(product.id)" class="" style="width: 100%;cursor: pointer; height: 50%; object-fit: cover; border-radius: 30px; background-color: #ffc0223a;">
                           </div>
                   
-                          <div class="card-body">
+                          <div class="card-body menu-body">
                               <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
                             <h5 class="card-title TextHeading cursor-pointer productName" (click)="viewFood(product.id)">{{ product.name }}</h5>
                             <p class="text-muted">{{product.description | truncateDescription}}</p>
                   
                             <div class="cart px-2" style="display: flex; justify-content: space-between;">
-                              <p style="font-weight: 800; font-size: 20px;" class="card-text price textHeading">{{ product.price | currency: '₦' :'symbol':'1.0-0' }}</p>
+                              <p  class="card-text price textHeading">{{ product.price | currency: '₦' :'symbol':'1.0-0' }}</p>
                               <p class="btn btn-primary shadow-sm text-black" (click)="cartRoute()" type="button" *ngIf="ifAddedToCart(product)">Added <i class="fa fa-shopping-cart" aria-hidden="true"></i> </p>
                               <p *ngIf="!ifAddedToCart(product)" class="btn btn-primary addToCartBtn text-black" (click)="addToCart(product)">Add To Basket</p>
                             </div>
@@ -281,12 +219,7 @@
                     screenReaderPaginationLabel="Pagination"
                     screenReaderPageLabel="page"
                   ></pagination-controls>
-                    <div class="d-flex text-center justify-content-center load-more">
-
-                      <!-- <button class="btn btn-primary me-3" (click)="loadMore()">{{loadMoreButtonText}}</button>
-                      
-    <button class="btn btn-primary" *ngIf="displayedProducts.length > itemsToShow" (click)="loadLess()">Load Less</button> -->
-                    </div>
+                
                   </div>
             </div>
             <!-- END OF GRID VIEW ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]-->
@@ -374,5 +307,12 @@
       </div>
     </div>
   </section>
+<section>
+   <div class="row bg-light">
 
+       <div class="col-lg-4 firstCol border"></div>
+       <div class="col-lg-4 secondCol border"></div>
+       <div class="col-lg-4 thirdCol border"></div>
+   </div>
+</section>
 <app-footer></app-footer>

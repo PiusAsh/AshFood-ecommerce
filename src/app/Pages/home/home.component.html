@@ -15,8 +15,8 @@
             dining journey as you explore our extensive range of delectable offerings. Our menu is a celebration of
             flavors, with each dish thoughtfully prepared to bring you a delightful fusion of taste, texture, and aroma.
           </p>
-          <a href=""
-            class="btn btn-primary py-sm-3 px-sm-5 me-3 animate__animated animate__fadeInLeft text-black  text-uppercase">Order
+          <a routerLink="/our-menu"
+            class="btn btn-primary py-3 px-5 me-3 animate__animated animate__fadeInLeft text-black  text-uppercase">Order
             Now</a>
         </div>
         <div class="col-lg-6 text-center text-lg-end overflow-hidden">
@@ -51,7 +51,7 @@
         [ngClass]="{ 'active': selectedCategory === category }">
         <div class="container py-3">
           <div class="row">
-            <div class="col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category) ">
+            <div class="col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category) | paginate: { itemsPerPage: listPageSize, currentPage: listCurrentPage } ">
               <div class="card shadow-sm"
                 style="border-radius: 30px!important; border: 1px solid #e5e5e5; height: max-content;">
                 <div class="p-1" style="width: 100%; align-items: center; margin: 0 auto;">
@@ -77,13 +77,23 @@
               </div>
             </div>
 
-            <div class="d-flex text-center justify-content-center load-more mt-3">
+            <pagination-controls (click)="scrollTop()" class="text-center" 
+            (pageChange)="listCurrentPage = $event"
+            
+            
+            previousLabel=""
+            nextLabel=""
+            screenReaderPaginationLabel="Pagination"
+            screenReaderPageLabel="page"
+          ></pagination-controls>
+
+            <!-- <div class="d-flex text-center justify-content-center load-more mt-3">
 
               <button class="btn btn-primary me-3" (click)="loadMore()">{{loadMoreButtonText}}</button>
 
               <button class="btn btn-primary" *ngIf="displayedProducts.length > itemsToShow" (click)="loadLess()">Load
                 Less</button>
-            </div>
+            </div> -->
           </div>
 
 
@@ -97,13 +107,13 @@
       </div>
     </div>
   </div>
-<section class="mt-5">
+<!-- <section class="mt-5">
   <div class="row">
     <div class="col-lg-6 " style="background: url(/assets/images/pasta.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;">
 
     </div>
-    <div class="col-lg-6 p-5 bg-black">
-      <div class="  py-5 pasta container" >
+    <div class="col-lg-6 bg-black">
+      <div class="  py-5 pasta " >
 
         <div >
   <h5>Our irresistible</h5>
@@ -116,9 +126,9 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <section class=" py-5 bg-light text-center">
-  <div class="guarantee py-3">
+  <div class="guarantee py-3 p-2">
     <p class="gua">We Guarantee</p>
     <h5>
       Fast delivery <br class="mb-0"> to your door

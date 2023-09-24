@@ -178,8 +178,8 @@ resetLink="RETURN TO MENU"
                   <form>
                     <div class="form-group">
                       <label class="form-label">Have coupon?</label>
-                      <div class="input-group">
-                        <input type="text" class="form-control border" name="" placeholder="Coupon code" />
+                      <div class="input-group border-0">
+                        <input type="text" class="form-control " name="" placeholder="Coupon code" />
                         <button class="btn btn-primary border text-black">Apply Coupon</button>
                       </div>
                     </div>
@@ -198,7 +198,7 @@ resetLink="RETURN TO MENU"
                     <p class="mb-2 text-success">{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</p>
                   </div>
                   <div class="d-flex justify-content-between">
-                    <p class="mb-2">Discount:</p>
+                    <p class="mb-2">Delivery fee:</p>
                     <p class="mb-2 text-success">{{0 | currency: '₦' :'symbol':'1.0-0'}}</p>
                   </div>
                 

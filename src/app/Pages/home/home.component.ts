@@ -72,7 +72,7 @@ this.AllAddedItems = cart.items;
       this.products = this.operationService.getAllProducts();
       this.loadCategories();
       this.selectedCategory = this.categories[0];
-      this.loadMore()
+      // this.loadMore()
   
       this.activatedRoute.params.subscribe((params) =>{
         if(params['searchTerm']){
@@ -162,8 +162,11 @@ productCart: any;
      this.cartService.addToCart(product);
   }
 
-
-
+  scrollTop(){
+    window.scrollTo(0, 0);
+  }
+  listCurrentPage = 1;
+  listPageSize = 12; // Number of items per page
 
   
   viewFood(route: number){

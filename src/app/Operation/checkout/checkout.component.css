@@ -60,4 +60,9 @@ hr{
 .CartItemPrice{
     font-family: 'Nunito Sans', sans-serif!important;
     font-weight: 700;
+    font-size: 21px;
+}
+.input-group:focus{
+    border: none!important;
+    box-shadow: none!important;
 }

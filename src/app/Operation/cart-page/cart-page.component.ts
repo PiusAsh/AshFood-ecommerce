@@ -100,7 +100,7 @@ plusQuantity: any;
     window.scrollTo(0, 0);
       }
   shoRoute(){
-    this.route.navigate(['shop']);
+    this.route.navigate(['our-menu']);
     window.scrollTo(0, 0);
       }
 }
