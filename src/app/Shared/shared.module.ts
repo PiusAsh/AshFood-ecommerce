@@ -5,8 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { SpinnerComponent } from './Components/spinner/spinner.component';
-import { NotFoundComponent } from './Components/not-found/not-found.component';
+import { BasicPagesBreadcrumbComponent } from './Components/basic-pages-breadcrumb/basic-pages-breadcrumb.component';
 
 
 
@@ -21,6 +20,8 @@ import { NotFoundComponent } from './Components/not-found/not-found.component';
   declarations: [
     
 
+  
+   
   ]
 })
 export class SharedModule { }

@@ -1,18 +1,7 @@
 <app-navbar></app-navbar>
 
-<div class="text-center">
-  <nav aria-label="breadcrumb">
-    <div class="py-5 bg-light">
-      <h2 class="mb-4 cart">Cart</h2>
-      <div class="text-center" style="display: flex; justify-content: center;"> <!-- Added a new div for centering -->
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item breadcrumb-text">Home</li>
-          <li class="breadcrumb-item active" aria-current="page">Cart</li>
-        </ol>
-      </div>
-    </div>
-  </nav>
-</div>
+<app-basic-pages-breadcrumb currentPageLink="Basket"></app-basic-pages-breadcrumb>
+
 
 
 
@@ -31,8 +20,9 @@
 
   <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
-      <h4 class="mb-1 CartItemPrice">Shopping cart</h4>
-      <p class="mb-0">You have {{cart.items?.length}} items in your cart</p>
+      <h4 class="mb-1 CartItemPrice">Shopping Basket</h4>
+      <p class="mb-0">You have {{cart.items?.length}} {{ cart.items?.length !== 1 ?
+        'items' : 'item' }}  in your basket</p>
     </div>
 
   </div>
@@ -64,7 +54,7 @@
             
                 </div>
                 <div class="mb-3">
-                  <h5 class="mb-0 CartItemPrice ">{{item.price | currency: '₦'}}</h5>
+                  <h5 class="mb-0 CartItemPrice ">{{item.price | currency: '₦' :'symbol':'1.0-0'}}</h5>
                   <small class="text-muted text-nowrap"> {{item.food.price}} / per item </small>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -43,6 +43,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactPageComponent } from './Pages/contact-page/contact-page.component';
 import { MenuPageComponent } from './Pages/menu-page/menu-page.component';
 import { SearchResultPageComponent } from './Pages/search-result-page/search-result-page.component';
+import { BasicPagesBreadcrumbComponent } from './Shared/Components/basic-pages-breadcrumb/basic-pages-breadcrumb.component';
 
 
 
@@ -72,7 +73,8 @@ import { SearchResultPageComponent } from './Pages/search-result-page/search-res
     ContactPageComponent,
     MenuPageComponent,
     SearchResultPageComponent,
-    ProductDescriptionPipe
+    ProductDescriptionPipe,
+    BasicPagesBreadcrumbComponent
     //  AdminSpinnerComponent,
 
 
@@ -94,6 +96,7 @@ import { SearchResultPageComponent } from './Pages/search-result-page/search-res
     NgSelectModule,
     AuthModule,
     NgbTypeaheadModule,
+    NgbPaginationModule
     
    
 

@@ -1,30 +1,19 @@
 <app-navbar></app-navbar>
 
-<div class="text-center">
-    <nav aria-label="breadcrumb">
-        <div class="py-5 bg-light">
-            <h2 class="mb-4 cart">Checkout</h2>
-            <div class="text-center" style="display: flex; justify-content: center;"> <!-- Added a new div for centering -->
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item breadcrumb-text">Home</li>
-                    <li class="breadcrumb-item active" aria-current="page">Checkout</li>
-                </ol>
-            </div>
-        </div>
-    </nav>
-</div>
+<app-basic-pages-breadcrumb currentPageLink="Checkout"></app-basic-pages-breadcrumb>
+
   
 
 <app-not-found
 [visible]="!cart || !cart.items.length"
-notFoundMessage ="Nothing to Checkout."
-resetLink="RETURN TO SHOP"
+notFoundMessage ="Nothing to Checkout"
+resetLink="RETURN TO MENU"
 ></app-not-found>
-  <section class="py-5"  *ngIf="cart && cart.items.length">
+  <section class="p-5 px-5"  *ngIf="cart && cart.items.length">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-xl-7 col-lg-8 mb-4">
+      <div class="row billing">
+        <!-- <div class="col-lg-1"></div> -->
+        <div class="col-xl-8 col-lg-8 mb-4">
           
   
           <!-- Checkout -->
@@ -66,7 +55,7 @@ resetLink="RETURN TO SHOP"
   
               <hr class="my-4" />
   
-              <h5 class="card-title mb-3">Shipping info</h5>
+              <h5 class="card-title mb-3">Delivery info</h5>
   
               <div class="row mb-3">
                 <div class="col-lg-4 mb-3">
@@ -148,9 +137,9 @@ resetLink="RETURN TO SHOP"
   
   
               <div class="mb-3">
-                <p class="mb-0">Additional Message ( Optional )</p>
+                <p class="mb-0">Order Note ( Optional )</p>
                 <div class="form-outline">
-                  <textarea class="form-control" id="textAreaExample1" rows="2"></textarea>
+                  <textarea class="form-control" placeholder="Note about your order, e.g. notes about delivery " id="textAreaExample1" rows="2"></textarea>
                 </div>
               </div>
   
@@ -162,14 +151,14 @@ resetLink="RETURN TO SHOP"
           </div>
           <!-- Checkout -->
         </div>
-        <div class="col-xl-3 col-lg-3 ">
+        <div class="col-xl-4 col-lg-4 ">
          
 
 
            
             <div class="card mb-3 border shadow-0">
               <div class="card-body">
-                <h5>Items</h5>
+                <h5>Basket Items</h5>
                 <div class="d-flex align-items-center py-2" *ngFor="let item of cart.items" style="border-bottom: 1px solid #ddd;">
                   
                   <div class="me-3 position-relative">
@@ -180,7 +169,7 @@ resetLink="RETURN TO SHOP"
                       {{ item.food.name}} 
           
                     </p>
-                    <p class="price text-muted">{{item.food.price | currency: '₦'}} x <span>{{item.quantity}}</span></p>
+                    <p class="price text-muted">{{item.food.price | currency: '₦' :'symbol':'1.0-0'}} x <span>{{item.quantity}}</span></p>
                   </div>
                  
                 </div>
@@ -191,7 +180,7 @@ resetLink="RETURN TO SHOP"
                       <label class="form-label">Have coupon?</label>
                       <div class="input-group">
                         <input type="text" class="form-control border" name="" placeholder="Coupon code" />
-                        <button class="btn btn-primary border text-black">Apply</button>
+                        <button class="btn btn-primary border text-black">Apply Coupon</button>
                       </div>
                     </div>
                   </form>
@@ -206,28 +195,29 @@ resetLink="RETURN TO SHOP"
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="mb-2">Total Price:</p>
-                    <p class="mb-2 text-success">{{cart.totalPrice | currency: '₦'}}</p>
+                    <p class="mb-2 text-success">{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</p>
                   </div>
                   <div class="d-flex justify-content-between">
                     <p class="mb-2">Discount:</p>
-                    <p class="mb-2 text-success">{{0 | currency: '₦'}}</p>
+                    <p class="mb-2 text-success">{{0 | currency: '₦' :'symbol':'1.0-0'}}</p>
                   </div>
                 
                   <hr />
                   <div class="d-flex justify-content-between">
                     <p class="mb-2">Total price:</p>
-                    <h5 class="mb-2 fw-bold CartItemPrice">{{cart.totalPrice | currency: '₦'}}</h5>
+                    <h5 class="mb-2 fw-bold CartItemPrice">{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</h5>
                   </div>
       
                   <div class="mt-3">
-                    <button  class="btn btn-primary w-100 shadow-0 mb-2 proceed cursor-pointer"> Pay Now </button>
+                    <p class="text-muted">Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <span class="text-primary">privacy policy</span>.</p>
+                    <button  class="btn btn-primary w-100 shadow-0 mb-2 proceed cursor-pointer"> Place Order </button>
 
-                    <a (click)="shopRoute()" class="btn btn-light w-100 border mt-2"> Continue Shopping </a>
+                    <a (click)="shopRoute()" class="btn btn-light w-100 border mt-2"> Back to Menu </a>
                   </div>
                 </div>
               </div>
         </div>
-        <div class="col-lg-1"></div>
+        <!-- <div class="col-lg-1"></div> -->
       </div>
     </div>
   </section>

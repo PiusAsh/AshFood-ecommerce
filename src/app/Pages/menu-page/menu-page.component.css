@@ -1,0 +1,102 @@
+.cart {
+    font-size: 35px;
+    font-weight: 800;
+    color: black;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.breadcrumb-item a {
+    text-decoration: none;
+    color: #ffc222;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.load-more button{
+color: black;
+font-weight: 500;
+padding: 10px 30px 10px 30px !important;
+text-transform: uppercase;
+font-size: 14px !important;
+font-family: 'Nunito Sans', sans-serif !important;
+
+}
+
+.shop-category {
+    background-color: #ffc0221b;
+    padding: 0px 10px;
+
+}
+
+.shop-category .row {
+    border-bottom: 3px dotted #ccc;
+    /* align-items: center;
+    margin-top: 20px; */
+}
+
+.list-group p {
+    background-color: #f8f9fa !important;
+    border-radius: 0px;
+    border: none !important;
+    font-size: 17px !important;
+    color: black !important;
+    font-weight: 700;
+    font-family: 'Nunito Sans', sans-serif !important;
+    padding: 15px !important;
+}
+
+.found {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Nunito Sans', sans-serif !important;
+
+}
+.btn-secondary{
+    font-family: 'Nunito Sans', sans-serif !important; 
+}
+.mb-1 .price {
+    font-weight: 700;
+    font-size: 20px;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.productName {
+    text-decoration: none;
+    color: #000;
+}
+.searchInput input{
+    height: 45px;
+    width: 500px;
+    border: 1px solid #FFC222;
+    border-radius: 10px 0px 0px 10px; 
+    font-family: 'Nunito Sans', sans-serif !important;
+
+}
+.searchInput select{
+background-color: #FFC222;
+    border: 1px solid #FFC222;
+    border-radius: 0px 10px 10px 0px; 
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Nunito Sans', sans-serif !important;
+
+}
+.productName:hover {
+    text-decoration: none;
+    color: #FFC222;
+}
+
+.list-group li {
+    font-size: 15px !important;
+    cursor: pointer;
+    padding: 15px !important;
+    font-family: 'Nunito Sans', sans-serif !important;
+}
+
+.list-group li:hover {
+    font-size: 15px !important;
+    cursor: pointer;
+    color: #ffc222;
+    padding: 15px !important;
+    font-family: 'Nunito Sans', sans-serif !important;
+}

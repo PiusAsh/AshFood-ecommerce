@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./search-result-page.component.css']
 })
 export class SearchResultPageComponent {
-
+  searchResult: string = 'Pizza';
 }

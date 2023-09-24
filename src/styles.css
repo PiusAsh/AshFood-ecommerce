@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,200;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900&display=swap');
 /* styles.css */
 
-
+@import url('https://fonts.googleapis.com/css2?family=Norican&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,200;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900&display=swap');
 * {
   font-family: 'Heebo', sans-serif;
 }
@@ -329,21 +329,44 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* END OF TABLE CSS ############################################### */
 
-.ngx-pagination a,
+/* .ngx-pagination a,
 .ngx-pagination button,
 .ngx-pagination li {
   color: #000 !important;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 18px;
+  font-family:  'Nunito', sans-serif;
+
+
+} */
+.ngx-pagination a,
+.ngx-pagination button,
+.ngx-pagination li {
+   /* padding: 0.1875rem 0.625rem; */
+   /* padding: 15px; */
+   border-radius: 50%;
+   font-size: 16px;
+   background: #00000063 !important;
+   color: #fff !important;
+   cursor: default;
+   font-family:  'Nunito', sans-serif;
+
 
 }
 
 
 .ngx-pagination .current {
-  padding: 0.1875rem 0.625rem;
-  background: #2e2e2ed3 !important;
+  /* padding: 0.1875rem 0.625rem; */
+  padding: 15px;
+  /* border-radius: 50%; */
+  background: #ffc222 !important;
   color: #fff !important;
   cursor: default;
+  font-family:  'Nunito', sans-serif;
+
+}
+.btn{
+  font-family: 'Nunito Sans', sans-serif !important;
 }
 
 .modal-content {
@@ -373,17 +396,9 @@ input[type="number"]::-webkit-outer-spin-button {
   color: white !important;
 }
 
-
-
-.menu-title {
-  font-size: 30px;
-  font-weight: 700;
-  color: black;
-  font-family: 'Nunito Sans', sans-serif !important;
-}
-
-.breadcrumb-item a {
+.productName {
   text-decoration: none;
-  color: #ffc222;
-  font-family: 'Nunito Sans', sans-serif !important;
+  color: #000;
+  font-weight: 700!important;
 }
+

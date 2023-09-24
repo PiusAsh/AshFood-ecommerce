@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <!-- BreadCrumb -->
-<div class="bg-light">
+<div class="breadcrumb-bg">
 
     <div class="container">
         <nav aria-label="breadcrumb ">
@@ -35,7 +35,7 @@ resetLink="Go To HomePage"> -->
                   </div>
 
                   <p class="text-muted">{{food?.description}}</p>
-            <p class="foodAmount">{{food?.price | currency: '₦'}}</p>
+            <p class="foodAmount">{{food?.price | currency: '₦' :'symbol':'1.0-0'}}</p>
             
             <hr>
             <div class="quantity-selector">

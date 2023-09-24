@@ -8,5 +8,23 @@
 }
 
   .accordion-button:not(.collapsed){
-    background-color: #ffc02225!important;
+    background-color: #ffc222!important;
+    color: #808080;
+
+  }
+  .accordion-button{
+    background-color: #fbf7e8!important;
+    color: #808080;
+  }
+
+  .accordion-body{
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-size: 15px;
+    font-weight: 300;
+  }
+  .accordion-item button{
+    font-family: 'Nunito Sans', sans-serif !important;
+    font-size: 16px;
+    font-weight: 700;
+    color: black !important;
   }

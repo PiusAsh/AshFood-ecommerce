@@ -15,7 +15,7 @@ export class TruncatePipe implements PipeTransform {
 export class ProductDescriptionPipe implements PipeTransform {
   transform(value: string): string {
     const words = value.split(' ');
-    return words.slice(0, 16).join(' ') + (words.length > 16 ? '...' : '');
+    return words.slice(0, 10).join(' ') + (words.length > 10 ? '...' : '');
   }
 }
 @Pipe({

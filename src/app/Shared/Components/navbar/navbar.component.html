@@ -55,9 +55,9 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/our-menu">Our&nbsp;Menu</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" routerLink="/shop">Shop</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" routerLink="/about-us">About</a>
           </li>
@@ -80,7 +80,7 @@
         <span title="User Profile" data-toggle="modal" data-target="#login" class="bio"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
         <div class="cart-icon-container">
           <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
-          <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Cart&nbsp;&nbsp;&nbsp;</span>
+          <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Basket&nbsp;&nbsp;&nbsp;</span>
         </div>
       </div>
     </div>
@@ -114,9 +114,9 @@
       <li class="nav-item offcanvas-menu-item">
         <a class="nav-link" routerLink="/our-menu">Our Menu</a>
       </li>
-      <li class="nav-item offcanvas-menu-item">
+      <!-- <li class="nav-item offcanvas-menu-item">
         <a class="nav-link" routerLink="/shop">Shop</a>
-      </li>
+      </li> -->
       <li class="nav-item offcanvas-menu-item">
         <a class="nav-link" routerLink="/about-us">About</a>
       </li>
@@ -131,7 +131,7 @@
       <span title="User Profile" data-toggle="modal" data-target="#login" class="bio me-3"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
       <div class="cart-icon-container">
         <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
-        <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Cart&nbsp;&nbsp;&nbsp;</span>
+        <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Basket&nbsp;&nbsp;&nbsp;</span>
       </div>
     </div>
 
@@ -237,7 +237,7 @@
       
 
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">SHOPPING CART</h5>
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">SHOPPING BASKET</h5>
     
           <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
         </div>
@@ -247,9 +247,9 @@
                 <div style="display: flex; justify-content: center; flex-direction: column;">
     
                   <p class="text-center mt-5" *ngIf="cart.items.length == 0">
-                    No product in the cart.
+                    No product in the basket.
                   </p>
-      <button class="btn btn-primary backButton" *ngIf="cart.items.length == 0" (click)="shopRoute()">Back To Shop</button>
+      <button class="btn btn-primary backButton" *ngIf="cart.items.length == 0" (click)="shopRoute()">Back To Menu</button>
                 </div>
     
                 <div class="d-flex align-items-center py-2" *ngFor="let item of cart.items" style="border-bottom: 1px solid #ddd;">
@@ -278,11 +278,11 @@
               </div>
               <div class="subAmount mx-3">
                 <small>Total Price:</small>
-                <h5>{{cart.totalPrice | currency: '₦'}}</h5>
+                <h5>{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</h5>
               </div>
               <div class="button py-1 mx-3">
                 <button (click)="checkoutRoute()" class="checkout w-100 mb-2">CHECKOUT</button>
-                <button (click)="cartRoute()" class="viewCart w-100">VIEW CART</button>
+                <button (click)="cartRoute()" class="viewCart w-100">VIEW BASKET</button>
               </div>
             </div>
      

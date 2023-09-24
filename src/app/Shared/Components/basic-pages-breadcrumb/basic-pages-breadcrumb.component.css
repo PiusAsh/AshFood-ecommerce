@@ -1,0 +1,19 @@
+
+.breadcrumb-bg{
+    background-image: url(/assets/images/breadcrumb.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.menu-title {
+    font-size: 30px;
+    font-weight: 800;
+    color: black;
+    font-family: 'Nunito Sans', sans-serif !important;
+  }
+  
+  .breadcrumb-item a {
+    text-decoration: none;
+    color: #ffc222;
+    font-family: 'Nunito Sans', sans-serif !important;
+  }

@@ -10,13 +10,21 @@
     color: #ffc222;
     font-family: 'Nunito Sans', sans-serif!important;
 }
-
+h1, h2, h3, h4, h5{
+    font-family: 'Nunito Sans', sans-serif!important;
+}
+.billing input{
+    height: 45px;
+}
+.form-check-input{
+    height: 15px !important;
+}
 .proceed{
     padding: 9px;
     color: black;
     font-size: 16px;
-    font-weight: 700;
-    font-family: 'Nunito Sans', sans-serif!important;
+    font-weight: 500;
+    font-family: 'Heebo', sans-serif!important;
 }
 .pointer{
     cursor: pointer;

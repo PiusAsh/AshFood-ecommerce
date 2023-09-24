@@ -151,7 +151,7 @@ this.route.navigateByUrl('/search/'+ term)
     this.closeCartOffCanvas();
       }
   shopRoute(){
-    this.route.navigate(['cart']);
+    this.route.navigate(['our-menu']);
     window.scrollTo(0, 0);
     this.closeCartOffCanvas();
       }

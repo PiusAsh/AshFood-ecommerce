@@ -1,19 +1,7 @@
 <app-navbar></app-navbar>
 <!-- BREADCRUMB -->
-<div class="text-center">
-    <nav aria-label="breadcrumb">
-        <div class="py-5 bg-light">
-            <h2 class="mb-4 cart animate__animated animate__fadeInDown">Search</h2>
-            <div class="text-center" style="display: flex; justify-content: center;">
-                <!-- Added a new div for centering -->
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item breadcrumb-text">Home</li>
-                    <li class="breadcrumb-item active" aria-current="page">Search</li>
-                </ol>
-            </div>
-        </div>
-    </nav>
-</div>
+<app-basic-pages-breadcrumb currentPageLink="Search Result" searchResult="{{searchResult}}"></app-basic-pages-breadcrumb>
+
 <!-- BREADCRUMB END -->
 
 <section class="py-5">

@@ -1,122 +1,166 @@
-
-
 <div class="">
 
 
   <!-- Navbar ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]-->
-  
+
   <!--end of  Navbar ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]-->
-    <app-navbar></app-navbar>
-    <div class=" py-3 bg-black hero-header">
-        <div class="container my-5 py-3">
-            <div class="row align-items-center g-5">
-                <div class="col-lg-6 text-center text-lg-start">
-                    <h1 class="display-3 text-white TextHeading heroTitle  animate__animated animate__fadeInDown">Enjoy Our<br>Delicious Meal</h1>
-                    <p class="text-white animate__animated animate__fadeInLeft mb-4 pb-2">Treat yourself to an extraordinary dining journey as you explore our extensive range of delectable offerings. Our menu is a celebration of flavors, with each dish thoughtfully prepared to bring you a delightful fusion of taste, texture, and aroma.</p>
-                    <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animate__animated animate__fadeInLeft text-black  text-uppercase">Order Now</a>
-                </div>
-                <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                    <img class="img-fluid animate__animated animate__zoomInRight" src="/assets/images/noodles.png" alt="">
-                </div>
-            </div>
+  <app-navbar></app-navbar>
+  <div class=" py-3 bg-black hero-header">
+    <div class="container my-5 py-3">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6 text-center text-lg-start">
+          <h1 class="display-3 text-white TextHeading heroTitle  animate__animated animate__fadeInDown">Enjoy
+            Our<br>Delicious Meal</h1>
+          <p class="text-white animate__animated animate__fadeInLeft mb-4 pb-2">Treat yourself to an extraordinary
+            dining journey as you explore our extensive range of delectable offerings. Our menu is a celebration of
+            flavors, with each dish thoughtfully prepared to bring you a delightful fusion of taste, texture, and aroma.
+          </p>
+          <a href=""
+            class="btn btn-primary py-sm-3 px-sm-5 me-3 animate__animated animate__fadeInLeft text-black  text-uppercase">Order
+            Now</a>
         </div>
+        <div class="col-lg-6 text-center text-lg-end overflow-hidden">
+          <img class="img-fluid animate__animated animate__zoomInRight" src="/assets/images/noodles.png" alt="">
+        </div>
+      </div>
     </div>
-   <!-- ALL MENUS -->
-   <div class="upper mb-5">
+  </div>
+  <!-- ALL MENUS -->
+  <div class="upper mb-5">
 
-       <button class="btn btn-primary menu-button">MENUS</button>
-      
-      <!-- category -->
-   </div>
+    <button class="btn btn-primary menu-button">MENUS</button>
+
+    <!-- category -->
+  </div>
 
 
 
-    
-    <div class="mt-5">
-        <p class="text-center" style="color: #1e1d24; font-size: 36px; font-weight: 700;">Popular dishes</p>
-      <ul class="nav nav-tabs menu-tabs py-1">
-        <li style="cursor: pointer;" class="nav-item mb-2" *ngFor="let category of categories">
-          <a class="nav-link text-center TextHeading" (click)="selectCategory(category)" [class.active]="selectedCategory === category">{{ category }}</a>
-        </li>
-      </ul>
-      
-  
-      <div  class="tab-content menu-content  "  style="display: flex; justify-content: center!important;">
-        <div  class="tab-pane  w3-animate-zoom"  *ngFor="let category of categories " [ngClass]="{ 'active': selectedCategory === category }">
-          <div class="container py-3">
-            <div class="row">
-              <div class="col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category) ">
-                <div class="card shadow-sm" style="border-radius: 30px!important; border: 1px solid #e5e5e5;">                                          <div class="p-1" style="width: 100%; ">
-                    <img [src]="product.thumbnail" (click)="viewFood(product.id)" class="" style="width: 100%;cursor: pointer; height: 100%; object-fit: cover; border-radius: 30px; background-color: #ffc0223a;">
-                  </div>
-          
-                  <div class="card-body">
-                      <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <h5 class="card-title TextHeading cursor-pointer productName" (click)="viewFood(product.id)">{{ product.name }}</h5>
-                    <p class="text-muted">{{ product.description }}</p>
-          
-                    <div class="cart px-2" style="display: flex; justify-content: space-between;">
-                      <p style="font-weight: 800; font-size: 20px;" class="card-text price textHeading">{{ product.price | currency: '₦' }}</p>
-                      <p class="btn btn-primary shadow-sm text-black" (click)="cartRoute()" type="button" *ngIf="ifAddedToCart(product)">Added  </p>
-                      <p *ngIf="!ifAddedToCart(product)" class="btn btn-primary addToCartBtn text-black" (click)="addToCart(product)">Add To Cart</p>
-                    </div>
+
+  <div class="mt-5">
+    <p class="text-center" style="color: #1e1d24; font-size: 36px; font-weight: 700;">Popular dishes</p>
+    <ul class="nav nav-tabs menu-tabs py-1">
+      <li style="cursor: pointer;" class="nav-item mb-2" *ngFor="let category of categories">
+        <a class="nav-link text-center TextHeading" (click)="selectCategory(category)"
+          [class.active]="selectedCategory === category">{{ category }}</a>
+      </li>
+    </ul>
+
+
+    <div class="tab-content menu-content  " style="display: flex; justify-content: center!important;">
+      <div class="tab-pane  w3-animate-zoom" *ngFor="let category of categories "
+        [ngClass]="{ 'active': selectedCategory === category }">
+        <div class="container py-3">
+          <div class="row">
+            <div class="col-md-3 mb-3" *ngFor="let product of getProductsByCategory(category) ">
+              <div class="card shadow-sm"
+                style="border-radius: 30px!important; border: 1px solid #e5e5e5; height: max-content;">
+                <div class="p-1" style="width: 100%; align-items: center; margin: 0 auto;">
+                  <img [src]="product.thumbnail" (click)="viewFood(product.id)" class=""
+                    style="width: 100%;cursor: pointer; height: 100%; object-fit: cover; border-radius: 30px; background-color: #ffc0223a;align-items: center;">
+                </div>
+
+                <div class="card-body">
+                  <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+                  <h5 class="card-title TextHeading cursor-pointer productName" (click)="viewFood(product.id)">{{
+                    product.name }}</h5>
+                  <p class="text-muted">{{ product.description }}</p>
+
+                  <div class="cart px-2" style="display: flex; justify-content: space-between;">
+                    <p style="font-weight: 800; font-size: 20px;" class="card-text price textHeading">{{ product.price |
+                      currency: '₦' :'symbol':'1.0-0'}}</p>
+                    <p class="btn btn-primary shadow-sm text-black" (click)="cartRoute()" type="button"
+                      *ngIf="ifAddedToCart(product)">Added </p>
+                    <p *ngIf="!ifAddedToCart(product)" class="btn btn-primary addToCartBtn text-black"
+                      (click)="addToCart(product)">Add To Basket</p>
                   </div>
                 </div>
               </div>
-
-              <div class="d-flex text-center justify-content-center load-more">
-
-                <button class="btn btn-primary me-3" (click)="loadMore()">{{loadMoreButtonText}}</button>
-                
-<button class="btn btn-primary" *ngIf="displayedProducts.length > itemsToShow" (click)="loadLess()">Load Less</button>
-              </div>
             </div>
 
-            
-            <!-- <pagination-controls class=""
-              (pageChange)="currentPage = $event"></pagination-controls> -->
+            <div class="d-flex text-center justify-content-center load-more mt-3">
+
+              <button class="btn btn-primary me-3" (click)="loadMore()">{{loadMoreButtonText}}</button>
+
+              <button class="btn btn-primary" *ngIf="displayedProducts.length > itemsToShow" (click)="loadLess()">Load
+                Less</button>
+            </div>
           </div>
-        
-       
-          
-         
+
+
+          <!-- <pagination-controls class=""
+              (pageChange)="currentPage = $event"></pagination-controls> -->
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+<section class="mt-5">
+  <div class="row">
+    <div class="col-lg-6 " style="background: url(/assets/images/pasta.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+
+    </div>
+    <div class="col-lg-6 p-5 bg-black">
+      <div class="  py-5 pasta container" >
+
+        <div >
+  <h5>Our irresistible</h5>
+  <h1>PASTA</h1>
+  <h6>
+    Our Haitian pâtés are homemade, available fresh or frozen, <br> try them!
+  </h6>
+  <button class="btn bg-white text-black mt-3">ORDER NOW</button>
         </div>
       </div>
     </div>
-  
-  
-    <app-footer></app-footer>
   </div>
-  
-  
-  <!-- OFF CAN
+</section>
+<section class=" py-5 bg-light text-center">
+  <div class="guarantee py-3">
+    <p class="gua">We Guarantee</p>
+    <h5>
+      Fast delivery <br class="mb-0"> to your door
+    </h5>
+    <p class="mb-3">
+      Ash Food offers a delivery service straight to your door. <br>
+No need to travel, you just have to order on the site.
+    </p>
+    <button class="btn btn-primary text-black">ORDER NOW</button>
+  </div>
+</section>
+  <app-footer></app-footer>
+</div>
+
+
+<!-- OFF CAN
   VAS -->
-  <div class="offcanvas offcanvas-end"  id="cart" style="width: 340px;">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title TextHeading" id="offcanvasExampleLabel">SHOPPING CART</h5>
-  
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+<div class="offcanvas offcanvas-end" id="cart" style="width: 340px;">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title TextHeading" id="offcanvasExampleLabel">SHOPPING CART</h5>
+
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <hr />
+  <div class="offcanvas-body" style="position: relative; max-height: calc(100vh - 190px); overflow-y: auto;">
+    <div>
+      <p class="text-center">
+        No products in the cart.
+      </p>
     </div>
-    <hr/>
-    <div class="offcanvas-body" style="position: relative; max-height: calc(100vh - 190px); overflow-y: auto;">
-      <div>
-        <p class="text-center">
-          No products in the cart.
-        </p>
-      </div>
-  
+
+  </div>
+
+  <div class=" offcanvas-footer mt-3 mx-3" style="position: absolute; bottom: 15px; align-items: center;">
+    <hr />
+    <div class="subAmount mt-3 mx-3">
+      <p>SUBTOTAL:</p>
+      <p>$45,789.00</p>
     </div>
-  
-    <div class=" offcanvas-footer mt-3 mx-3" style="position: absolute; bottom: 15px; align-items: center;">
-      <hr/>
-      <div class="subAmount mt-3 mx-3">
-        <p>SUBTOTAL:</p>
-        <p>$45,789.00</p>
-      </div>
-      <div class="button py-1 mx-3">
-        <button class="checkout w-100 mb-2">CHECKOUT</button>
-        <button class="viewCart w-100">VIEW CART</button>
-      </div>
+    <div class="button py-1 mx-3">
+      <button class="checkout w-100 mb-2">CHECKOUT</button>
+      <button class="viewCart w-100">VIEW CART</button>
     </div>
   </div>
-  
+</div>

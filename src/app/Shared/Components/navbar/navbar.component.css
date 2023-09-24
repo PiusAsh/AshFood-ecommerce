@@ -2,7 +2,7 @@
 /* NAVBAR CSS */
 
 .navbar{
-  height: 10vh;
+  height: 11vh;
  
 }
 
@@ -234,7 +234,7 @@ background-color: #ffc222;
 border: none;
 padding: 12px 35px;
 font-size: 14px;
-font-weight: 700;
+font-weight: 500;
 border-radius: 8px;
 }
 .viewCart{
@@ -242,7 +242,7 @@ background-color: transparent;
 border: 2px solid  #ffc222;
 padding: 12px 35px;
 font-size: 14px;
-font-weight: 800;
+font-weight: 500;
 color: #000;
 border-radius: 8px;
 }
@@ -310,16 +310,15 @@ background-color: transparent;
 .offcanvas {
   max-width: 340px;
 }
-.offcanvas-title{
-  font-family: 'Nunito Sans', sans-serif!important;
-}
+
 .backButton{
   color: black;
   padding: 10px 0px;
 }
 .offcanvas-title{
-  font-size: 19px;
+  font-size: 16px;
   font-weight: 700;
+  font-family: 'Nunito Sans', sans-serif!important;
 }
 .search-input .fa-search {
   position: absolute;
@@ -524,7 +523,7 @@ background-color: transparent;
   bottom: 0;
   width: 100%;
   height: 5px;
-  background-color: #00a149;
+  background-color: #ffc222;
   transition: left 0.3s; /* Add transition for left property */
 }
 

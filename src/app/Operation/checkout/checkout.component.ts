@@ -36,7 +36,7 @@ export class CheckoutComponent {
     window.scrollTo(0, 0);
       }
   shopRoute(){
-    this.route.navigate(['shop']);
+    this.route.navigate(['our-menu']);
     window.scrollTo(0, 0);
       }
 }

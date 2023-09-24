@@ -47,7 +47,11 @@
     width: 20px;
 }
 
-
+.breadcrumb-bg{
+    background-image: url(/assets/images/breadcrumb.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 /* Hide the default number input arrows */
 .quantity-selector input[type="number"]::-webkit-inner-spin-button,
 .quantity-selector input[type="number"]::-webkit-outer-spin-button {
