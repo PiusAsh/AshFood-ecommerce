@@ -112,3 +112,32 @@ background-color: #FFC222;
     
 
 }
+.guarantee{
+    background-image: url(/assets/images/banner-section.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .guarantee h5{
+  font-size: 55px;
+  font-weight: 800;
+  font-family: 'Nunito Sans', sans-serif !important;
+  }
+  .guarantee button{
+  /* font-size: 65px; */
+  font-weight: 600;
+  padding: 10px 20px;
+  font-family: 'Nunito Sans', sans-serif !important;
+  }
+  .guarantee .gua{
+  font-size: 32px;
+  font-weight: 600;
+  color: #FFC222;
+  font-family: 'Norican', 'cursive' !important;
+  }
+  .guarantee p{
+  font-size: 15px;
+  /* font-weight: 600; */
+  color: #808080;
+  font-family: 'Nunito Sans', sans-serif !important;
+  }
+  

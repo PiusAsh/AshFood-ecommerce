@@ -310,7 +310,9 @@ background-color: transparent;
 .offcanvas {
   max-width: 340px;
 }
-
+.nav-link{
+  cursor: pointer!important;
+}
 .backButton{
   color: black;
   padding: 10px 15px;

@@ -170,5 +170,24 @@ this.route.navigateByUrl('/search/'+ term)
   categories: string[] = ['Category 1', 'Category 2', 'Category 3']; // Add more categories as needed
   selectedCategory: string = '';
 
- 
+ homeRoute(){
+  this.route.navigate(['']);
+  window.scrollTo(0, 0);
+ }
+ aboutRoute(){
+  this.route.navigate(['about-us']);
+  window.scrollTo(0, 0);
+ }
+ faqRoute(){
+  this.route.navigate(['faq']);
+  window.scrollTo(0, 0);
+ }
+ menuRoute(){
+  this.route.navigate(['our-menu']);
+  window.scrollTo(0, 0);
+ }
+ contactRoute(){
+  this.route.navigate(['contact-us']);
+  window.scrollTo(0, 0);
+ }
 }

@@ -50,27 +50,27 @@
       <div class="search-input">
         <ul class="navbar-nav ml-auto justify-content-center">
           <li class="nav-item active">
-            <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" (click)="homeRoute()">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/our-menu">Our&nbsp;Menu</a>
+            <a class="nav-link" (click)="menuRoute()">Our&nbsp;Menu</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" routerLink="/shop">Shop</a>
           </li> -->
           <li class="nav-item">
-            <a class="nav-link" routerLink="/about-us">About</a>
+            <a class="nav-link" (click)="aboutRoute()">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/faq">FAQs</a>
+            <a class="nav-link" (click)="faqRoute()">FAQs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/contact-us">Contact</a>
+            <a class="nav-link" (click)="contactRoute()">Contact</a>
           </li>
         </ul>
       </div>
 
-      <div class="user-cart-icons">
+      <div class="user-cart-icons d-none d-lg-none d-md-none d-xl-block">
         <div class="navbar-nav justify-content-end">
           <a class="nav-link semiCall ">Call and Order via<br><span class="call">+2349052794388</span></a>
         </div>
@@ -109,22 +109,22 @@
     <!-- Menu Links -->
     <ul class="navbar-nav ml-auto justify-content-center">
       <li class="nav-item active offcanvas-menu-item">
-        <a class="nav-link" routerLink="">Home <span class="sr-only"></span></a>
+        <a class="nav-link" (click)="homeRoute()">Home <span class="sr-only"></span></a>
       </li>
       <li class="nav-item offcanvas-menu-item">
-        <a class="nav-link" routerLink="/our-menu">Our Menu</a>
+        <a class="nav-link" (click)="menuRoute()">Our Menu</a>
       </li>
       <!-- <li class="nav-item offcanvas-menu-item">
         <a class="nav-link" routerLink="/shop">Shop</a>
       </li> -->
       <li class="nav-item offcanvas-menu-item">
-        <a class="nav-link" routerLink="/about-us">About</a>
+        <a class="nav-link" (click)="aboutRoute()">About</a>
       </li>
       <li class="nav-item offcanvas-menu-item">
-        <a class="nav-link" routerLink="/faq">FAQs</a>
+        <a class="nav-link" (click)="faqRoute()">FAQs</a>
       </li>
       <li class="nav-item offcanvas-menu-item">
-        <a class="nav-link" routerLink="/contact-us">Contact</a>
+        <a class="nav-link" (click)="contactRoute()">Contact</a>
       </li>
     </ul>
     <div class="user-cart-icons-canvas mt-5">

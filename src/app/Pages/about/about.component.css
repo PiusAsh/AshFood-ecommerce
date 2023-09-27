@@ -1,0 +1,90 @@
+.aboutLeft h6 {
+    color: #ffc222;
+    font-family: 'norican', Sans-serif;
+    font-size: 42px;
+    text-transform: capitalize;
+}
+.aboutLeft{
+    align-items: center!important;
+    justify-content: center;
+}
+.aboutLeft h5 {
+    font-weight: 900;
+    clear: both;
+    font-size: 55px;
+    margin: 0 0 0.5407911001em;
+    color: #1E1D23;
+    ;
+    font-family: 'Nunito Sans', sans-serif !important;
+    /* font-family:  'Heebo', sans-serif; */
+
+}
+
+.aboutLeft .text-muted {
+    font-size: 15px !important;
+}
+
+.aboutRight img {
+    width: 100% !important;
+
+    height: 100% !important;
+}
+.aboutLeft1 h6 {
+    color: #ffc222;
+    font-family: 'norican',Sans-serif;
+    font-size: 25px;
+    line-height: 36px;
+}
+.aboutLeft1{
+    align-items: center!important;
+    justify-content: center;
+}
+.aboutLeft1 h5 {
+    font-weight: 900;
+    clear: both;
+    font-size: 40px;
+    margin: 0 0 0.5407911001em;
+    color: #1E1D23;
+    ;
+    font-family: 'Nunito Sans', sans-serif !important;
+    /* font-family:  'Heebo', sans-serif; */
+
+}
+
+.aboutLeft1 .text-muted {
+    font-size: 15px !important;
+}
+
+.aboutRight1 img {
+    width: 100% !important;
+
+    height: 100% !important;
+}
+.guarantee{
+    background-image: url(/assets/images/banner-section.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  .guarantee h5{
+  font-size: 55px;
+  font-weight: 800;
+  font-family: 'Nunito Sans', sans-serif !important;
+  }
+  .guarantee button{
+  /* font-size: 65px; */
+  font-weight: 600;
+  padding: 10px 20px;
+  font-family: 'Nunito Sans', sans-serif !important;
+  }
+  .guarantee .gua{
+  font-size: 32px;
+  font-weight: 600;
+  color: #FFC222;
+  font-family: 'Norican', 'cursive' !important;
+  }
+  .guarantee p{
+  font-size: 15px;
+  /* font-weight: 600; */
+  color: #808080;
+  font-family: 'Nunito Sans', sans-serif !important;
+  }

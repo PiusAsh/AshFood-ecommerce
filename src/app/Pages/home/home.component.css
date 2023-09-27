@@ -66,15 +66,17 @@ font-weight: 600;
   transform: translateX(-50%);
   /* Adjust the position */
 }
-.guarantee{
-  background-image: url(/assets/images/banner-section.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-}
+
 .view-button button{
   padding: 10px 15px;
   color: #000;
   font-weight: 600;
+}
+
+.guarantee{
+  background-image: url(/assets/images/banner-section.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .guarantee h5{
 font-size: 55px;
