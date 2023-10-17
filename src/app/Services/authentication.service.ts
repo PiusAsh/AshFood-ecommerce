@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthenticationService {
-baseUrl: string = 'https://localhost:44359/api/'
+baseUrl: string = 'https://localhost:44318/api/'
 private loggedIn = false;
   private userId: number;
 // login?email=agbae%40gmail.com&password=ash
@@ -22,20 +22,27 @@ private loggedIn = false;
   }
 
   // Method to get user info based on user ID
-  getUserInfo(): Observable<any> {
-    return this.http.get(`${this.baseUrl}Profile/${localStorage.getItem('userId')}`);
+  getUserInfow(): Observable<any> {
+    return this.http.get(`${this.baseUrl}Users/${localStorage.getItem('userId')}`);
   }
   
+  getUserInfo(userId: string): Observable<any>{
+    return this.http.get(`${this.baseUrl}Users/${userId}`);
+  }
   
   login(loginBody: any): Observable<any>{
   var queryParam = `login?email=${loginBody.email}&password=${loginBody.password}`
   return this.http.post<any>(`${this.baseUrl}${queryParam}`, loginBody)
   }
 
-  loginRequest(email: string, password: string): Observable<any> {
-    const loginBody = { email, password };
-    return this.http.post(`${this.baseUrl}login`, loginBody);
+  loginRequest(loginDto: any): Observable<any> {
+   
+    return this.http.post(`${this.baseUrl}Auth/login`, loginDto);
   }
+  // loginRequest(email: string, password: string): Observable<any> {
+  //   const loginBody = { email, password };
+  //   return this.http.post(`${this.baseUrl}login`, loginBody);
+  // }
 
 
   register(profileDto: any): Observable<any> {

@@ -20,7 +20,7 @@ export class ApiErrorInterceptor implements HttpInterceptor {
             title: errorMessage,
             text: 'Please try again later.',
             // iconColor: '#ff6100',
-            confirmButtonText: 'Close',
+            confirmButtonText: 'OK',
             allowOutsideClick: false,
           });
           console.error(errorMessage);

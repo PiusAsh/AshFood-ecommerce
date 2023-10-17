@@ -28,7 +28,7 @@ import { AdminModule } from './Admin-Panel/admin/admin.module';
 import { AdminSpinnerComponent } from './Admin-Panel/admin-spinner/admin-spinner.component';
 import { NgToastModule } from 'ng-angular-popup';
 import { ErrorHandlingInterceptor } from './Interceptors/error-handling.interceptor';
-import { DraggableModalDirective } from './Shared/Directives/draggable-modal.directive';
+
 import { ProductDescriptionPipe, TruncatePipe } from './Shared/Pipes/truncate.pipe';
 import { SpinnerComponent } from './Shared/Components/spinner/spinner.component';
 
@@ -44,6 +44,9 @@ import { ContactPageComponent } from './Pages/contact-page/contact-page.componen
 import { MenuPageComponent } from './Pages/menu-page/menu-page.component';
 import { SearchResultPageComponent } from './Pages/search-result-page/search-result-page.component';
 import { BasicPagesBreadcrumbComponent } from './Shared/Components/basic-pages-breadcrumb/basic-pages-breadcrumb.component';
+import { CurrencyFormatDirective } from './Shared/Helpers/currency-format.directive';
+import { DateAgoPipe } from './Shared/Pipes/dateAgo.pipe';
+import { HomeNavbarComponent } from './Shared/Components/home-navbar/home-navbar.component';
 
 
 
@@ -60,11 +63,11 @@ import { BasicPagesBreadcrumbComponent } from './Shared/Components/basic-pages-b
     BookingComponent,
     PageNotFoundComponent,
     InternetOfflineComponent,
-    DraggableModalDirective,
     TruncatePipe,
+    DateAgoPipe,
     SpinnerComponent,
     NotFoundComponent,
-    
+    CurrencyFormatDirective,
     CheckoutComponent,
     CartPageComponent,
     FoodListComponent,
@@ -74,7 +77,8 @@ import { BasicPagesBreadcrumbComponent } from './Shared/Components/basic-pages-b
     MenuPageComponent,
     SearchResultPageComponent,
     ProductDescriptionPipe,
-    BasicPagesBreadcrumbComponent
+    BasicPagesBreadcrumbComponent,
+    HomeNavbarComponent
     //  AdminSpinnerComponent,
 
 
@@ -108,11 +112,11 @@ import { BasicPagesBreadcrumbComponent } from './Shared/Components/basic-pages-b
     //   useClass: ErrorHandlingInterceptor,
     //   multi: true,
     // },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: ApiErrorInterceptor,
-    //   multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiErrorInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent]
 })

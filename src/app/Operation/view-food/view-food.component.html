@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+<app-spinner *ngIf="loading"></app-spinner>
 <!-- BreadCrumb -->
 <div class="breadcrumb-bg">
 
@@ -18,20 +19,36 @@ notFoundMessage ="Oops! Page doesn't exist"
 resetLink="Go To HomePage"> -->
 
 <!-- FOOD DETAILS -->
-<section  class="container py-5">
 
+<app-not-found [visible]="!food" notFoundMessage="Unable to display product."
+  resetLink="Back To Menu"></app-not-found>
+<section *ngIf="food" class="container py-5">
+   
+      
     <div class="row">
         <div class="col-lg-6">
-            <div class=" container">
-                <img  [src]="food?.thumbnail" class="img-thumbnail foodImage" [alt]="food?.name" style="width: 100%;cursor: pointer; height: 100%; object-fit: cover;">
-            </div>
+            <div class=" ">
+                <!-- <div class="row ">
+                    <div class="col-1"></div>
+                    <div class="col-3 align-self-start  animate__animated animate__fadeInDown">
+                      <img [src]="food?.image1"  [alt]="food?.name" class="img-thumbnail mb-2 " style="height: 150px; width: 100%; object-fit: cover;" alt="" >
+                      <img [src]="food?.image2"  [alt]="food?.name" class="img-thumbnail  " style="height: 150px; width: 100%; object-fit: cover;" alt="" >
+                      <img [src]="food?.image3"  [alt]="food?.name" class="img-thumbnail  " style="height: 150px; width: 100%; object-fit: cover;" alt="" >
+                    </div>
+                    
+                    <div class="col align-self-center animate__animated animate__fadeInUp">
+                      <img  [src]="food?.thumbnail"  [alt]="food?.name" class="img-thumbnail  " alt="" >
+                    </div>
+                  </div> -->
+                </div>
+                <img  [src]="food?.thumbnail" class="img-thumbnail img-fluid foodImage" [alt]="food?.name" style="width: 100%;cursor: pointer; height: 500px; object-fit: contain;">
         </div>
         <div class="col-lg-6">
             <div class="container">
                 <p class="foodName mt-2">{{food?.name}}</p>
                 <div class="mr-2 d-flex">
                     <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                    <p class="text-muted">( 5 Customer Reviews )</p>
+                    <p *ngIf="reviews?.length" class="text-muted">( {{reviews?.length}} Customer Reviews )</p>
                   </div>
 
                   <p class="text-muted">{{food?.description}}</p>
@@ -97,9 +114,7 @@ resetLink="Go To HomePage"> -->
             <div  *ngSwitchCase="'Description'">
                 <div class=" px-5">
  <!-- Content for Role tab -->
- <p class="text-muted">Although the legendary Double Burger really needs no introduction, please allow us… Tucked in between three soft buns are two all-beef patties, cheddar cheese, ketchup, onion, pickles and iceberg lettuce. Hesburger’s own paprika and cucumber mayonnaise add the crowning touch. Oh baby!
-
-    Ingredients: Dr. Pr Black Bean Burger, Focaccia bun, Balsamic Vinaigrette, Pesto, Tomato, Swiss Cheese</p>
+ <p class="text-muted">{{food?.description}}</p>
 <!-- Add your content here -->
                 </div>
                
@@ -112,7 +127,7 @@ resetLink="Go To HomePage"> -->
                         <!-- Left Side (Reviews Added) -->
                         <div class="col-md-6">
                             <!-- Individual Reviews -->
-                            <div class="review px-3">
+                            <div class="review px-3" *ngFor="let review of reviews">
                                 <div class="user-details">
                                     <div class="user-avatar me-2">
                                         <!-- <img src="/assets/images/18-1-450x450 (1).png" alt="User Profile"> -->
@@ -120,16 +135,15 @@ resetLink="Go To HomePage"> -->
                                     <div class="user-info">
                                         <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
                                         <div>
-
                                             <div style="display: flex;">
     
-                                                <p class="user-name me-2 fw-bold">Kenneth R. Myers</p>
+                                                <p class="user-name me-2 fw-bold">{{review.commentedByName}}</p>
                                                 <p class="date-posted">
-                                                    <i class="fa fa-clock"></i> September 4, 2020
+                                                    <i class="fa fa-clock"></i> {{review.postedDate | dateAgo}}
                                                 </p>
                                             </div>
                                             <p class="text-muted">
-                                                The shirt was not the fabric I believed it to be. It says Classic Fit but was made like the older versions, not the soft cotton like my others. I don’t understand how the labels are the same but a completely different shirt. Oh well, stuck with it now.
+                                                {{review.comment}}
                                             </p>
                                         </div>
                                        
@@ -148,30 +162,31 @@ resetLink="Go To HomePage"> -->
                         <div class="col-md-6">
                             <div class="container py-4">
                                 <p class="text-muted">Your email address will not be published.</p>
-                                <form>
+                                <form [formGroup]="reviewForm" (ngSubmit)="AddReview()">
                                     <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
     <div class="row ">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="form-group mb-2">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" formControlName="commentedByName" id="name" name="name">
             </div>
            
-        </div>
-        <div class="col-lg-6">
-            <div class="form-group mb-2">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
-            </div>
         </div>
     </div>
                                     <div class="form-group mb-2">
                                         <label for="review">Review</label>
-                                        <textarea class="form-control reviewTextArea" id="review" name="review" rows="3"></textarea>
+                                        <textarea class="form-control reviewTextArea" formControlName="comment" id="review" name="review" rows="3"></textarea>
                                     </div>
                                    
-                                    
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="btn btn-primary" [disabled]="onSubmit || reviewForm.invalid">
+                                        <ng-container *ngIf="!onSubmit; else loadingTemplate">
+                                            Submit
+                                        </ng-container>
+                                        <ng-template #loadingTemplate>
+                                            <i class="fa fa-circle-o-notch fa-spin"></i> Submitting...
+                                        </ng-template>
+                                    </button>
+                                    <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
                                 </form>
                             </div>
                             

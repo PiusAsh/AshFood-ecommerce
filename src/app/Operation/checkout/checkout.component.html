@@ -2,226 +2,232 @@
 
 <app-basic-pages-breadcrumb currentPageLink="Checkout"></app-basic-pages-breadcrumb>
 
-  
 
-<app-not-found
-[visible]="!cart || !cart.items.length"
-notFoundMessage ="Nothing to Checkout"
-resetLink="RETURN TO MENU"
-></app-not-found>
-  <section class=""  *ngIf="cart && cart.items.length">
-    <div class="container">
-      <div class="row billing  py-5 ">
-        <!-- <div class="col-lg-1"></div> -->
-        <div class=" col-lg-8 mb-4">
-          
-  
-          <!-- Checkout -->
-          <div class="card shadow-0 border">
-            <div class="p-4 ">
-              <h5 class="mb-2">Billing Information</h5>
-              <!-- <h5 class="card-title mb-3">Guest checkout</h5> -->
-              <div class="row">
-                <div class="col-lg-6 col-sm-12 mb-3">
-                  <p class="mb-0">First name</p>
-                  <div class="form-outline">
-                    <input type="text" id="typeText" placeholder="Type here" class="form-control" />
-                  </div>
-                </div>
-  
-                <div class="col-lg-6 col-sm-12">
-                  <p class="mb-0">Last name</p>
-                  <div class="form-outline">
-                    <input type="text" id="typeText" placeholder="Type here" class="form-control" />
-                  </div>
-                </div>
-  
-                <div class="col-lg-6 col-sm-12 mb-3">
-                  <p class="mb-0">Phone</p>
-                  <div class="form-outline">
-                    <input type="tel" id="typePhone" value="+48 " class="form-control" />
-                  </div>
-                </div>
-  
-                <div class="col-lg-6 col-sm-12 mb-3">
-                  <p class="mb-0">Email</p>
-                  <div class="form-outline">
-                    <input type="email" id="typeEmail" placeholder="example@gmail.com" class="form-control" />
-                  </div>
-                </div>
-              </div>
-  
-              
-  
-              <hr class="my-4" />
-  
-              <h5 class="card-title mb-3">Delivery info</h5>
-  
-              <div class="row mb-3">
-                <div class="col-lg-4 mb-3">
-                  <!-- Default checked radio -->
-                  <div class="form-check h-100 border rounded-3">
-                    <div class="p-3 ">
-                      <input class="form-check-input " value="default" [(ngModel)]="shippingMode" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked />
-                      <label class="form-check-label pointer" for="flexRadioDefault1">
-                        Default Address <br />
-                        <small class="text-muted">Use my profile address </small>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 mb-3">
-                  <!-- Default radio -->
-                  <div class="form-check h-100 border rounded-3">
-                    <div class="p-3">
-                      <input class="form-check-input" value="alternative" [(ngModel)]="shippingMode" type="radio" name="flexRadioDefault" id="flexRadioDefault2" />
-                      <label class="form-check-label pointer" for="flexRadioDefault2">
-                        Alternative Address <br />
-                        <small class="text-muted">Use a different Address </small>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-4 mb-3">
-                  <!-- Default radio -->
-                  <div class="form-check h-100 border rounded-3">
-                    <div class="p-3">
-                      <input class="form-check-input" value="pickup" [(ngModel)]="shippingMode" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
-                      <label class="form-check-label pointer" for="flexRadioDefault3">
-                        Self pick-up <br />
-                        <small class="text-muted">Come to our shop </small>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="row" *ngIf="shippingMode === 'alternative'">
-                <div class="col-sm-8 mb-3">
-                  <p class="mb-0">Address</p>
-                  <div class="form-outline">
-                    <input type="text" id="typeText" placeholder="Type here" class="form-control" />
-                  </div>
-                </div>
-  
-                <div class="col-sm-4 mb-3">
-                  <p class="mb-0">City</p>
-                  <select class="form-select">
-                    <option value="1">New York</option>
-                    <option value="2">Moscow</option>
-                    <option value="3">Samarqand</option>
-                  </select>
-                </div>
-  
-                <div class="col-sm-4 mb-3">
-                  <p class="mb-0">House</p>
-                  <div class="form-outline">
-                    <input type="text" id="typeText" placeholder="Type here" class="form-control" />
-                  </div>
-                </div>
-  
-                <div class="col-sm-4 col-6 mb-3">
-                  <p class="mb-0">Postal code</p>
-                  <div class="form-outline">
-                    <input type="text" id="typeText" class="form-control" />
-                  </div>
-                </div>
-  
-                <div class="col-sm-4 col-6 mb-3">
-                  <p class="mb-0">Zip</p>
-                  <div class="form-outline">
-                    <input type="text" id="typeText" class="form-control" />
-                  </div>
-                </div>
-              </div>
-  
-  
-              <div class="mb-3">
-                <p class="mb-0">Order Note ( Optional )</p>
+
+<app-not-found [visible]="!cart || !cart.items.length" notFoundMessage="Nothing to Checkout"
+  resetLink="RETURN TO MENU"></app-not-found>
+<section class="container-lg container-md container-sm-fluid" *ngIf="cart && cart.items.length">
+  <div class="container-lg container-md">
+    <div class="row billing  py-5">
+      <!-- <div class="col-lg-1"></div> -->
+      <div class=" col-lg-8 mb-4">
+
+
+        <!-- Checkout -->
+        <div class="card shadow-0 border">
+          <div class="p-4 ">
+            <h5 class="mb-2">Billing Information</h5>
+            <!-- <h5 class="card-title mb-3">Guest checkout</h5> -->
+            <div class="row">
+              <div class="col-lg-6 col-sm-12 mb-3">
+                <p class="mb-0">First name</p>
                 <div class="form-outline">
-                  <textarea class="form-control" placeholder="Note about your order, e.g. notes about delivery " id="textAreaExample1" rows="2"></textarea>
+                  <input type="text" id="typeText" placeholder="Type here" class="form-control" />
                 </div>
               </div>
-  
-              <!-- <div class="float-end">
+
+              <div class="col-lg-6 col-sm-12">
+                <p class="mb-0">Last name</p>
+                <div class="form-outline">
+                  <input type="text" id="typeText" placeholder="Type here" class="form-control" />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-sm-12 mb-3">
+                <p class="mb-0">Phone</p>
+                <div class="form-outline">
+                  <input type="tel" id="typePhone" value="+48 " class="form-control" />
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-sm-12 mb-3">
+                <p class="mb-0">Email</p>
+                <div class="form-outline">
+                  <input type="email" id="typeEmail" placeholder="example@gmail.com" class="form-control" />
+                </div>
+              </div>
+            </div>
+
+
+
+            <hr class="my-4" />
+
+            <h5 class="card-title mb-3">Delivery info</h5>
+
+            <div class="row mb-3">
+              <div class="col-lg-4 mb-3">
+                <!-- Default checked radio -->
+                <div class="form-check h-100 border rounded-3">
+                  <div class="p-3 ">
+                    <input class="form-check-input " value="default" [(ngModel)]="shippingMode" type="radio"
+                      name="flexRadioDefault" id="flexRadioDefault1" checked />
+                    <label class="form-check-label pointer" for="flexRadioDefault1">
+                      Default Address <br />
+                      <small class="text-muted">Use my profile address </small>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-3">
+                <!-- Default radio -->
+                <div class="form-check h-100 border rounded-3">
+                  <div class="p-3">
+                    <input class="form-check-input" value="alternative" [(ngModel)]="shippingMode" type="radio"
+                      name="flexRadioDefault" id="flexRadioDefault2" />
+                    <label class="form-check-label pointer" for="flexRadioDefault2">
+                      Alternative Address <br />
+                      <small class="text-muted">Use a different Address </small>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 mb-3">
+                <!-- Default radio -->
+                <div class="form-check h-100 border rounded-3">
+                  <div class="p-3">
+                    <input class="form-check-input" value="pickup" [(ngModel)]="shippingMode" type="radio"
+                      name="flexRadioDefault" id="flexRadioDefault3" />
+                    <label class="form-check-label pointer" for="flexRadioDefault3">
+                      Self pick-up <br />
+                      <small class="text-muted">Come to our shop </small>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" *ngIf="shippingMode === 'alternative'">
+              <div class="col-sm-8 mb-3">
+                <p class="mb-0">Address</p>
+                <div class="form-outline">
+                  <input type="text" id="typeText" placeholder="Type here" class="form-control" />
+                </div>
+              </div>
+
+              <div class="col-sm-4 mb-3">
+                <p class="mb-0">City</p>
+                <select class="form-select">
+                  <option value="1">New York</option>
+                  <option value="2">Moscow</option>
+                  <option value="3">Samarqand</option>
+                </select>
+              </div>
+
+              <div class="col-sm-4 mb-3">
+                <p class="mb-0">House</p>
+                <div class="form-outline">
+                  <input type="text" id="typeText" placeholder="Type here" class="form-control" />
+                </div>
+              </div>
+
+              <div class="col-sm-4 col-6 mb-3">
+                <p class="mb-0">Postal code</p>
+                <div class="form-outline">
+                  <input type="text" id="typeText" class="form-control" />
+                </div>
+              </div>
+
+              <div class="col-sm-4 col-6 mb-3">
+                <p class="mb-0">Zip</p>
+                <div class="form-outline">
+                  <input type="text" id="typeText" class="form-control" />
+                </div>
+              </div>
+            </div>
+
+
+            <div class="mb-3">
+              <p class="mb-0">Order Note ( Optional )</p>
+              <div class="form-outline">
+                <textarea class="form-control" placeholder="Note about your order, e.g. notes about delivery "
+                  id="textAreaExample1" rows="2"></textarea>
+              </div>
+            </div>
+
+            <!-- <div class="float-end">
                 <button class="btn btn-light border">Cancel</button>
                 <button class="btn btn-success shadow-0 border">Continue</button>
               </div> -->
+          </div>
+        </div>
+        <!-- Checkout -->
+      </div>
+      <div class=" col-lg-4 ">
+
+
+
+
+        <div class="card mb-3 border shadow-0">
+          <div class="card-body">
+            <h5>Order Summary</h5>
+            <div class="d-flex align-items-center py-2" *ngFor="let item of cart.items"
+              style="border-bottom: 1px solid #ddd;">
+
+              <div class="me-3 position-relative">
+                <img [src]="item.food.thumbnail" style="height: 50px; width: 50x;" class="img-sm rounded border" />
+              </div>
+              <div class="">
+                <p (click)="viewFood(item.food.id)" class="itemName" style="margin-bottom: -1px;">
+                  {{ item.food.name}}
+
+                </p>
+                <p class="price text-muted">{{item.food.price | currency: '₦' :'symbol':'1.0-0'}} x
+                  <span>{{item.quantity}}</span></p>
+              </div>
+
             </div>
           </div>
-          <!-- Checkout -->
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label class="form-label">Have coupon?</label>
+                <div class="input-group border-0">
+                  <input type="text" class="form-control " name="" placeholder="Coupon code" />
+                  <button class="btn btn-primary border text-black">Apply Coupon</button>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class=" col-lg-4 ">
-         
+        <div class="card shadow-0 border">
 
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <p class="mb-2">Total Count:</p>
+              <p class="mb-2">{{cart.totalCount | number}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p class="mb-2">Total Price:</p>
+              <p class="mb-2 text-success">{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</p>
+            </div>
+            <div class="d-flex justify-content-between">
+              <p class="mb-2">Delivery fee:</p>
+              <p class="mb-2 text-success">{{0 | currency: '₦' :'symbol':'1.0-0'}}</p>
+            </div>
 
-           
-            <div class="card mb-3 border shadow-0">
-              <div class="card-body">
-                <h5>Basket Items</h5>
-                <div class="d-flex align-items-center py-2" *ngFor="let item of cart.items" style="border-bottom: 1px solid #ddd;">
-                  
-                  <div class="me-3 position-relative">
-                    <img [src]="item.food.thumbnail" style="height: 50px; width: 50x;" class="img-sm rounded border" />
-                  </div>
-                  <div class="">
-                    <p (click)="viewFood(item.food.id)" class="itemName" style="margin-bottom: -1px;">
-                      {{ item.food.name}} 
-          
-                    </p>
-                    <p class="price text-muted">{{item.food.price | currency: '₦' :'symbol':'1.0-0'}} x <span>{{item.quantity}}</span></p>
-                  </div>
-                 
-                </div>
-              </div>
-                <div class="card-body">
-                  <form>
-                    <div class="form-group">
-                      <label class="form-label">Have coupon?</label>
-                      <div class="input-group border-0">
-                        <input type="text" class="form-control " name="" placeholder="Coupon code" />
-                        <button class="btn btn-primary border text-black">Apply Coupon</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <div class="card shadow-0 border">
-                
-                <div class="card-body">
-                  <div class="d-flex justify-content-between">
-                    <p class="mb-2">Total Count:</p>
-                    <p class="mb-2">{{cart.totalCount | number}}</p>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p class="mb-2">Total Price:</p>
-                    <p class="mb-2 text-success">{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</p>
-                  </div>
-                  <div class="d-flex justify-content-between">
-                    <p class="mb-2">Delivery fee:</p>
-                    <p class="mb-2 text-success">{{0 | currency: '₦' :'symbol':'1.0-0'}}</p>
-                  </div>
-                
-                  <hr />
-                  <div class="d-flex justify-content-between">
-                    <p class="mb-2">Total price:</p>
-                    <h5 class="mb-2 fw-bold CartItemPrice">{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</h5>
-                  </div>
-      
-                  <div class="mt-3">
-                    <p class="text-muted">Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <span class="text-primary">privacy policy</span>.</p>
-                    <button  class="btn btn-primary w-100 shadow-0 mb-2 proceed cursor-pointer" (click)="payWithPaystack($event)"> Place Order </button>
+            <hr />
+            <div class="d-flex justify-content-between">
+              <p class="mb-2">Total price:</p>
+              <h5 class="mb-2 fw-bold CartItemPrice">{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</h5>
+            </div>
 
-                    <a (click)="shopRoute()" class="btn btn-light w-100 border mt-2"> Back to Menu </a>
-                  </div>
-                </div>
-              </div>
+            <div class="mt-3">
+              <p class="text-muted">Your personal data will be used to process your order, support your experience
+                throughout this website, and for other purposes described in our <span class="text-primary">privacy
+                  policy</span>.</p>
+              <button class="btn btn-primary w-100 shadow-0 mb-2 proceed cursor-pointer"
+                (click)="payWithPaystack($event)"> Place Order </button>
+
+              <a (click)="shopRoute()" class="btn btn-light w-100 border mt-2"> Back to Menu </a>
+            </div>
+          </div>
         </div>
-        <!-- <div class="col-lg-1"></div> -->
       </div>
+      <!-- <div class="col-lg-1"></div> -->
     </div>
-  </section>
-  
-  <!-- Footer -->
-  <app-footer></app-footer>
-  <!-- Footer -->
+  </div>
+</section>
+
+<!-- Footer -->
+<app-footer></app-footer>
+<!-- Footer -->

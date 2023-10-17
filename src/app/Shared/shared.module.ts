@@ -6,6 +6,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BasicPagesBreadcrumbComponent } from './Components/basic-pages-breadcrumb/basic-pages-breadcrumb.component';
+import { HomeNavbarComponent } from './Components/home-navbar/home-navbar.component';
 
 
 
@@ -20,6 +21,8 @@ import { BasicPagesBreadcrumbComponent } from './Components/basic-pages-breadcru
   declarations: [
     
 
+  
+   
   
    
   ]

@@ -1,0 +1,716 @@
+
+/* NAVBAR CSS */
+
+.navbar{
+    height: 11vh;
+   
+  }
+  
+  
+  .hamburger-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .hamburger, .close-icon {
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .dropdown-menu {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+  }
+  
+  .dropdown-menu li {
+    list-style-type: none;
+  }
+  
+  .menuCartButton{
+    padding: 10px 35px;
+    border-radius: 5px;
+    background-color: #ffffffc7;
+    color: #000;
+    /* font-family: 'Nunito Sans', sans-serif!important; */
+    font-size: 15px;
+    font-weight: 400;
+  
+  
+  }
+  /* Add any additional styling you need */
+  
+  
+  
+  .nav-link{
+    color: black !important;
+    font-weight: 400;
+    font-size: 17px;
+    font-family: 'Nunito Sans', sans-serif!important;
+  }
+  .navbar-brand{
+    color: #FFC222 !important;
+    font-weight: bold;
+  }
+  
+  .bi{
+    background-color: #FFC222;
+    color: black;
+    font-size: 25px;
+    margin: 5px;
+    text-align: center;
+    align-items: center;
+    padding: 6px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+  }
+  
+  /* END OF NAVBAR CSS */
+  
+  
+  
+  
+  
+  
+  
+  /* END OF HERO SECTION CSS */
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .menu-tabs .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin-right: 10px;
+    background-color: #ffc222;
+    color: #ffffff;
+    border-bottom: none;
+    position: relative;
+    z-index: 1;
+    font-size: 20px!important;
+    font-weight: 900;
+    padding: 15px 35px 15px 45px;
+    border-radius: 28px 28px 28px 28px
+  }
+  
+  .menu-content {
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+  .menu-tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 0px!important;
+  }
+  .nav-tabs .nav-link.active {
+    background-color: #ffc222!important;
+    color: black!important;
+    font-weight: 700!important;
+    font-size: 17px!important;
+    /* font-style: italic; */
+  }
+  
+  .nav-tabs .nav-link:not(.active) {
+    background-color: white!important;
+    color: #000!important;
+    border: 1px solid #ffc222!important;
+    font-weight: 700!important;
+    font-size: 17px!important;
+  }
+  
+  .nav-tabs .nav-link {
+    font-weight: 700!important;
+    font-size: 14px!important;
+  }
+  
+  /* .tab-content{
+    background-color: transparent!important;
+    border: none!important;
+    padding: 0!important;
+  } */
+  
+  .search-input {
+    position: relative;
+    width: 400px;
+    height: 45px;
+    margin: 0 auto;
+  }
+  
+  .search-input input[type="text"] {
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    border: 2px solid #ffc222;
+    border-radius: 30px;
+  }
+  
+  /* .search{
+    background-color: transparent!important;
+    border: 1px solid #ffc222;
+    width: 600px;
+    height: 50px;
+    border-radius: 50px;
+  
+  } */
+  .cart-icon-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .cart-quantity {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #ffc222; /* Choose a color for the quantity background */
+    color: #000; /* Choose a color for the quantity text */
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  hr{
+    margin: 0px!important;
+  }
+  
+  .form-control{
+    height: 50px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 15px;
+  }
+  .form-control:active{
+    height: 50px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 15px;
+  }
+  .login{
+    height: 50px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    color: #000;
+    font-weight: 700;
+  }
+  
+  .modal-content{
+    border-top: 4px solid #ffc222;
+    border-bottom: 4px solid #ffc222;
+  
+  }
+  
+  .dont{
+    color: #ffc222;
+  }
+  
+  .btn-primary{
+    background-color: #ffc222!important;
+    border: none;
+  }
+  .buttons {
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  .checkout{
+  background-color: #ffc222;
+  border: none;
+  padding: 12px 35px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  }
+  .viewCart{
+  background-color: transparent;
+  border: 2px solid  #ffc222;
+  padding: 12px 35px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  border-radius: 8px;
+  }
+  /* .carousel-control-prev, .carousel-control-next {
+    color: black;
+    background-color: #000!important;
+  } */
+  #menu-scroll::-webkit-scrollbar {
+    background-color: transparent;
+  }
+  .deliveryText{
+    font-size: 13px;
+    color: white;
+    font-weight: 300;
+  }
+  
+  .topSection .fa{
+  color: #ffc222;
+  font-size: 20px;
+  }
+  .topSection button{
+  color: #fff;
+  font-weight: 200;
+  background-color: transparent;
+  }
+  
+  .subAmount{
+    display: flex;
+    justify-content: space-between;
+  }
+  .subAmount p{
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .subAmount small{
+    font-size: 15px;
+    /* font-weight: 600; */
+  }
+  .subAmount h5{
+    font-family: 'Nunito Sans', sans-serif!important;
+      font-weight: 700;
+  }
+  
+  .itemName{
+    font-family: 'Nunito Sans', sans-serif!important;
+      font-weight: 700;
+      cursor: pointer;
+  }
+  .itemName:hover{
+    font-family: 'Nunito Sans', sans-serif!important;
+      font-weight: 500;
+      cursor: pointer;
+      color: #ffc222;
+      text-decoration: underline;
+  }
+  .fa-times{
+    color: #fff;
+    padding: 4px;
+    border-radius: 50%;
+    cursor: pointer;
+    /* background-color: black; */
+  }
+  /* styles.css */
+  
+  .offcanvas {
+    max-width: 340px;
+  }
+  .nav-link{
+    cursor: pointer!important;
+  }
+  .backButton{
+    color: black;
+    padding: 10px 15px;
+    width: fit-content;
+    margin:  0 auto;
+  }
+  .offcanvas-title{
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Nunito Sans', sans-serif!important;
+  }
+  .search-input .fa-search {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    align-items: center;
+    transform: translateY(-50%);
+    color: #000;
+    cursor: pointer;
+  }
+  
+  
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+  .social-icons-offcanvas {
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  
+  .social-icons-offcanvas .fa {
+    margin-left: 10px;
+    color: #000;
+    height: 20px;
+    font-size: 16px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .user-cart-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-cart-icons .bio {
+    margin-left: 15px;
+    color: #000;
+    /* border-radius: 50%; */
+    height: 40px;
+    font-size: 14px;
+    /* width: 48px; */
+    padding: 15px;
+    font-weight: 600;
+    max-width: max-content;
+    border: 1px solid #cccccc5d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif ;
+    border-radius: 3px;
+  }
+  
+  .user-cart-icons i{
+   font-size: 20px !important;
+   color: #00A149; 
+  }
+  .user-cart-icons .bio:hover {
+    margin-left: 15px;
+    color: #000;
+    /* border-radius: 50%; */
+    height: 40px;
+    font-size: 14px;
+    /* width: 48px; */
+    padding: 15px;
+    font-weight: 600;
+    max-width: max-content;
+    border: 1px solid #cccccc5d;
+    display: flex;
+    align-items: center;
+    background-color: #ffc222;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif ;
+    border-radius: 3px;
+  }
+  .user-cart-icons-canvas {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+  }
+  
+  .user-cart-icons-canvas .bio {
+    /* margin-left: 10px; */
+    color: #000;
+    /* border-radius: 50%; */
+    height: 40px;
+    font-size: 14px;
+    /* width: 48px; */
+    padding: 15px;
+    font-weight: 600;
+    max-width: max-content;
+    border: 1px solid #cccccc5d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif ;
+    border-radius: 3px;
+  }
+  
+  .user-cart-icons-canvas i{
+   font-size: 20px !important;
+   color: #00A149; 
+  }
+  .user-cart-icons-canvas .bio:hover {
+    /* margin-left: 15px; */
+    color: #000;
+    /* border-radius: 50%; */
+    height: 40px;
+    font-size: 14px;
+    /* width: 48px; */
+    padding: 15px;
+    font-weight: 600;
+    max-width: max-content;
+    border: 1px solid #cccccc5d;
+    display: flex;
+    align-items: center;
+    background-color: #ffc222;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Nunito Sans', sans-serif ;
+    border-radius: 3px;
+  }
+  .social-icons .fa {
+    margin-left: 10px;
+    color: #ffc222;
+    height: 20px;
+    font-size: 16px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .social-icons .fa:hover {
+    margin-left: 10px;
+    color: #fff;
+    /* border-radius: 50%; */
+    height: 20px;
+    font-size: 16px;
+    width: 20px;
+    /* border: 1px solid #fff; */
+    display: flex;
+    align-items: center;
+    /* background-color: #000; */
+    justify-content: center;
+    cursor: pointer;
+  }
+  /* .user-cart-icons .fa:hover {
+    cursor: pointer;
+    margin-left: 15px;
+    color: #000;
+    border-radius: 50%;
+    height: 48px;
+    font-size: 16px;
+    width: 48px;
+    background-color: #ffc222;
+    border: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  } */
+  
+  .heroSection {
+    /* height: 80vh; */
+    background-color: black;
+  
+  }
+  
+  
+  /* .nav-item .nav-link{
+  
+      display: block;
+      font-weight: 700;
+      font-size: 16px;
+      color: #000!important;
+      padding-left: 30px!important;
+  
+  } */
+  .nav-item .nav-link {
+    display: block;
+    font-weight: 700;
+    font-size: 15px;
+    color: #000!important;
+    padding-left: 30px!important;
+    position: relative; /* Add position relative for pseudo-element */
+    margin-bottom: 35px!important;
+    overflow: hidden; /* Hide overflow to prevent initial border visibility */
+  }
+  
+  .nav-item .nav-link::before {
+    content: "";
+    position: absolute;
+    left: -100%; /* Initial position off-screen to the left */
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #ffc222;
+    transition: left 0.3s; /* Add transition for left property */
+  }
+  
+  .nav-item .nav-link:hover::before {
+    left: 0; /* Move the border in from the left on hover */
+  }
+  
+  
+  .offcanvas-menu-item .nav-link {
+    text-align: left; /* Center the text */
+    border-bottom: 1px solid #ccc; /* Add a bottom border */
+    margin-bottom: 5px !important; /* Set maximum margin-bottom */
+    padding: 10px 15px 10px 15px !important; /* Adjust padding */
+    font-size: 15px !important; 
+  }
+  .offcanvas-header .navbar-brand {
+    display: block;
+    margin: 0 auto; /* Center the logo */
+    text-align: center; /* Center the text inside the brand */
+  }
+  
+  .offcanvas-menu-item .nav-link::before {
+    content: "";
+    position: absolute;
+    left: -100%; /* Initial position off-screen to the left */
+    bottom: 0;
+    width: 30%;
+    height: 5px;
+    background-color: #ffc222;
+    transition: left 0.3s; /* Add transition for left property */
+  }
+  
+  .offcanvas-menu-item .nav-link:hover::before {
+    left: 0; /* Move the border in from the left on hover */
+  }
+  
+  .navb{
+    text-align: end!important;
+  }
+  .secure{
+    /* padding: 1em; */
+  align-items: center;
+      font-weight: 400;
+      font-size: 14px;
+      color: #000;
+      /* padding-left: 70px!important; */
+      text-align: end!important;
+  
+  }
+  
+  /* .fas{
+    color: #000;
+    background-color: #ffc222;
+    padding: 10px;
+  } */
+  
+  
+  .call{
+    text-align: end!important;
+    color: #ffc222;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: 'Nunito Sans', sans-serif!important;
+  }
+  .semiCall{
+    font-weight: 400;
+      font-size: 13px;
+      color: black!important;
+  }
+  .callSide{
+    /* text-align: end!important; */
+    color: #ffc222;
+    font-weight: 600;
+    font-size: 20px;
+    font-family: 'Nunito Sans', sans-serif!important;
+  }
+  .semiCallSide{
+    font-weight: 400;
+      font-size: 13px;
+      color: black!important;
+  }
+  
+  
+  .middle{
+    display: flex;
+    justify-content: center;
+  }
+  
+  select{
+    width: 200px;
+    background-color: #00a14879;
+  }
+  .log{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background-color: #ffc222;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  
+  .mega-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .category-item {
+    margin: 5px 0;
+    cursor: pointer;
+  }
+  
+  .show {
+    display: block;
+  }
+  
+  /* Add this CSS in your component's CSS file or in your global styles */
+  
+  .custom-select {
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+    border-radius: 20px;
+  }
+  
+  .custom-select option:hover {
+    background-color: #ffc; /* Yellow background on hover */
+    color: #000; /* Black text on hover */
+  }
+  
+  .custom-select option {
+    padding: 5px; /* Add padding to the options */
+  }
+  
+  .custom-select option {
+    padding: 8px; /* Add padding to the options */
+    border-bottom: 1px solid #ccc; /* Add a border between options */
+  }
+  
+  .custom-select option:last-child {
+    border-bottom: none; /* Remove border from the last option */
+  }
+  
+  
+  .custom-select option:hover {
+    background-color: #ffc; /* Yellow background on hover */
+    color: #000; /* Black text on hover */
+  }
+  
+  
+  /* Remove box shadow and border on click for hamburger */
+  .navbar-toggler:focus {
+    box-shadow: none;
+    outline: none;
+    /* border: 1px solid #ffc222; */
+  
+  }
+  
+  /* Remove box shadow and border on click for close (X) */
+  .btn-close:focus {
+    box-shadow: none;
+    outline: none;
+    border: 3px solid #ffc222;
+  }
+  
+  /* Remove box shadow and border on click for hamburger */
+  .navbar-toggler {
+    box-shadow: none;
+    outline: none;
+    border: none;
+    font-size: 30px !important;
+  }
+  
+  /* Remove box shadow and border on click for close (X) */
+  /* .btn-close {
+    box-shadow: none;
+    outline: none;
+    border: none;
+  } */
+  

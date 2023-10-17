@@ -14,4 +14,7 @@ export class NotFoundComponent {
   resetLinkText = "Back To Home";
   @Input()
   resetLink = " ";
+
+  @Input()
+noButton: boolean = true;
 }

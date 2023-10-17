@@ -42,14 +42,15 @@
           </header>
 <div class="text-center">
     <div class="py-5" *ngIf="searchText !='' && !products?.length">
-        <p >No product found for the search result "{{searchText}}"</p>
+        <p >No product found for the search result <span class="text-primary fs-5">"{{searchText}}"</span> </p>
         <button (click)="resetSearch()" type="button" class="btn btn-secondary mt-2  border text-white">Reset Search Result</button>
 
     </div>
 
     <div *ngIf="searchText =='' && !products?.length" class="py-5">
 
-        <p >No product found</p>
+        <!-- <p >No product found</p> -->
+        <i class="fa fa-circle-o-notch fa-spin" style="font-size: 60px; color: #ffc222;"></i>
     </div>
 </div>
 
@@ -91,7 +92,7 @@
                               </div>
           
                               <p class="text-muted  mb-1">
-                                {{item.description | truncateDescription}}
+                                {{item.description |  truncate}}
                               </p>
                               <p class="mb-1">Category: <span class=" text-primary">{{item.category}}</span></p>
                               <div class="row menu-body">
@@ -193,7 +194,7 @@
                       <div class="col-md-6 col-lg-3 mb-3" *ngFor="let product of products | paginate: { itemsPerPage: gridPageSize, currentPage: gridCurrentPage }">
                         <div class="card shadow-sm animate__animated animate__fadeInDown" style="border-radius: 30px!important; border: 1px solid #e5e5e5;">                                         
                            <div class="p-1" style="width: 100%; ">
-                            <img [src]="product.thumbnail" (click)="viewFood(product.id)" class="" style="width: 100%;cursor: pointer; height: 50%; object-fit: cover; border-radius: 30px; background-color: #ffc0223a;">
+                            <img [src]="product.thumbnail" (click)="viewFood(product.id)" class="card-img" style="width: 100%;cursor: pointer;  object-fit: cover; border-radius: 30px; background-color: #ffc0223a;">
                           </div>
                   
                           <div class="card-body menu-body">

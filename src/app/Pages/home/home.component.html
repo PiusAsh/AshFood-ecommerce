@@ -4,7 +4,8 @@
   <!-- Navbar ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]-->
 
   <!--end of  Navbar ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]-->
-  <app-navbar></app-navbar>
+  <!-- <app-navbar></app-navbar> -->
+  <app-home-navbar></app-home-navbar>
   <div class=" py-3 bg-black hero-header">
     <div class="container my-5 py-3">
       <div class="row align-items-center g-5">
@@ -15,6 +16,8 @@
             dining journey as you explore our extensive range of delectable offerings. Our menu is a celebration of
             flavors, with each dish thoughtfully prepared to bring you a delightful fusion of taste, texture, and aroma.
           </p>
+
+
           <a (click)="viewAllProduct()"
             class="btn btn-primary py-3 px-5 me-3 animate__animated animate__fadeInLeft text-black  text-uppercase">Order
             Now</a>
@@ -26,78 +29,129 @@
     </div>
   </div>
   <!-- ALL MENUS -->
-  <div class="upper mb-5">
+  <!-- <div class="upper mb-5">
 
-    <button class="btn btn-primary menu-button">MENUS</button>
+    <button class="btn btn-ancient menu-button">OUR MENU</button>
 
-    <!-- category -->
+   
+  </div> -->
+
+  <div class="container py-4 wrapper d-flex justify-content-center align-items-center">
+    <button (click)="scrollLeft()" class="btn btn-primary me-2"><i class="fa fa-chevron-left"></i></button>
+
+    <div class="wrapper-item py-1 text-center">
+      <ng-container *ngFor="let category of categories; let i = index">
+        <div class="card me-3" [ngStyle]="{ 'background-image': 'url('+ bgImages[i % bgImages.length] + ')' }" style="width: 300px; background-size: cover; 
+        background-repeat: no-repeat;">
+          <div class="card-body">
+            <!-- Food Icon -->
+            <i class="fa fa-utensils  mb-2"></i>
+            <h5 class="card-title">{{category.name}} </h5>
+            <p class="text-black">{{category.length}} Products</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <button (click)="scrollRight()" class="btn btn-primary ms-2"><i class="fa fa-chevron-right"></i></button>
   </div>
 
+  <div class="mt-2  w3-animate-zoom">
+    <div class="container py-3">
+      <div class="container py-5 text-center" *ngIf="loading">
+        <i class="fa fa-circle-o-notch fa-spin" style="font-size: 60px; color: #ffc222;"></i>
+        <h4 class="mt-3">Loading Products....</h4>
+      </div>
+      <p *ngIf="products && products.length" class="text-center p-3"
+        style="color: #1e1d24; font-size: 36px; font-weight: 700;">Popular dishes</p>
+      <div class="row" *ngIf="products && products.length">
+        <div class="col-md-6 col-lg-3 mb-3 col-12"
+          *ngFor="let product of this.products | paginate: { itemsPerPage: listPageSize, currentPage: listCurrentPage } ">
+          <div class="card shadow-sm animate__animated animate__fadeInDown"
+            style="border-radius: 30px!important; border: 1px solid #e5e5e5;">
+            <div class="p-1" style="width: 100%; ">
+              <img [src]="product.thumbnail" (click)="viewFood(product.id)" class="card-img"
+                style="width: 100%; height:250px; cursor: pointer;;  object-fit: cover; border-radius: 30px; background-color: #ffc0223a;">
+            </div>
+
+            <div class="card-body menu-body">
+              <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
+              <h5 class="card-title TextHeading cursor-pointer productName" (click)="viewFood(product.id)">{{
+                product.name }}</h5>
+              <p class="text-muted">{{product.description | truncateDescription}}</p>
+
+              <div class="cartt px-2" style="display: flex; justify-content: space-between;">
+                <p class="card-text price textHeading">{{ product.price | currency: '₦' :'symbol':'1.0-0' }}</p>
+                <p class="btn btn-primary shadow-sm text-black" (click)="cartRoute()" type="button"
+                  *ngIf="ifAddedToCart(product)">Added <i class="fa fa-shopping-cart" aria-hidden="true"></i> </p>
+                <p *ngIf="!ifAddedToCart(product)" class="btn btn-primary addToCartBtn text-black"
+                  (click)="addToCart(product)">Add To Basket</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <button class="btn btn-primary text-black text-center viewMenu-button" (click)="menuRoute()">View All
+            Products</button>
+        </div>
+      </div>
 
 
+
+      <app-not-found [noButton]="true" [visible]="!products || !products.length" notFoundMessage="No Product Found." resetLinkText=""
+      ></app-not-found>
+
+
+
+
+
+      <!-- <pagination-controls class=""
+          (pageChange)="currentPage = $event"></pagination-controls> -->
+    </div>
+
+
+
+
+  </div>
 
   <div class="mt-5">
-    <p class="text-center" style="color: #1e1d24; font-size: 36px; font-weight: 700;">Popular dishes</p>
-    <ul class="nav nav-tabs menu-tabs py-1">
-      <li style="cursor: pointer;" class="nav-item mb-2" *ngFor="let category of categories">
-        <a class="nav-link text-center TextHeading" (click)="selectCategory(category)"
-          [class.active]="selectedCategory === category">{{ category }}</a>
-      </li>
-    </ul>
 
 
-    <div class="tab-content menu-content  " style="display: flex; justify-content: center!important;">
-      <div class="tab-pane  w3-animate-zoom" *ngFor="let category of categories "
-        [ngClass]="{ 'active': selectedCategory === category }">
+
+    <div class="tab-content menu-content" *ngIf="products && products.length"
+      style="display: flex; justify-content: center!important;">
+
+      <div class="tab-pane  w3-animate-zoom">
         <div class="container py-3">
+
           <div class="row">
-            <div class="col-md-4 col-lg-3 mb-3" *ngFor="let product of getProductsByCategory(category) | paginate: { itemsPerPage: listPageSize, currentPage: listCurrentPage } ">
-              <div class="card shadow-sm"
-                style="border-radius: 30px!important; border: 1px solid #e5e5e5; height: max-content;">
-                <div class="p-1" style="width: 100%; align-items: center; margin: 0 auto;">
-                  <img [src]="product.thumbnail" (click)="viewFood(product.id)" class=""
-                    style="width: 100%;cursor: pointer; height: 100%; object-fit: cover; border-radius: 30px; background-color: #ffc0223a;align-items: center;">
+            <div class="col-md-6 col-lg-3 mb-3 col-12"
+              *ngFor="let product of this.products | paginate: { itemsPerPage: listPageSize, currentPage: listCurrentPage } ">
+              <div class="card shadow-sm animate__animated animate__fadeInDown"
+                style="border-radius: 30px!important; border: 1px solid #e5e5e5;">
+                <div class="p-1" style="width: 100%; ">
+                  <img [src]="product.thumbnail" (click)="viewFood(product.id)" class="card-img"
+                    style="width: 100%; height:250px; cursor: pointer;;  object-fit: cover; border-radius: 30px; background-color: #ffc0223a;">
                 </div>
 
-                <div class="card-body">
+                <div class="card-body menu-body">
                   <p class="text-warning">&#9733;&#9733;&#9733;&#9733;&#9734;</p>
                   <h5 class="card-title TextHeading cursor-pointer productName" (click)="viewFood(product.id)">{{
                     product.name }}</h5>
-                  <p class="text-muted">{{ product.description }}</p>
+                  <p class="text-muted">{{product.description | truncateDescription}}</p>
 
-                  <div class="cart px-2" style="display: flex; justify-content: space-between;">
-                    <p style="font-weight: 800; font-size: 20px;" class="card-text price textHeading">{{ product.price |
-                      currency: '₦' :'symbol':'1.0-0'}}</p>
+                  <div class="cartt px-2" style="display: flex; justify-content: space-between;">
+                    <p class="card-text price textHeading">{{ product.price | currency: '₦' :'symbol':'1.0-0' }}</p>
                     <p class="btn btn-primary shadow-sm text-black" (click)="cartRoute()" type="button"
-                      *ngIf="ifAddedToCart(product)">Added </p>
+                      *ngIf="ifAddedToCart(product)">Added <i class="fa fa-shopping-cart" aria-hidden="true"></i> </p>
                     <p *ngIf="!ifAddedToCart(product)" class="btn btn-primary addToCartBtn text-black"
                       (click)="addToCart(product)">Add To Basket</p>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="text-center view-button mt-2">
-              <button class="btn btn-primary" (click)="viewAllProduct()">VIEW ALL PRODUCTS</button>
-            </div>
-            <!-- <pagination-controls (click)="scrollTop()" class="text-center" 
-            (pageChange)="listCurrentPage = $event"
-            
-            
-            previousLabel=""
-            nextLabel=""
-            screenReaderPaginationLabel="Pagination"
-            screenReaderPageLabel="page"
-          ></pagination-controls> -->
-
-            <!-- <div class="d-flex text-center justify-content-center load-more mt-3">
-
-              <button class="btn btn-primary me-3" (click)="loadMore()">{{loadMoreButtonText}}</button>
-
-              <button class="btn btn-primary" *ngIf="displayedProducts.length > itemsToShow" (click)="loadLess()">Load
-                Less</button>
-            </div> -->
           </div>
+
 
 
           <!-- <pagination-controls class=""
@@ -110,78 +164,63 @@
       </div>
     </div>
   </div>
-<!-- <section class="mt-5">
-  <div class="row">
-    <div class="col-lg-6 " style="background: url(/assets/images/pasta.jpg); background-position: center; background-repeat: no-repeat; background-size: cover;">
+
+
+  <section class="guarantee py-5 bg-light text-center">
+    <div class=" py-5 p-3">
+      <p class="gua">We Guarantee</p>
+      <h5>
+        30 Minutes Delivery!
+      </h5>
+      <p class="mb-3">
+        If you’re having a meeting, working late at night and need an extra push. <br> Let us know and we will be there
+      </p>
+      <button class="btn btn-primary text-black">MAKE AN ORDER</button>
+    </div>
+  </section>
+
+  <section class="container py-5">
+    <div class="row p-4 container align-items-center">
+
+      <div class="col-lg-4 mb-1">
+        <div class="d-flex justify-content-between desDiv p-3">
+          <div class="icon mt-3 me-3">
+            <i class="fa fa-motorcycle" aria-hidden="true"></i>
+          </div>
+          <div class="iconText p-2">
+            <h5>Free Shipping</h5>
+            <p class="text-muted">Sign up for updates and get free shipping for 30 days</p>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-1">
+        <div class="d-flex justify-content-between desDiv p-3">
+          <div class="icon mt-3 me-3">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+          </div>
+          <div class="iconText p-2">
+            <h5>30 Minutes Delivery</h5>
+            <p class="text-muted">Everything you order will quickly delivered to your door.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-1">
+        <div class="d-flex justify-content-between desDiv p-3">
+          <div class="icon mt-3 me-3">
+            <i class="fa fa-superpowers" aria-hidden="true"></i>
+          </div>
+          <div class="iconText p-2">
+            <h5>Best Quality Guarantee</h5>
+            <p class="text-muted">Ash food is an international chain of family restaurants.</p>
+          </div>
+        </div>
+      </div>
 
     </div>
-    <div class="col-lg-6 bg-black">
-      <div class="  py-5 pasta " >
+  </section>
 
-        <div >
-  <h5>Our irresistible</h5>
-  <h1>PASTA</h1>
-  <h6>
-    Our Haitian pâtés are homemade, available fresh or frozen, <br> try them!
-  </h6>
-  <button class="btn bg-white text-black mt-3">ORDER NOW</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-<section class="container py-5">
-  <div class="row p-4 container align-items-center">
-    
-    <div class="col-lg-4 mb-1">
-      <div class="d-flex justify-content-between desDiv p-3">
-        <div class="icon mt-3 me-3">
-          <i class="fa fa-motorcycle" aria-hidden="true"></i>
-        </div>
-        <div class="iconText p-2">
-          <h5>Free Shipping</h5>
-          <p class="text-muted">Sign up for updates and get free shipping for 30 days</p>
 
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 mb-1">
-      <div class="d-flex justify-content-between desDiv p-3">
-        <div class="icon mt-3 me-3">
-         <i class="fa fa-clock-o" aria-hidden="true"></i>
-        </div>
-        <div class="iconText p-2">
-          <h5 >30 Minutes Delivery</h5>
-          <p class="text-muted">Everything you order will quickly delivered to your door.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 mb-1">
-      <div class="d-flex justify-content-between desDiv p-3">
-        <div class="icon mt-3 me-3">
-          <i class="fa fa-superpowers" aria-hidden="true"></i>
-        </div>
-        <div class="iconText p-2">
-          <h5>Best Quality Guarantee</h5>
-          <p class="text-muted">Ash food is an international chain of family restaurants.</p>
-        </div>
-      </div>
-    </div>
-   
-  </div>
-</section>
-<section class="guarantee py-5 bg-light text-center">
-  <div class=" py-5 p-3">
-    <p class="gua">We Guarantee</p>
-    <h5>
-      30 Minutes Delivery!
-    </h5>
-    <p class="mb-3">
-      If you’re having a meeting, working late at night and need an extra push. <br> Let us know and we will be there
-    </p>
-    <button class="btn btn-primary text-black">MAKE AN ORDER</button>
-  </div>
-</section>
   <app-footer></app-footer>
 </div>
 

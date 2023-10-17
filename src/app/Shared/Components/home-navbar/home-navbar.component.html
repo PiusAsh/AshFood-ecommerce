@@ -1,0 +1,215 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light " style="background-color: #00A149; height: 5vh; z-index: 1;">
+    <div class="container topSection">
+      <div >
+  
+    <i class="fa fa-motorcycle" aria-hidden="true"> <span class="deliveryText"> 100% Secure delivery without contacting the courier</span></i>
+  <!-- <i class="fas fa-truck-loading    "></i> -->
+      </div>
+      
+      <div class="search-inpuet">
+       
+      </div>
+      <div class="d-none d-lg-block">
+  
+        <div class="social-icons ">
+       
+            <i class="fa fa-linkedin" aria-hidden="true"></i>
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  
+  
+  <nav class="navbar navbar-expand-lg topbar bg-white sticky-top shadow-sm" >
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="/assets/images/logo1.png" style="width: 100px; height: 100%;" alt="Brand Logo">
+      </a>
+  
+      <button (click)="toggleSideMenu()" class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+        <span class="" *ngIf="!showSideMenu">
+          &#9776; <!-- Unicode character for hamburger -->
+        </span>
+        <span  *ngIf="showSideMenu" data-bs-dismiss="offcanvas" aria-label="Close">
+          &#10006; <!-- Unicode character for close (X) -->
+        </span>
+        
+      </button>
+      
+      
+      
+      
+      <!-- <button type="button"  class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+  
+      <div class="collapse navbar-collapse " id="navbarNave">
+        <div class="search-input">
+          <ul class="navbar-nav ml-auto justify-content-center">
+            <li class="nav-item active">
+              <a class="nav-link" (click)="homeRoute()">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="menuRoute()">Our&nbsp;Menu</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" routerLink="/shop">Shop</a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" (click)="aboutRoute()">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="faqRoute()">FAQs</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="contactRoute()">Contact</a>
+            </li>
+          </ul>
+        </div>
+  
+        <div class="user-cart-icons d-none d-lg-none d-md-none d-xl-block">
+          <div class="navbar-nav justify-content-end">
+            <a class="nav-link semiCall ">Call and Order via<br><span class="call">+2349052794388</span></a>
+          </div>
+        </div>
+  
+        <div class="user-cart-icons">
+          <span title="User Profile" data-toggle="modal" data-target="#login" class="bio"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
+          <div class="cart-icon-container">
+            <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
+            <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Basket&nbsp;&nbsp;&nbsp;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  
+  
+  
+  
+  <!-- SIDE MENU FOR MOBILE -->
+  
+  <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header shadow-sm" style="border-bottom: 1px solid #00A149;">
+   <!-- Logo -->
+   <a class="navbar-brand " href="#">
+    <img src="/assets/images/logo1.png" style="width: 100px; height: 100%;" alt="Brand Logo">
+  </a>
+  
+      <button type="button"  (click)="toggleSideMenu()" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <!-- <hr style="border-bottom: 3px solid #ffc222; height: 0px;"> -->
+    <div class="offcanvas-body mt-3">
+     
+      <!-- Menu Links -->
+      <ul class="navbar-nav ml-auto justify-content-center">
+        <li class="nav-item active offcanvas-menu-item">
+          <a class="nav-link" (click)="homeRoute()">Home <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item offcanvas-menu-item">
+          <a class="nav-link" (click)="menuRoute()">Our Menu</a>
+        </li>
+        <!-- <li class="nav-item offcanvas-menu-item">
+          <a class="nav-link" routerLink="/shop">Shop</a>
+        </li> -->
+        <li class="nav-item offcanvas-menu-item">
+          <a class="nav-link" (click)="aboutRoute()">About</a>
+        </li>
+        <li class="nav-item offcanvas-menu-item">
+          <a class="nav-link" (click)="faqRoute()">FAQs</a>
+        </li>
+        <li class="nav-item offcanvas-menu-item">
+          <a class="nav-link" (click)="contactRoute()">Contact</a>
+        </li>
+      </ul>
+      <div class="user-cart-icons-canvas mt-5">
+        <span title="User Profile" data-toggle="modal" data-target="#login" class="bio me-3"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
+        <div class="cart-icon-container">
+          <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
+          <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Basket&nbsp;&nbsp;&nbsp;</span>
+        </div>
+      </div>
+  
+      <!-- Call and Order In Text -->
+      <div class=" text-center footerOffcanvas card p-4 shadow-sm mt-5">
+        <p class="semiCallSide">Call and Order via</p>
+        <p class="callSide"> <i class="fa fa-phone text-black fw-bold" aria-hidden="true"></i> 09052794388</p>
+        <div class="social-icons-offcanvas text-center">
+       
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+      </div>
+      </div>
+    </div>
+  </div>
+    
+    
+  
+  
+  
+       
+    
+   
+    
+  
+  
+      <ng-template #content let-offcanvas >
+        
+  
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">SHOPPING BASKET</h5>
+      
+            <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+          </div>
+          <hr>
+           <div class="offcanvas-body" style="position: relative; max-height: calc(91vh - 190px); overflow-y: auto;">
+                <div>
+                  <div style="display: flex; justify-content: center; flex-direction: column;">
+      
+                    <p class="text-center mt-5" *ngIf="cart.items.length == 0">
+                      No product in the basket.
+                    </p>
+        <button class="btn btn-primary backButton" *ngIf="cart.items.length == 0" (click)="shopRoute()">Back To Menu</button>
+                  </div>
+      
+                  <div class="d-flex align-items-center py-2" *ngFor="let item of cart.items" style="border-bottom: 1px solid #ddd;">
+                    <i (click)="removeFromCart(item)" class=" fa fa-times me-3 bg-danger" aria-hidden="true"></i>
+                    <div class="me-3 position-relative">
+                      <img [src]="item.food.thumbnail" style="height: 50px; width: 50x;" class="img-sm rounded border" />
+                    </div>
+                    <div class="">
+                      <p (click)="viewFood(item.food.id)" class="itemName" style="margin-bottom: -1px;">
+                        {{ item.food.name}} 
+            
+                      </p>
+                      <p class="price text-muted">{{item.food.price | currency: '₦'}} x <span>{{item.quantity}}</span></p>
+                    </div>
+                   
+                  </div>
+                </div>
+        
+              </div>
+        
+              <div *ngIf="cart.items.length != 0" class=" offcanvas-footer mt-3 mx-3 bg-white" style="position: absolute; bottom: 15px; align-items: center;">
+                <hr/>
+                <div class="subAmount mt-2 mx-3">
+                  <small>Total Count:</small>
+                  <p>{{cart.totalCount}}</p>
+                </div>
+                <div class="subAmount mx-3">
+                  <small>Total Price:</small>
+                  <h5>{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</h5>
+                </div>
+                <div class="button py-1 mx-3">
+                  <button (click)="checkoutRoute()" class="checkout w-100 mb-2">CHECKOUT</button>
+                  <button (click)="cartRoute()" class="viewCart w-100">VIEW BASKET</button>
+                </div>
+              </div>
+       
+      </ng-template>

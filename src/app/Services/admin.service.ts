@@ -28,19 +28,6 @@ export class AdminService {
 
 // ROOM METHODS ////////////////////////////////////////////////////////////////
 
-  getAllRooms():Observable<any[]>{
-    return this.http.get<any[]>(`${this.roomUrl}`);
-  }
-
-  addNewRoom(room: any):Observable<any>{
-    return this.http.post<any>(`${this.roomUrl}/Add`,room);
-  }
-  getRoomById(id: any):Observable<any>{
-    return this.http.get<any>(`${this.roomUrl}/` + id);
-  }
-  getReviewsByRoomyId(id: any):Observable<any>{
-    return this.http.get<any>(`${this.roomUrl}/GetByRoom/` + id);
-  }
 //END OF ROOM METHODS ////////////////////////////////////////////////////////////////
  
 

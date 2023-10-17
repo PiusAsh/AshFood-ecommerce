@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ManageRoomsComponent } from '../manage-rooms/manage-rooms.component';
+import { ManageProductsComponent } from '../manage-products/manage-products.component';
 import { ManageUsersComponent } from '../manage-users/manage-users.component';
 import { ManageBookingsComponent } from '../manage-bookings/manage-bookings.component';
-import { RoomCategoryComponent } from '../room-category/room-category.component';
+import { RoomCategoryComponent } from '../product-category/product-category.component';
 import { ManageReviewsComponent } from '../manage-reviews/manage-reviews.component';
 import { RoleSetupComponent } from '../role-setup/role-setup.component';
 import { ReportComponent } from '../report/report.component';
@@ -24,7 +24,7 @@ import { AdminTruncatePipe, TruncatePipe } from 'src/app/Shared/Pipes/truncate.p
 
 @NgModule({
   declarations: [
-    ManageRoomsComponent,
+    ManageProductsComponent,
     ManageUsersComponent,
     ManageBookingsComponent,
     RoomCategoryComponent,
@@ -35,10 +35,10 @@ import { AdminTruncatePipe, TruncatePipe } from 'src/app/Shared/Pipes/truncate.p
     DashboardComponent,
     AdminSpinnerComponent,
     AdminTruncatePipe
-    
+
   ],
   imports: [
-        CommonModule,
+    CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
     FormsModule,

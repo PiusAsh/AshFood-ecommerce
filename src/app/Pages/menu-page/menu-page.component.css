@@ -141,3 +141,7 @@ background-color: #FFC222;
   font-family: 'Nunito Sans', sans-serif !important;
   }
   
+  .card-img {
+    height: 250px; /* Adjust this value to your desired height */
+    object-fit: cover;
+  }

@@ -27,7 +27,7 @@ export class AppComponent {
   }
 
   private shouldDisplayHeaderOnCurrentRoute(route: ActivatedRoute): boolean {
-    const allowShowHeaderAndSidebar = ['dashboard', 'manage-users', 'dashboard', 'manage-reviews', 'manage-rooms',
+    const allowShowHeaderAndSidebar = ['dashboard', 'manage-users', 'dashboard', 'manage-reviews', 'manage-products',
      'manage-categories', 'manage-bookings', 'manage-users', 'role-setup', 'profile', 'report'];
   
     if (route.firstChild) {

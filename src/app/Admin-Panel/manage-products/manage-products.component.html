@@ -1,0 +1,601 @@
+<div class=" px-5 border-0 mb-7">
+    <ng-container [ngSwitch]="selectedTab">
+        <div *ngSwitchCase="'all'">
+            <!-- CONTENT FOR VIEWING CATEGORIES HERE -->
+            <div class="row py-2 container">
+
+                <div class="col-lg-12">
+                    <button (click)="selectedTab = 'add'" class="btn btn-primary" style="font-size: 15px;">Add New
+                        Product</button>
+                </div>
+
+            </div>
+            <section class="">
+                <div class="table-responsive  animate__animated animate__zoomIn">
+                    <div *ngIf="hasSelectedRooms()" class="selected-category animate__animated animate__fadeInUp">
+                        <div class="row" style="width: 90%;">
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-4">
+                                <div class="button-group">
+                                    <button class="view" *ngIf="canShowViewEditButtons()" (click)="selectedTab = 'view'; viewProduct()"
+                                        (click)="viewRoom(selectedRoom)">View</button>
+
+                                    <button class="edit" *ngIf="canShowViewEditButtons()" (click)="selectedTab = 'edit'; editProduct()"
+                                        >Edit</button>
+
+
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="row-count text-white">
+                                    <!-- <p>{{ selectedRooms.length }} {{ selectedRooms.length !== 1 ?
+                                        'Products' : 'Product' }} selected <span style="margin-left: 2px;">|</span>
+                                        <span style="margin-left: 8px;">{{ filteredRooms.length}} {{
+                                            filteredRooms.length !== 1 ? 'Rooms' : 'Room'
+                                            }}</span>
+                                    </p> -->
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-2"></div> -->
+                        </div>
+
+
+
+                    </div>
+
+
+                    <table class="table table-hover mb-0 shadow-sm ">
+                        <thead>
+                            <tr class="shadow-sm">
+                                <th scope="col"><input type="checkbox" class="shadow-sm form-check-input"
+                                        (change)="selectAllRows()" /></th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Availability</th>
+                                <!-- <th scope="col">Created By</th> -->
+                                <th scope="col">Date Created</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                            <tr style="border: none; padding: 0%;">
+                                <th scope="col" colspan="17" style="border: none; padding: 5px 30px 5px 30px;">
+                                    <input type="text" class="form-control shadow p-1"
+                                        placeholder="Search Anything here..." [(ngModel)]="searchText"
+                                        (input)="applyFilter()" style="border: none; padding: 0; width: 100%;" />
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="filteredRooms.length > 0; else noRecords">
+                                <!-- Loop through the filteredCategories -->
+                                <tr class="shadow-sm"
+                                    *ngFor="let room of filteredRooms | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }"
+                                    (click)="selectRow(room)">
+                                    <td><input type="checkbox" class="shadow-sm form-check-input"
+                                            [(ngModel)]="room.selected" /></td>
+                                    <td>{{ room.name }}</td>
+                                    <td>{{ room.category }}</td>
+                                    <td>{{ room.description | AdminTruncate}}</td>
+                                    <td>{{ room.price | currency: '': '₦' }}</td>
+                                    <td>
+                                        <ng-container *ngIf="room.isAvailable === true else notAvailable">Available
+                                        </ng-container>
+                                        <ng-template #notAvailable>Unavailable</ng-template>
+                                    </td>
+                                    <!-- <td>{{ room.createdByName }}</td> -->
+                                    <td>{{ room.dateCreated | date:'medium' }}</td>
+                                    <td>{{ room.status }}</td>
+                                </tr>
+                            </ng-container>
+                            <ng-template #noRecords>
+
+                                <td class="bg-light" colspan="17" style="font-weight: 400; font-size: 15px; ">No
+                                    record found.</td>
+
+                            </ng-template>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <pagination-controls class="mt-2" *ngIf="filteredRooms?.length > itemsPerPage"
+                    (pageChange)="currentPage = $event"></pagination-controls>
+            </section>
+
+        </div>
+
+        <div *ngSwitchCase="'view'">
+            <div class="">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8 mt-4 card border-0">
+                        <div class="py-4">
+                            <div class="row py-2">
+
+                                <div class="col-lg-12">
+                                    <p (click)="backToDefault()" class="backText" style="font-size: 15px;"><i
+                                            class="fa fa-chevron-left"></i> Back</p>
+                                    <div class="text-center border-bottom mb-3">
+
+                                        <h5 class="TabHeading">View Product</h5>
+                                        <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing
+                                            elit. </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <form [formGroup]="viewProductForm">
+                                <div class=" w3-animate-zoom">
+
+                                    <div class="mb-2">
+                                        <div class="container">
+                                            <div class="row mb-2">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="roomNumber" class="form-label">Product Name</label>
+                                                        <input type="text" readonly class="form-control" 
+                                                            formControlName="name">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="description" class="form-label">Description</label>
+                                                        <textarea readonly class="form-control"
+                                                            formControlName="description"
+                                                            style="height: 70px;"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="duration" class="form-label">Category</label>
+
+                                                        <input type="text" readonly class="form-control" 
+                                                            formControlName="category">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="price" class="form-label">Price</label>
+                                                        <input type="text" readonly class="form-control" 
+                                                            formControlName="price">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+
+                                            <div class="row mb-2">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="featuredImage" class="form-label">Product Photos
+                                                            (Max 4)</label>
+                                                      
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Display selected images -->
+                                            <div class="row mb-2">
+                                                <div class="col-lg-3"
+                                                    *ngFor="let image of selectedImages; let i = index">
+                                                    <div class="image-container">
+                                                        <img [src]="image" alt="Selected Image {{ i + 1 }}"
+                                                            class="img-thumbnail form-image">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="duration" class="form-label">Created By</label>
+                                                        <input type="text" readonly class="form-control"
+                                                             formControlName="createdByName">
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="price" class="form-label">Date Created</label>
+                                                        <input type="text" readonly class="form-control"
+                                                             formControlName="dateCreated">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button (click)="selectedTab = 'edit'" class="btn btn-secondary">Edit
+                                            Product</button>
+
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="'add'">
+
+            <!-- CONTENT FOR ADDING A NEW CATEGORY HERE -->
+            <div class="">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8 mt-4 card border-0">
+                        <div class="py-4">
+                            <div class="row py-2">
+
+                                <div class="col-lg-12">
+                                    <p (click)="backToDefault()" class="backText" style="font-size: 15px;"><i
+                                            class="fa fa-chevron-left"></i> Back</p>
+                                    <div class="text-center border-bottom mb-3">
+
+                                        <h5 class="TabHeading">Add New Product</h5>
+                                        <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing
+                                            elit. </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <form [formGroup]="AddProductForm" (ngSubmit)="addNewProduct()">
+                                <div class=" w3-animate-zoom">
+
+                                    <div class="">
+                                        <div class="container">
+                                            <div class="row mb-2">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="roomNumber" class="form-label">Product Name</label>
+                                                        <input type="text" class="form-control" id="roomNumber"
+                                                            formControlName="name">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="description" class="form-label">Description</label>
+                                                        <textarea class="form-control" id="description"
+                                                            formControlName="description"
+                                                            style="height: 70px;"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="duration" class="form-label">Category</label>
+                                                        <select class="form-select" formControlName="category">
+                                                            <option value="">Select Category</option>
+                                                            <option *ngFor="let item of productCategory"
+                                                                [value]="item.name">{{item.name}}</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="price" class="form-label">Price</label>
+                                                        <input type="text" class="form-control" id="price"
+                                                            formControlName="price">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="row mb-2">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="featuredImage" class="form-label">Product Photos
+                                                            (Max 4)</label>
+                                                        <input type="file" class="form-control" id="featuredImage"
+                                                            (change)="onImageSelected($event)" multiple
+                                                            accept="image/jpeg, image/jpg, image/png">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Display selected images -->
+                                            <div class="row mb-2">
+                                                <div class="col-lg-3"
+                                                    *ngFor="let image of selectedImages; let i = index">
+                                                    <div class="image-container">
+                                                        <img [src]="image" alt="Selected Image {{ i + 1 }}"
+                                                            class="img-thumbnail form-image">
+                                                        <div class="image-options d-flex justify-content-between mt-1">
+                                                            <button class="remove shadow-sm"
+                                                                (click)="removeImage(i)">Remove</button>
+                                                            <button class="featured shadow-sm" [disabled]="i === 0"
+                                                                (click)="setAsFeatured(i)">
+                                                                {{ i === 0 ? 'Featured Image' : 'As Thumbnail' }}
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="submit" class="btn btn-primary"
+                                            [disabled]="onSubmit || AddProductForm.invalid">
+                                            <ng-container *ngIf="!onSubmit; else loadingTemplate">
+                                                Save
+                                            </ng-container>
+                                            <ng-template #loadingTemplate>
+                                                <i class="fa fa-circle-o-notch fa-spin"></i> Saving...
+                                            </ng-template>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+        </div>
+        <div *ngSwitchCase="'edit'">
+            <!-- CONTENT FOR EDITING A CATEGORY HERE -->
+            <div class="">
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8 mt-4 card border-0">
+                        <div class="py-4">
+                            <div class="row py-2">
+
+                                <div class="col-lg-12">
+                                    <p (click)="backToDefault()" class="backText" style="font-size: 15px;"><i
+                                            class="fa fa-chevron-left"></i> Back</p>
+                                    <div class="text-center border-bottom mb-3">
+
+                                        <h5 class="TabHeading">Edit Product</h5>
+                                        <p class="text-muted">Lorem ipsum dolor, sit amet consectetur adipisicing
+                                            elit. </p>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <form [formGroup]="editProductForm" (ngSubmit)="updateProduct()">
+                                <div class=" w3-animate-zoom">
+
+                                    <div class="">
+                                        <div class="container">
+                                            <div class="row mb-2">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label  class="form-label">Product Name</label>
+                                                        <input type="text" class="form-control" 
+                                                            formControlName="name">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="row mb-2">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label  class="form-label">Description</label>
+                                                        <textarea class="form-control" 
+                                                            formControlName="description"
+                                                            style="height: 70px;"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-2">
+
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="duration" class="form-label">Category</label>
+                                                        <select class="form-select" formControlName="category">
+                                                            <option value="">Select Category</option>
+                                                            <option *ngFor="let item of productCategory"
+                                                                [value]="item.name">{{item.name}}</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label  class="form-label">Price</label>
+                                                        <input type="text" class="form-control" 
+                                                            formControlName="price">
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+
+                                            <div class="row mb-2">
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="featuredImage" class="form-label">Product Photos
+                                                            (Max 4)</label>
+                                                        <input type="file" class="form-control" id="featuredImage"
+                                                            (change)="onImageSelected($event)" multiple
+                                                            accept="image/jpeg, image/jpg, image/png">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Display selected images -->
+                                            <div class="row mb-2">
+                                                <div class="col-lg-3"
+                                                    *ngFor="let image of selectedImages; let i = index">
+                                                    <div class="image-container">
+                                                        <img [src]="image" alt="Selected Image {{ i + 1 }}"
+                                                            class="img-thumbnail form-image">
+                                                        <div class="image-options d-flex justify-content-between mt-1">
+                                                            <button class="remove shadow-sm"
+                                                                (click)="removeImage(i)"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                            <button class="featured shadow-sm" [disabled]="i === 0"
+                                                                (click)="setAsFeatured(i)">
+                                                                {{ i === 0 ? 'Featured Image' : 'As Thumbnail' }}
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="submit" class="btn btn-primary"
+                                            [disabled]="onSubmit || editProductForm.invalid || !editProductForm.dirty">
+                                            <ng-container *ngIf="!onSubmit; else loadingTemplate">
+                                                Update
+                                            </ng-container>
+                                            <ng-template #loadingTemplate>
+                                                <i class="fa fa-circle-o-notch fa-spin"></i> Updating...
+                                            </ng-template>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+            </div>
+
+            <!-- You can use a similar form as your add new category form -->
+        </div>
+        <div *ngSwitchDefault>
+            <!-- DEFAULT CONTENT WHEN NO TAB SELECTED -->
+            Please select a tab.
+        </div>
+    </ng-container>
+</div>
+
+<!-- Define the modal content template -->
+<ng-template #content let-modal>
+    <form [formGroup]="AddProductForm" (ngSubmit)="addNewProduct()">
+        <div class=" w3-animate-zoom" style="width: 600px;">
+
+            <div class="">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="roomNumber" class="form-label">Product Name</label>
+                                <input type="text" class="form-control" id="roomNumber" formControlName="name">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" formControlName="description"
+                                    style="height: 70px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="duration" class="form-label">Category</label>
+                                <select class="form-select" formControlName="category">
+                                    <option value="">Select Category</option>
+                                    <option *ngFor="let item of productCategory" [value]="item.name">{{item.name}}
+                                    </option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="price" class="form-label">Price</label>
+                                <input type="text" class="form-control" id="price" formControlName="price">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="featuredImage" class="form-label">Product Photos (Max 4)</label>
+                                <input type="file" class="form-control" id="featuredImage"
+                                    (change)="onImageSelected($event)" multiple
+                                    accept="image/jpeg, image/jpg, image/png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Display selected images -->
+                    <div class="row mb-2">
+                        <div class="col-lg-3" *ngFor="let image of selectedImages; let i = index">
+                            <div class="image-container">
+                                <img [src]="image" alt="Selected Image {{ i + 1 }}" class="img-thumbnail form-image">
+                                <div class="image-options d-flex justify-content-between mt-1">
+                                    <button class="remove shadow-sm" (click)="removeImage(i)">Remove</button>
+                                    <button class="featured shadow-sm" [disabled]="i === 0" (click)="setAsFeatured(i)">
+                                        {{ i === 0 ? 'Featured Image' : 'As Thumbnail' }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="submit" class="btn btn-primary" [disabled]="onSubmit || AddProductForm.invalid">
+                    <ng-container *ngIf="!onSubmit; else loadingTemplate">
+                        Save
+                    </ng-container>
+                    <ng-template #loadingTemplate>
+                        <i class="fa fa-circle-o-notch fa-spin"></i> Saving...
+                    </ng-template>
+                </button>
+                <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Close click')">Close</button>
+            </div>
+        </div>
+    </form>
+
+</ng-template>
+
+
+
+<app-admin-spinner *ngIf="loading"></app-admin-spinner>
+
+<!-- <app-spinner *ngIf="loading"></app-spinner> -->
+
+<!-- <div *ngIf="loading">    <i class="fa fa-circle-o-notch fa-spin"></i> Loading...</div> -->

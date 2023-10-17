@@ -15,7 +15,11 @@
   font-family: 'Nunito Sans', sans-serif!important;
 }
 
-
+@media (min-width: 992px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
 
 .swal2-title {
   font-size: 25px;
@@ -24,10 +28,23 @@
 .form-control {
   box-shadow: none !important;
   outline: none !important;
+  height: 40px;
   /* border: 1px solid #ffc222; */
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 .form-control:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  border: 1px solid #ffc222;
+  /* border: 1px solid rgba(0, 0, 0, 0.125); */
+}
+.form-select {
+  box-shadow: none !important;
+  outline: none !important;
+  /* border: 1px solid #ffc222; */
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.form-select:focus {
   box-shadow: none !important;
   outline: none !important;
   border: 1px solid #ffc222;
@@ -83,6 +100,12 @@ width: 340px !important;
   background-color: #ffc222 !important;
   border: none !important;
   box-shadow: none !important;
+}
+.btn-ancient {
+  background-color: #00A149 !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #ffc222!important;
 }
 
 .bg-primary {
@@ -165,7 +188,18 @@ table tr:hover {
   margin-top: 10px;
   /* border-radius: 6px; */
 }
-
+.backText{
+  color: #2e2e2ed3;
+  cursor: pointer;
+   font-family:  'Nunito', sans-serif;
+   font-size: 14px;
+}
+.TabHeading{
+  color: #2e2e2ed3;
+   font-family:  'Nunito', sans-serif;
+   font-size: 20px;
+   font-weight: 600;
+}
 /* Target the placeholder text in the input field */
 ::placeholder {
   color: #999;
@@ -190,8 +224,8 @@ input[type="number"]::-webkit-outer-spin-button {
   box-shadow: none; 
   padding: 12px;
   width: 400px;
-  border-bottom: 2px solid #FEA116;
-  border-top: 2px solid #FEA116;
+  border-bottom: 2px solid #ffc222;
+  border-top: 2px solid #ffc222;
   font-family:  'Heebo', sans-serif;
  
 }
@@ -215,7 +249,7 @@ input[type="number"]::-webkit-outer-spin-button {
 } */
 /* Change dropdown icon color */
 .ng-select .ng-arrow-wrapper {
-  color: #FEA116!important;
+  color: #ffc222!important;
   font-family:  'Heebo', sans-serif;
 }
 
@@ -243,7 +277,7 @@ input[type="number"]::-webkit-outer-spin-button {
   border: none !important;
   padding: 6px 15px;
   cursor: pointer;
-  background-color: #FEA116!important;
+  background-color: #ffc222!important;
   transition: background-color 0.3s ease;
   font-family:  'Heebo', sans-serif;
 }

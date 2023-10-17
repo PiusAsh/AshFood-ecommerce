@@ -68,10 +68,12 @@ this.getLoggedInUser();
 
   role: any;
   firstLast: any;
+  userId = localStorage.getItem('userId');
  getLoggedInUser(){
   if (this.authService.isLoggedIn()) {
     // User is logged in
-    this.authService.getUserInfo().subscribe(userInfo => {
+
+    this.authService.getUserInfo(this.userId).subscribe(userInfo => {
       // Handle user info here
       console.log(userInfo);
       this.loggedInUsername = userInfo.data.firstName + ' ' + userInfo.data.lastName;

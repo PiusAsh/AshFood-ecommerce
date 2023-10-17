@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Food } from 'src/app/Models/food';
 import { CartService } from 'src/app/Services/cart.service';
 import { OperationService } from 'src/app/Services/operation.service';
+import { ProductService } from 'src/app/Services/product.service';
+import { ReviewsService } from 'src/app/Services/reviews.service';
 
 @Component({
   selector: 'app-view-food',
@@ -12,10 +15,14 @@ import { OperationService } from 'src/app/Services/operation.service';
 export class ViewFoodComponent implements OnInit {
   food: any;
   cart: any;
+  reviews: any;
   AllAddedItems: any;
+  loading: boolean = false;
+
+  reviewForm: FormGroup;
   constructor(private activatedRoute: ActivatedRoute,
-    private operationService: OperationService,
-    private route: Router, private cartService: CartService,){
+    private operationService: OperationService, private productService: ProductService,
+    private route: Router, private cartService: CartService, private reviewService: ReviewsService, private fb: FormBuilder){
 
       this.cartService.getCartObservable().subscribe((cart) => {
         this.cart = cart;
@@ -24,14 +31,14 @@ this.AllAddedItems = cart.items;
         
       });
     
-    activatedRoute.params.subscribe((params) => {
-      const foodID = params['id'];
-      if (foodID) {
-          const foundFood = operationService.getFoodById(foodID);
-          this.food = foundFood;
-          console.log(foundFood, "food");
-      }
-  });
+      this.reviewForm = this.fb.group({
+        foodId: [''],
+        commentedById: [''],
+        commentedByName: [''],
+        rating: [null],
+        comment: ['', Validators.required],
+        postedDate: [''],
+      })
   
   }
 
@@ -43,8 +50,42 @@ this.AllAddedItems = cart.items;
     // Return true if the product is in the cart, otherwise, return false
     return !!cartItem;
   }
+  onSubmit: boolean = false;
   ngOnInit(): void {
-  
+    this.loading = true;
+    this.reviewForm.value.commentedByName = "Pius Ash";
+
+    this.activatedRoute.params.subscribe((params) => {
+      const foodID = params['id'];
+      if (foodID) {
+        this.productService.getProductId(foodID).subscribe(
+          (product: any) => {
+            this.food = product.data;
+            this.loading = false;
+            console.log(this.food, "food");
+          },
+          (error) => {
+            console.error('Error fetching product:', error);
+            // Handle the error here, e.g., display an error message to the user
+          }
+        );
+    
+        this.reviewService.getReviewsByFoodId(foodID).subscribe(
+          (data: any) => {
+            if (data.data.length) {
+              this.reviews = data.data;
+              console.log(this.reviews, "Review");
+            }
+          },
+          (error) => {
+            this.loading = false;
+            console.error('Error fetching reviews:', error);
+            // Handle the error here, e.g., display an error message to the user
+          }
+        );
+      }
+    });
+    
   }
   activeTab: string = 'Description';
   currentTab: string = 'Reviews'; // Default active tab
@@ -70,5 +111,21 @@ this.AllAddedItems = cart.items;
   // }
   cartRoute(){
     this.route.navigateByUrl('/cart');
+  }
+
+  AddReview(){
+    this.reviewForm.value.postedDate = new Date;
+    this.reviewForm.value.commentedById = 1;
+    this.reviewForm.value.commentedByName = "Pius Ash";
+    this.reviewForm.value.rating = 2;
+    this.reviewForm.value.foodId = parseInt(this.food.id);
+    this.onSubmit = true;
+    this.reviewService.AddReview(this.reviewForm.value).subscribe((data: any) =>{
+      if(data.statusCode == 200){
+        this.onSubmit = false;
+        this.reviewForm.reset();
+        this.ngOnInit();
+      }
+    });
   }
 }

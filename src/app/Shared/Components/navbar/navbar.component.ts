@@ -54,11 +54,11 @@ export class NavbarComponent {
       console.log(newQuantity, "newQuantity");
       console.log(newCart, "newCart");
     
-      if (newQuantity > this.previousCartQuantity) {
-        if (this.content) {
-           this.offcanvasService.open(this.content, { position: 'end' });
-            }
-      }
+      // if (newQuantity > this.previousCartQuantity) {
+      //   if (this.content) {
+      //      this.offcanvasService.open(this.content, { position: 'end' });
+      //       }
+      // }
     
       this.previousCartQuantity = newQuantity; // Update previous quantity
     });

@@ -1,36 +1,10 @@
-/* @import '~font-awesome/css/font-awesome.css';
-
-.background{
-  background-image: url(/assets/images/authbg.jpg);
-  width: 100%;
-  height: 100vh;
-  align-items: center;
-  font-family:  'Heebo', sans-serif!important;
-}
+@import '~font-awesome/css/font-awesome.css';
 
 
-
-.desSection{
-
-  background-size: cover;
-  position: relative;
-  background: url('/assets/images/d5-render-fWH71R_-9QM-unsplash.jpg')
-}
-.desSection::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background-color: #FEA11651; 
- 
-}
 
 
  .regForm{
-height: 50px;
+height: 45px;
 width: 100%;
 box-shadow: none;
 border-radius: 8px;
@@ -49,7 +23,7 @@ font-size: 13px;
 
  }
  .regForm:hover{
-height: 48px;
+height: 45px;
 width: 100%;
 box-shadow: none;
 
@@ -58,8 +32,12 @@ outline: none;
 border: 1px solid #FEA116;
  }
 .regLabel{
-  color: #ccc;
+  color: #999;
   font-size: 15px;
+}
+.plainText{
+  color: #999;
+
 }
 a{
   color: #FEA116;
@@ -68,9 +46,9 @@ a{
   font-size: 15px;
 }
 .loginHeadings{
-  color: #fff;
+  color: #212529;
   font-size: 27px;
-  font-weight: 400;
+  font-weight: 600;
   text-align: center;
   font-family:  'Heebo', sans-serif;
 }
@@ -85,4 +63,4 @@ a{
   right: 10px;
   transform: translateY(-50%);
   cursor: pointer;
-} */
+}

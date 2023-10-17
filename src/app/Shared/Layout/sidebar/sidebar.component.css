@@ -2,28 +2,41 @@
 
 #navbarVertical{
     /* background-color: #ffffff7b!important; */
-    background-color: #2e2e2ef5!important;
+    /* background-color: #2e2e2ef5!important; */
+    background-color: white;
     width: 269px !important;
     max-height: 100vh!important;
 }
+#navbarVertical-sm{
+    /* background-color: #ffffff7b!important; */
+    /* background-color: #2e2e2ef5!important; */
+    background-color: white;
+   
+}
 
 .nav-link{
-    color: #fff!important;
+    color: #212529!important;
     font-weight: 400!important;
 }
 .nav-link:hover{
-    color: #2e2e2ef5!important;
-    font-weight: 400!important;
+  color: #000!important;
+  font-weight: 400!important;
+  background-color: #ffc222!important;
 }
 .nav-item:hover{
     color: #000!important;
     font-weight: 400!important;
-    background-color: #FFF!important;
+    background-color: #ffc222!important;
     /* background-color: #6f73769d!important; */
 }
 
 .nav-link i{
-    color: #FEA116!important;
+    color: #ffc222!important;
+    font-size: 15px;
+    font-weight: 800;
+}
+.nav-link i:hover{
+    color: #Fff!important;
     font-size: 15px;
     font-weight: 800;
 }
@@ -35,7 +48,7 @@
   }
   
   .nav-item {
-    border-bottom: 1px solid #ccc; /* Add a bottom border to each menu item */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.127)!important;
   }
   
   /* Optional: Add padding to the menu items for spacing */
@@ -46,7 +59,7 @@
   /* Optional: Change the border color and style as desired */
   .nav-item {
     border-bottom: 1px solid #e3dede67; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
   }
   
   /* Optional: Add spacing between menu items */
