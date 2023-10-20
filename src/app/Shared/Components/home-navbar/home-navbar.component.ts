@@ -7,8 +7,10 @@ import { Subscription } from 'rxjs';
 import { Cart } from 'src/app/Models/cart';
 import { CartItem } from 'src/app/Models/cartItem';
 import { AdminService } from 'src/app/Services/admin.service';
+import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { CartService } from 'src/app/Services/cart.service';
 import { OperationService } from 'src/app/Services/operation.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-home-navbar',
@@ -29,7 +31,7 @@ export class HomeNavbarComponent {
   offcanvasRef: NgbOffcanvas;
   
   constructor(private operationService: OperationService ,
-    private offcanvasService: NgbOffcanvas,  private toast: NgToastService, private adminService: AdminService, private activatedRoute: ActivatedRoute, private route: Router, private formBuilder: FormBuilder, private cartService: CartService){
+    private offcanvasService: NgbOffcanvas, private router: Router, private authService: AuthenticationService,  private toast: NgToastService, private adminService: AdminService, private activatedRoute: ActivatedRoute, private route: Router, private formBuilder: FormBuilder, private cartService: CartService){
 
     
     this.loginForm = this.formBuilder.group({
@@ -95,8 +97,26 @@ export class HomeNavbarComponent {
       this.cart = cart;
       console.log(this.cart);
     });
+    this.getLoggedInUser();
   }
+  isAuth: boolean = false;
+  userName: any;
+  userId = localStorage.getItem('userId');
+  getLoggedInUser() {
+    if (this.authService.isLoggedIn()) {
 
+      this.authService.getUserById(this.userId).subscribe(userInfo => {     // Handle user info here
+        console.log(userInfo);
+        this.isAuth = true;
+        this.userName = userInfo.data.firstName;
+      });
+    } else {
+      // User is not logged in
+     
+      return;
+    }
+
+  }
   search(term: string){
     if(term){
 this.route.navigateByUrl('/search/'+ term)

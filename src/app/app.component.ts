@@ -2,6 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { AuthenticationService } from './Services/authentication.service';
+import { NgToastService } from 'ng-angular-popup';
 
 
 @Component({
@@ -15,7 +17,7 @@ export class AppComponent {
   shouldDisplayContent: boolean = true;
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,  private authService: AuthenticationService, private toast: NgToastService,
   ) { }
 
   ngOnInit(): void {
@@ -36,11 +38,33 @@ export class AppComponent {
   
       // Check if the routePath matches one of the showHeaderRoutes
       if (allowShowHeaderAndSidebar.includes(routePath)) {
+        this.getLoggedInUser();
         return true;
       }
     }
   
     return false;
   }
-  
+  userName: any;
+isAuth: boolean = false;
+  userId = localStorage.getItem('userId');
+  getLoggedInUser() {
+    if (this.authService.isLoggedIn()) {
+
+      this.authService.getUserById(this.userId).subscribe(userInfo => {     // Handle user info here
+        console.log(userInfo);
+        this.isAuth = true;
+        this.userName = userInfo.data.firstName;
+      });
+    } else {
+      // User is not logged in
+      this.router.navigate(['/login']);
+      this.toast.warning({
+        detail: 'Unauthorized',
+        duration: 5000, position:'topRight',
+        summary: 'Please login to proceed',
+      });
+    }
+
+  }
 }

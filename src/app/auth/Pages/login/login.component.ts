@@ -63,57 +63,7 @@ this.loginForm = fb.group({
     }
     )
   }
-  loginIn() {
-    this.isLoading = true;
-    if (this.loginForm.valid) {
-      this.authService.loginRequest(this.loginForm.value).subscribe(
-        response => {
-
-          if (response.data != null) {
-            localStorage.setItem('userId', response.data.profile.id);
-            localStorage.setItem('token', response.data.token);
-            console.log(response.data.profile.id, 'Res Id')
-            this.route.navigate(['/dashboard']);
-            this.isLoading = false;
-
-            // Swal.fire({
-            //   icon: 'warning',
-            //   text: response.responseMessage,
-            //   title: `Welcome Back, ${response.data.profile.firstName}!`,
-            //   confirmButtonText: 'OK',
-              
-            // });
-            this.toast.success({
-              detail: `Welcome Back, ${response.data.profile.firstName}!`,
-              duration: 5000, position:'topCenter',
-              summary: response.responseMessage,
-            });
-
-          }
-          console.log('Login successful:', response);
-        },
-        error => {
-          console.error('Login error:', error);
-          this.isLoading = false;
-          let errorMessage = "Something went wrong"; // Default error message
-          let errorText = ""; // Default error text
-
-          if (error.status === 401 && error.error && error.error.responseMessage) {
-            errorMessage = error.error.responseMessage;
-            errorText = " Check your details and try again";
-          } else if (error.status === 0) {
-            errorMessage = "Something went wrong";
-            errorText = "Check your internet and try again";
-          }
-          this.toast.error({
-            detail: errorMessage,
-            summary: errorText,
-            duration: 5000, position:'topCenter',
-          });
-        }
-      );
-    }
-  }
+ 
 
 
 

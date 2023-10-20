@@ -21,12 +21,7 @@ private loggedIn = false;
     return this.loggedIn;
   }
 
-  // Method to get user info based on user ID
-  getUserInfow(): Observable<any> {
-    return this.http.get(`${this.baseUrl}Users/${localStorage.getItem('userId')}`);
-  }
-  
-  getUserInfo(userId: string): Observable<any>{
+  getUserById(userId: string): Observable<any>{
     return this.http.get(`${this.baseUrl}Users/${userId}`);
   }
   
@@ -46,6 +41,6 @@ private loggedIn = false;
 
 
   register(profileDto: any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}register`, profileDto);
+    return this.http.post<any>(`${this.baseUrl}Auth/register`, profileDto);
   }
 }

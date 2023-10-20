@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { filter } from 'rxjs/operators';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import Swal from 'sweetalert2';
@@ -16,11 +17,11 @@ export class HeaderComponent implements OnInit {
   shouldDisplayHeader: boolean = true;
   constructor(
     private route: ActivatedRoute,
-    private router: Router, private authService: AuthenticationService
+    private router: Router, private authService: AuthenticationService, private toast: NgToastService,
   ) { }
 
   ngOnInit(): void {
-this.getLoggedInUser();
+
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
@@ -46,6 +47,7 @@ this.getLoggedInUser();
       const routePath = childRoute.snapshot.routeConfig?.path || '';
       
       if (showHeaderRoutes.includes(routePath)) {
+        this.getLoggedInUser();
         return true;
       }
     }
@@ -73,7 +75,7 @@ this.getLoggedInUser();
   if (this.authService.isLoggedIn()) {
     // User is logged in
 
-    this.authService.getUserInfo(this.userId).subscribe(userInfo => {
+    this.authService.getUserById(this.userId).subscribe(userInfo => {
       // Handle user info here
       console.log(userInfo);
       this.loggedInUsername = userInfo.data.firstName + ' ' + userInfo.data.lastName;
@@ -83,14 +85,7 @@ this.getLoggedInUser();
     });
   } else {
     // User is not logged in
-    // this.router.navigate(['/login']);
-    // Swal.fire({
-    //   icon: 'warning',
-    //   title: "Unauthenticated",
-    //   text: 'Please login to proceed.',
-    //   confirmButtonText: 'OK',
-      
-    // });
+    
   }
 
  }

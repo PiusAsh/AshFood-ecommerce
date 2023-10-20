@@ -1,23 +1,22 @@
-
-
 <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #00A149; height: 5vh; z-index: 1;">
   <div class="container topSection">
-    <div >
+    <div>
 
-  <i class="fa fa-motorcycle" aria-hidden="true"> <span class="deliveryText"> 100% Secure delivery without contacting the courier</span></i>
-<!-- <i class="fas fa-truck-loading    "></i> -->
+      <i class="fa fa-motorcycle" aria-hidden="true"> <span class="deliveryText"> 100% Secure delivery without
+          contacting the courier</span></i>
+      <!-- <i class="fas fa-truck-loading    "></i> -->
     </div>
-    
+
     <div class="search-inpuet">
-     
+
     </div>
     <div class="d-none d-lg-block">
 
       <div class="social-icons ">
-     
-          <i class="fa fa-linkedin" aria-hidden="true"></i>
-          <i class="fa fa-facebook" aria-hidden="true"></i>
-          <i class="fa fa-instagram" aria-hidden="true"></i>
+
+        <i class="fa fa-linkedin" aria-hidden="true"></i>
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+        <i class="fa fa-instagram" aria-hidden="true"></i>
       </div>
     </div>
   </div>
@@ -25,25 +24,26 @@
 
 
 
-<nav class="navbar navbar-expand-lg topbar bg-white sticky-top shadow-sm" >
+<nav class="navbar navbar-expand-lg topbar bg-white sticky-top shadow-sm">
   <div class="container">
     <a class="navbar-brand" href="#">
       <img src="/assets/images/logo1.png" style="width: 100px; height: 100%;" alt="Brand Logo">
     </a>
 
-    <button (click)="toggleSideMenu()" class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+    <button (click)="toggleSideMenu()" class="navbar-toggler" data-bs-toggle="offcanvas" href="#offcanvasExample"
+      role="button" aria-controls="offcanvasExample">
       <span class="" *ngIf="!showSideMenu">
         &#9776; <!-- Unicode character for hamburger -->
       </span>
-      <span  *ngIf="showSideMenu" data-bs-dismiss="offcanvas" aria-label="Close">
+      <span *ngIf="showSideMenu" data-bs-dismiss="offcanvas" aria-label="Close">
         &#10006; <!-- Unicode character for close (X) -->
       </span>
-      
+
     </button>
-    
-    
-    
-    
+
+
+
+
     <!-- <button type="button"  class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
 
     <div class="collapse navbar-collapse " id="navbarNave">
@@ -77,10 +77,14 @@
       </div>
 
       <div class="user-cart-icons">
-        <span title="User Profile" data-toggle="modal" data-target="#login" class="bio"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
+        <span *ngIf="!isAuth" title="User Profile" data-toggle="modal" data-target="#login" class="bio"><i
+            class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
+        <span routerLink="/dashboard" *ngIf="isAuth" title="User Profile" data-toggle="modal" data-target="#login"
+          class="bio"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp;Hi {{userName}}</span>
         <div class="cart-icon-container">
           <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
-          <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Basket&nbsp;&nbsp;&nbsp;</span>
+          <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i
+              class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Basket&nbsp;&nbsp;&nbsp;</span>
         </div>
       </div>
     </div>
@@ -96,16 +100,17 @@
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="true" tabindex="-1" id="offcanvasExample"
   aria-labelledby="offcanvasExampleLabel">
   <div class="offcanvas-header shadow-sm" style="border-bottom: 1px solid #00A149;">
- <!-- Logo -->
- <a class="navbar-brand " href="#">
-  <img src="/assets/images/logo1.png" style="width: 100px; height: 100%;" alt="Brand Logo">
-</a>
+    <!-- Logo -->
+    <a class="navbar-brand " href="#">
+      <img src="/assets/images/logo1.png" style="width: 100px; height: 100%;" alt="Brand Logo">
+    </a>
 
-    <button type="button"  (click)="toggleSideMenu()" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <button type="button" (click)="toggleSideMenu()" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+      aria-label="Close"></button>
   </div>
   <!-- <hr style="border-bottom: 3px solid #ffc222; height: 0px;"> -->
   <div class="offcanvas-body mt-3">
-   
+
     <!-- Menu Links -->
     <ul class="navbar-nav ml-auto justify-content-center">
       <li class="nav-item active offcanvas-menu-item">
@@ -128,10 +133,14 @@
       </li>
     </ul>
     <div class="user-cart-icons-canvas mt-5">
-      <span title="User Profile" data-toggle="modal" data-target="#login" class="bio me-3"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
+      <span title="User Profile" data-toggle="modal" data-target="#login" class="bio me-3"><i class="fa fa-user-circle"
+          aria-hidden="true"></i> &nbsp; Sign In</span>
+      <span title="User Profile" data-toggle="modal" data-target="#login" class="bio me-3"><i class="fa fa-user-circle"
+          aria-hidden="true"></i> &nbsp; {{userName}}</span>
       <div class="cart-icon-container">
         <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
-        <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Basket&nbsp;&nbsp;&nbsp;</span>
+        <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i
+            class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Basket&nbsp;&nbsp;&nbsp;</span>
       </div>
     </div>
 
@@ -140,150 +149,148 @@
       <p class="semiCallSide">Call and Order via</p>
       <p class="callSide"> <i class="fa fa-phone text-black fw-bold" aria-hidden="true"></i> 09052794388</p>
       <div class="social-icons-offcanvas text-center">
-     
+
         <i class="fa fa-linkedin" aria-hidden="true"></i>
         <i class="fa fa-facebook" aria-hidden="true"></i>
         <i class="fa fa-instagram" aria-hidden="true"></i>
-    </div>
+      </div>
     </div>
   </div>
 </div>
-  
-  
 
-  
-  
-  
-  
-  
-      <!-- OFFCANVAS AND MODALS -->
 
-    <!-- Modal -->
-    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title card-header" id="exampleModalLabel">Signin</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div class="row">
-      <div class="col-lg-1"></div>
-         <div class="col-lg-10">
-           <div class="card-body">
-             <div>
-               <label for="email" class="form-label">Username or Email</label>
-               <input
-               type="text" id="emailOrPhone" formControlName="emailOrPhone"
-               class="form-control"
-                 placeholder="enter your username or email"
-               />
-               <div *ngIf="loginForm.get('emailOrPhone')?.invalid && (loginForm.get('emailOrPhone')?.dirty || loginForm.get('emailOrPhone')?.touched)">
-                <!-- <div class="text-danger" *ngIf="loginForm.get('emailOrPhone')?.errors?.required">Please enter your email or phone number.</div> -->
+
+
+
+
+
+
+<!-- OFFCANVAS AND MODALS -->
+
+<!-- Modal -->
+<div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title card-header" id="exampleModalLabel">Signin</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+              <div class="card-body">
+                <div>
+                  <label for="email" class="form-label">Username or Email</label>
+                  <input type="text" id="emailOrPhone" formControlName="emailOrPhone" class="form-control"
+                    placeholder="enter your username or email" />
+                  <div
+                    *ngIf="loginForm.get('emailOrPhone')?.invalid && (loginForm.get('emailOrPhone')?.dirty || loginForm.get('emailOrPhone')?.touched)">
+                    <!-- <div class="text-danger" *ngIf="loginForm.get('emailOrPhone')?.errors?.required">Please enter your email or phone number.</div> -->
+                  </div>
+
+                </div>
+                <div class="mt-2">
+                  <label for="password" class="form-label">Password</label>
+                  <input class="form-control" type="password" id="password" formControlName="password"
+                    placeholder="enter your password" />
+                  <div
+                    *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                    <!-- <div class="text-danger" *ngIf="loginForm.get('password')?.errors?.required">Please enter your password.</div> -->
+                  </div>
+
+                </div>
+                <p class="text-end m-1">
+                  <a class="dont" href="#">Forget Password</a>
+                </p>
+                <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary login w-100 mt-1">
+                  LOGIN
+                </button>
+                <p class="text-center  mt-3">
+                  Don't Have Account? <a class="dont" href="#">Create Account</a>
+                </p>
               </div>
-  
-             </div>
-             <div class="mt-2">
-               <label for="password" class="form-label">Password</label>
-               <input
-               class="form-control"
-               type="password" id="password" formControlName="password"
-                 placeholder="enter your password"
-               />
-               <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
-                <!-- <div class="text-danger" *ngIf="loginForm.get('password')?.errors?.required">Please enter your password.</div> -->
-              </div>
-  
-             </div>
-             <p class="text-end m-1">
-              <a class="dont" href="#">Forget Password</a>
-            </p>
-             <button  type="submit" [disabled]="loginForm.invalid" class="btn btn-primary login w-100 mt-1">
-               LOGIN
-             </button>
-             <p class="text-center  mt-3">
-               Don't Have Account? <a class="dont" href="#">Create Account</a>
-             </p>
-           </div>
-         </div>
-      <div class="col-lg-1"></div>
-  
-  
-  
-   </div>
-  </form>
-  
+            </div>
+            <div class="col-lg-1"></div>
+
+
+
           </div>
-          <!-- <div class="modal-footer">
+        </form>
+
+      </div>
+      <!-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary">Save changes</button>
           </div> -->
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<ng-template #content let-offcanvas>
+
+
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasExampleLabel">SHOPPING BASKET</h5>
+
+    <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+  </div>
+  <hr>
+  <div class="offcanvas-body" style="position: relative; max-height: calc(91vh - 190px); overflow-y: auto;">
+    <div>
+      <div style="display: flex; justify-content: center; flex-direction: column;">
+
+        <p class="text-center mt-5" *ngIf="cart.items.length == 0">
+          No product in the basket.
+        </p>
+        <button class="btn btn-primary backButton" *ngIf="cart.items.length == 0" (click)="shopRoute()">Back To
+          Menu</button>
+      </div>
+
+      <div class="d-flex align-items-center py-2" *ngFor="let item of cart.items"
+        style="border-bottom: 1px solid #ddd;">
+        <i (click)="removeFromCart(item)" class=" fa fa-times me-3 bg-danger" aria-hidden="true"></i>
+        <div class="me-3 position-relative">
+          <img [src]="item.food.thumbnail" style="height: 50px; width: 50x;" class="img-sm rounded border" />
         </div>
+        <div class="">
+          <p (click)="viewFood(item.food.id)" class="itemName" style="margin-bottom: -1px;">
+            {{ item.food.name}}
+
+          </p>
+          <p class="price text-muted">{{item.food.price | currency: '₦'}} x <span>{{item.quantity}}</span></p>
+        </div>
+
       </div>
     </div>
-  
 
+  </div>
 
+  <div *ngIf="cart.items.length != 0" class=" offcanvas-footer mt-3 mx-3 bg-white"
+    style="position: absolute; bottom: 15px; align-items: center;">
+    <hr />
+    <div class="subAmount mt-2 mx-3">
+      <small>Total Count:</small>
+      <p>{{cart.totalCount}}</p>
+    </div>
+    <div class="subAmount mx-3">
+      <small>Total Price:</small>
+      <h5>{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</h5>
+    </div>
+    <div class="button py-1 mx-3">
+      <button (click)="checkoutRoute()" class="checkout w-100 mb-2">CHECKOUT</button>
+      <button (click)="cartRoute()" class="viewCart w-100">VIEW BASKET</button>
+    </div>
+  </div>
 
-     
-  
- 
-  
-
-
-    <ng-template #content let-offcanvas >
-      
-
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">SHOPPING BASKET</h5>
-    
-          <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
-        </div>
-        <hr>
-         <div class="offcanvas-body" style="position: relative; max-height: calc(91vh - 190px); overflow-y: auto;">
-              <div>
-                <div style="display: flex; justify-content: center; flex-direction: column;">
-    
-                  <p class="text-center mt-5" *ngIf="cart.items.length == 0">
-                    No product in the basket.
-                  </p>
-      <button class="btn btn-primary backButton" *ngIf="cart.items.length == 0" (click)="shopRoute()">Back To Menu</button>
-                </div>
-    
-                <div class="d-flex align-items-center py-2" *ngFor="let item of cart.items" style="border-bottom: 1px solid #ddd;">
-                  <i (click)="removeFromCart(item)" class=" fa fa-times me-3 bg-danger" aria-hidden="true"></i>
-                  <div class="me-3 position-relative">
-                    <img [src]="item.food.thumbnail" style="height: 50px; width: 50x;" class="img-sm rounded border" />
-                  </div>
-                  <div class="">
-                    <p (click)="viewFood(item.food.id)" class="itemName" style="margin-bottom: -1px;">
-                      {{ item.food.name}} 
-          
-                    </p>
-                    <p class="price text-muted">{{item.food.price | currency: '₦'}} x <span>{{item.quantity}}</span></p>
-                  </div>
-                 
-                </div>
-              </div>
-      
-            </div>
-      
-            <div *ngIf="cart.items.length != 0" class=" offcanvas-footer mt-3 mx-3 bg-white" style="position: absolute; bottom: 15px; align-items: center;">
-              <hr/>
-              <div class="subAmount mt-2 mx-3">
-                <small>Total Count:</small>
-                <p>{{cart.totalCount}}</p>
-              </div>
-              <div class="subAmount mx-3">
-                <small>Total Price:</small>
-                <h5>{{cart.totalPrice | currency: '₦' :'symbol':'1.0-0'}}</h5>
-              </div>
-              <div class="button py-1 mx-3">
-                <button (click)="checkoutRoute()" class="checkout w-100 mb-2">CHECKOUT</button>
-                <button (click)="cartRoute()" class="viewCart w-100">VIEW BASKET</button>
-              </div>
-            </div>
-     
-    </ng-template>
+</ng-template>

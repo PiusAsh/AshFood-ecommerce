@@ -80,53 +80,74 @@ this.step2 = false
   // }
 
 
-  register() {
+
+  register(){
+    this.isLoading = true;
     this.registerForm.value.registeredDate = new Date();
     this.registerForm.value.lastLoggedIn = new Date();
 
-    this.isLoading = true;
-    if (this.registerForm.valid) {
-
-      this.authService.register(this.registerForm.value).subscribe(
-        response => {
-          console.log(response, 'res')
-
-          if (response.data != null) {
-            this.isLoading = false;
-            this.toast.success({
-              detail: response.responseMessage,
-              summary: 'Welcome To Ash Hotel',
-            });
-            this.route.navigateByUrl('/login');
-          }else{
-            this.toast.warning({
-              detail: response.responseMessage,
-              // summary: 'Welcome To Ash Hotel',
-            });
-          }
-          // console.log('Login successful:', response);
-        },
-        error => {
-          console.error('error:', error);
-          this.isLoading = false;
-          let errorMessage = "Something went wrong"; // Default error message
-          let errorText = ""; // Default error text
-
-          if (error.status === 401 && error.error && error.error.responseMessage) {
-            errorMessage = error.error.responseMessage;
-            errorText = " Check your password and try again";
-          } else if (error.status === 0) {
-            errorMessage = "Something went wrong";
-            errorText = "Check your internet and try again";
-          }
-          this.toast.error({
-            detail: errorMessage,
-            summary: errorText,
+    if(this.registerForm.valid){
+      this.authService.register(this.registerForm.value).subscribe((response: any) =>{
+        console.log(response, 'response');
+        if (response.statusCode === 200) {
+          console.log(response, 'Res')
+          this.route.navigate(['/login']);
+          this.toast.success({
+            detail: response.responseMessage,
+            summary: 'Kindly login to continue',
           });
+  
         }
-      );
+      },
+      error => {
+        this.isLoading = false;
+        console.error(' error:', error);
+        if(error.status != 0)
+        this.toast.error({
+          detail: error.error.responseMessage,
+          summary: 'Please try again..',
+          duration: 5000, position:'topCenter',
+        });
+      }
+      )
     }
+  
+
+   
   }
+  // register() {
+  //   this.registerForm.value.registeredDate = new Date();
+  //   this.registerForm.value.lastLoggedIn = new Date();
+
+  //   this.isLoading = true;
+  //   if (this.registerForm.valid) {
+
+  //     this.authService.register(this.registerForm.value).subscribe(
+  //       response => {
+  //         console.log(response, 'res')
+
+  //         if (response.data != null) {
+  //           this.isLoading = false;
+  //           this.toast.success({
+  //             detail: response.responseMessage,
+  //             summary: 'Welcome To Ash Hotel',
+  //           });
+  //           this.route.navigateByUrl('/login');
+  //         }else{
+  //           this.toast.warning({
+  //             detail: response.responseMessage,
+  //             // summary: 'Welcome To Ash Hotel',
+  //           });
+  //         }
+  //         // console.log('Login successful:', response);
+  //       },
+  //       error => {
+  //         console.error('error:', error);
+  //         this.isLoading = false;
+         
+  //        } );
+  //   }
+  // }
 
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
