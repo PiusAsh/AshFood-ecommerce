@@ -78,7 +78,7 @@
   
         <div class="user-cart-icons">
           <span *ngIf="!isAuth" title="User Profile" data-toggle="modal" data-target="#login" class="bio"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
-          <span routerLink="/dashboard" *ngIf="isAuth" title="User Profile" data-toggle="modal" data-target="#login" class="bio"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp;Hi {{userName}}</span>
+          <span (click)="goToDashboard()" *ngIf="isAuth" title="User Profile" data-toggle="modal" data-target="#login" class="bio"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp;Hi {{userName}}</span>
           <!-- <span title="User Profile" data-toggle="modal" data-target="#login" class="bio"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span> -->
           <div class="cart-icon-container">
             <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
@@ -131,7 +131,7 @@
       </ul>
       <div class="user-cart-icons-canvas mt-5">
         <span *ngIf="!isAuth" title="User Profile" data-toggle="modal" data-target="#login" class="bio me-3"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; Sign In</span>
-        <span *ngIf="isAuth" title="User Profile" data-toggle="modal" data-target="#login" class="bio me-3"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; {{userName}}</span>
+        <span (click)="goToDashboard()" *ngIf="isAuth" title="User Profile" data-toggle="modal" data-target="#login" class="bio me-3"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; {{userName}}</span>
         <div class="cart-icon-container">
           <span class="cart-quantity" *ngIf="cartQuantity">{{ cartQuantity }}</span>
           <span title="View Your Shopping Cart" (click)="openCartOffCanvas(content)" class="bio "><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; My Basket&nbsp;&nbsp;&nbsp;</span>

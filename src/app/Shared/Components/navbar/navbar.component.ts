@@ -81,6 +81,12 @@ export class NavbarComponent {
     }
   }
 
+
+  goToDashboard() {
+    this.route.navigate(['dashboard']);
+    this.getLoggedInUser();
+    window.scrollTo(0, 0);
+  }
   showSideMenu = false;
 
   toggleSideMenu() {

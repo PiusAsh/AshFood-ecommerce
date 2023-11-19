@@ -33,6 +33,11 @@ getAllProducts(): Observable<Product[]> {
   return this.http.get<Product[]>(this.productUrl);
 }
 
+UpdateProduct(id: any, product: any): Observable<any>{
+  return this.http.put<any>(`${this.productUrl}/${id}`, product)
+}
+
+
 // getAllProducts(): Observable<Product[]> {
 //   this.http.get<Product[]>(this.productUrl).subscribe(
 //     (products) => this.productsSubject.next(products)

@@ -117,6 +117,14 @@ export class HomeNavbarComponent {
     }
 
   }
+
+  
+  goToDashboard() {
+    this.route.navigate(['dashboard']);
+    this.getLoggedInUser();
+    window.scrollTo(0, 0);
+  }
+
   search(term: string){
     if(term){
 this.route.navigateByUrl('/search/'+ term)

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgToastService } from 'ng-angular-popup';
 
 import { AdminService } from 'src/app/Services/admin.service';
 import { CategoryService } from 'src/app/Services/category.service';
@@ -21,7 +22,7 @@ export class ManageProductsComponent {
   viewProductForm: FormGroup;
   selectedTab: string = 'all';
 
-  constructor(private userService: UserService, private fb: FormBuilder, private modalService: NgbModal, private categoryService: CategoryService,
+  constructor(private userService: UserService, private toast: NgToastService,  private fb: FormBuilder, private modalService: NgbModal, private categoryService: CategoryService,
       private productService: ProductService) {
 
     this.AddProductForm = this.fb.group({
@@ -295,6 +296,28 @@ viewProduct() {
   }
 
   updateProduct(){
+this.productService.UpdateProduct(this.editProductForm.value.id, this.editProductForm.value).subscribe((data: any) =>{
+if(data.statusCode === 200){
+
+  this.toast.success({
+    detail: data.responseMessage,
+    duration: 5000, position: 'topRight',
+  });
+} else{
+
+  this.toast.warning({
+    detail: data.responseMessage,
+    duration: 5000, position: 'topRight',
+  });
+}
+},
+(error: any) =>{
+  this.toast.error({
+    detail: error.error.responseMessage,
+    duration: 5000, position: 'topRight',
+    // summary: 'Please login to proceed',
+  });
+})
 
   }
   closeModal() {
