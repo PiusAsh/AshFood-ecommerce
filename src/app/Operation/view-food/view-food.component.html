@@ -20,7 +20,7 @@ resetLink="Go To HomePage"> -->
 
 <!-- FOOD DETAILS -->
 
-<app-not-found [visible]="!food" notFoundMessage="Unable to display product."
+<app-not-found [visible]="!food === null" notFoundMessage="Unable to display product."
   resetLink="Back To Menu"></app-not-found>
 <section *ngIf="food" class="container py-5">
    

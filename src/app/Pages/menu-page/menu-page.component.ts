@@ -21,7 +21,7 @@ export class MenuPageComponent implements OnInit {
   gridCurrentPage = 1;
   gridPageSize = 12; // Number of items per page
   totalItems: number; // Total number of items in your collection
-  constructor(private operationService: OperationService, private cartService: CartService, private route: Router, 
+  constructor(private operationService: OperationService, private cartService: CartService, private route: Router,
     private productService: ProductService) {
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
@@ -48,7 +48,7 @@ export class MenuPageComponent implements OnInit {
   products: any
   defaultProducts: any
   ngOnInit(): void {
-    
+
     this.getAllProducts();
 
 
@@ -56,13 +56,13 @@ export class MenuPageComponent implements OnInit {
   getAllProducts() {
     this.productService.getAllProducts().subscribe(
       (data: any) => {
-        if(data.statusCode === 200) {
-          if(data.data.length) {
+        if (data.statusCode === 200) {
+          if (data.data.length) {
             this.products = data.data;
-      this.defaultProducts = data.data;
-      this.totalItems = this.products.length;
-      console.log(this.products, 'this.foods')
-          }else{
+            this.defaultProducts = data.data;
+            this.totalItems = this.products.length;
+            console.log(this.products, 'this.foods')
+          } else {
 
             Swal.fire({
               icon: 'info',
@@ -72,7 +72,7 @@ export class MenuPageComponent implements OnInit {
             });
           }
         }
-        
+
       },
       (error) => {
         Swal.fire({

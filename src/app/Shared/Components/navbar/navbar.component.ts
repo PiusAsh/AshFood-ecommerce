@@ -22,8 +22,8 @@ export class NavbarComponent {
   searchTerm = "";
   loginForm: FormGroup;
   cartQuantity: number = 1;
-  @ViewChild('content') content: NgbOffcanvas;
   previousCartQuantity: number = 0;
+  @ViewChild('content') content: NgbOffcanvas;
   searchMenu: FormGroup;
   offcanvasRef: NgbOffcanvas;
   constructor(private operationService: OperationService, private router: Router, private authService: AuthenticationService, private offcanvasService: NgbOffcanvas, private toast: NgToastService, private adminService: AdminService, private activatedRoute: ActivatedRoute, private route: Router, private formBuilder: FormBuilder, private cartService: CartService) {
