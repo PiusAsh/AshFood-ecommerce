@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  UserBaseUrl: string = 'https://localhost:44318/api/Users'
- 
-
-  constructor(private http: HttpClient) { }
+  baseUrl: string = `${environment.BASE_URL}Users`;
+  constructor(private http: HttpClient) {}
 
   getAllUsers(): Observable<any[]> {
-  return this.http.get<any[]>(this.UserBaseUrl)
+    return this.http.get<any[]>(this.baseUrl);
   }
 }

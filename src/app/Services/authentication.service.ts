@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-baseUrl: string = 'https://localhost:44318/api/'
+  baseUrl: string = environment.BASE_URL;
 private loggedIn = false;
   private userId: number;
 // login?email=agbae%40gmail.com&password=ash
