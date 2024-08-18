@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  BASE_URL: 'https://localhost:44318/api/',
+  BASE_URL: 'http://restaurantapi.runasp.net/api/',
+  // BASE_URL: 'https://localhost:44318/api/',
   PAYSTACK_KEY: 'pk_test_db114057f7e1e073f3bc5d5551869e8eef51b9b1',
   cloudinary: {
     cloudName: 'piusash',

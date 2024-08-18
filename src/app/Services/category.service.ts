@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CategoryService {
-  categoryUrl: string = `${environment.BASE_URL}/Categories/`;
+  categoryUrl: string = `${environment.BASE_URL}Categories`;
   constructor(private http: HttpClient) { }
 
 
