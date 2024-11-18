@@ -42,9 +42,6 @@ export class NavbarComponent {
     this.cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
       const newQuantity = newCart.totalCount;
-      console.log(newQuantity, "newQuantity");
-      console.log(newCart, "newCart");
-
       this.previousCartQuantity = newQuantity; // Update previous quantity
     });
 
@@ -64,12 +61,10 @@ export class NavbarComponent {
   ngOnInit(): void {
     this.menus = this.operationService.getAllProducts();
     this.selectedMenu = this.menus[0];
-    console.log(this.menus)
-
 
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
-      console.log(this.cart);
+      
     });
 
     this.getLoggedInUser();
@@ -125,22 +120,22 @@ export class NavbarComponent {
     this.offcanvasService.open(content, { position: 'end' });
   }
   viewFood(route: number) {
-    this.route.navigate(['view-food/', `${route}`]);
+    this.route.navigate(['shop/view-product/', `${route}`]);
     window.scrollTo(0, 0);
   }
 
   checkoutRoute() {
-    this.route.navigate(['checkout']);
+    this.route.navigate(['/shop/checkout']);
     window.scrollTo(0, 0);
     this.closeCartOffCanvas();
   }
   cartRoute() {
-    this.route.navigate(['cart']);
+    this.route.navigate(['/shop/cart']);
     window.scrollTo(0, 0);
     this.closeCartOffCanvas();
   }
   shopRoute() {
-    this.route.navigate(['our-menu']);
+    this.route.navigate(['/home/our-menu']);
     window.scrollTo(0, 0);
     this.closeCartOffCanvas();
   }
@@ -160,23 +155,23 @@ export class NavbarComponent {
   selectedCategory: string = '';
 
   homeRoute() {
-    this.route.navigate(['']);
+    this.route.navigate(['/home']);
     window.scrollTo(0, 0);
   }
   aboutRoute() {
-    this.route.navigate(['about-us']);
+    this.route.navigate(['/home/about-us']);
     window.scrollTo(0, 0);
   }
   faqRoute() {
-    this.route.navigate(['faq']);
+    this.route.navigate(['/home/faq']);
     window.scrollTo(0, 0);
   }
   menuRoute() {
-    this.route.navigate(['our-menu']);
+    this.route.navigate(['/home/our-menu']);
     window.scrollTo(0, 0);
   }
   contactRoute() {
-    this.route.navigate(['contact-us']);
+    this.route.navigate(['/home/contact-us']);
     window.scrollTo(0, 0);
   }
 }

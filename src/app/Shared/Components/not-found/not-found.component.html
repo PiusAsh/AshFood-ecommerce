@@ -8,6 +8,6 @@
 
 <div *ngIf="visible" class="notFound ">
     <p>{{notFoundMessage}}</p>
-    <button *ngIf="resetLinkText !=''" class="btn btn-primary"><a routerLink="/">{{resetLinkText}}</a></button>
+    <button *ngIf="resetLinkText !=''" class="btn btn-primary"><a (click)="backHome()">{{resetLinkText}}</a></button>
     <!-- <button *ngIf="noButton" class="btn btn-primary"><a routerLink="/">{{resetLinkText}}</a></button> -->
 </div>

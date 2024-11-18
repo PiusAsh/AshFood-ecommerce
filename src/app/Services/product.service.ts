@@ -32,6 +32,9 @@ export class ProductService {
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.baseUrl);
   }
+  getProducts(page, limit): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseUrl}?pageNumber=${page}&pageSize=${limit}`);
+  }
 
   UpdateProduct(id: any, product: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/${id}`, product);

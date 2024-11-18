@@ -14,6 +14,11 @@ export class CategoryService {
   getAllCategories():Observable<any[]>{
     return this.http.get<any[]>(`${this.categoryUrl}`);
   }
+  getCategories(page, limit):Observable<any[]>{
+    return this.http.get<any[]>(
+      `${this.categoryUrl}?pageNumber=${page}&pageSize=${limit}`
+    );
+  }
 
   AddNewCategory(category: any):Observable<any>{
     return this.http.post<any>(`${this.categoryUrl}`,category);

@@ -1,48 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './Pages/home/home.component';
-import { AboutComponent } from './Pages/about/about.component';
-import { ServiceComponent } from './Pages/service/service.component';
-import { FAQComponent } from './Pages/faq/faq.component';
-import { AuthGuard } from './auth/Guard/auth-guard.guard';
-import { CheckoutComponent } from './Operation/checkout/checkout.component';
-import { FoodListComponent } from './Operation/food-list/food-list.component';
-import { ViewFoodComponent } from './Operation/view-food/view-food.component';
-import { CartPageComponent } from './Operation/cart-page/cart-page.component';
-import { ShopPageComponent } from './Operation/shop-page/shop-page.component';
-import { ContactPageComponent } from './Pages/contact-page/contact-page.component';
-import { MenuPageComponent } from './Pages/menu-page/menu-page.component';
-import { SearchResultPageComponent } from './Pages/search-result-page/search-result-page.component';
 import { PageNotFoundComponent } from './Shared/Components/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+
   {
-    path: "search/:searchTerm", component: SearchResultPageComponent
+    path: 'home',
+    loadChildren: () =>
+      import('./modules/Pages/pages.module').then((m) => m.PagesModule),
   },
-  { path: 'about-us', component: AboutComponent },
-  { path: 'contact-us', component: ContactPageComponent },
-  { path: 'our-menu', component: MenuPageComponent },
-  { path: 'services', component: ServiceComponent },
-  { path: 'faq', component: FAQComponent },
-  { path: 'view-food/:id', component: ViewFoodComponent },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'list', component: FoodListComponent },
-  { path: 'cart', component: CartPageComponent },
-  { path: 'shop', component: ShopPageComponent },
-  // { path: '**', pathMatch: 'full', 
-  // component: PageNotFoundComponent },
-
- 
-  // { path: '**', component: PageNotFoundComponent },
-  // {
-  //   path: 'admin',
-  //   loadChildren: () =>
-  //     import('./Admin-Panel/admin/admin.module').then((m) => m.AdminModule),
-  // },
-
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: 'shop',
+    loadChildren: () =>
+      import('./modules/operation/operation.module').then(
+        (m) => m.OperationModule
+      ),
+  },
+  {
+    path: 'app',
+    loadChildren: () =>
+      import('./modules/main-layout/main-layout.module').then(
+        (m) => m.MainLayoutModule
+      ),
+  },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

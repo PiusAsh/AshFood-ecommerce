@@ -58,9 +58,6 @@ export class HomeNavbarComponent {
     this.cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
       const newQuantity = newCart.totalCount;
-      console.log(newQuantity, "newQuantity");
-      console.log(newCart, "newCart");
-    
       if (newQuantity > this.previousCartQuantity) {
         if (this.content) {
            this.offcanvasService.open(this.content, { position: 'end' });
@@ -90,12 +87,12 @@ export class HomeNavbarComponent {
   ngOnInit(): void {
     this.menus = this.operationService.getAllProducts();
     this.selectedMenu = this.menus[0];
-    console.log(this.menus)
+    // console.log(this.menus)
 
 
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
-      console.log(this.cart);
+     
     });
     this.getLoggedInUser();
   }
@@ -173,7 +170,7 @@ this.route.navigateByUrl('/search/'+ term)
 		this.offcanvasService.open(content, { position: 'end' });
 	}
   viewFood(route: number){
-    this.route.navigate(['view-food/',`${route}`]);
+    this.route.navigate(['shop/view-product/', `${route}`]);
     window.scrollTo(0, 0);
       }
 
