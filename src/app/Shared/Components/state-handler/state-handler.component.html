@@ -1,1 +1,31 @@
-<p>state-handler works!</p>
+
+<div  *ngIf="isLoading" class="center py-3">
+    <div class="py-5">
+
+        <img style="height: 130px;" src="/assets/Images/requestLoading.gif" alt="">
+        <div>
+            <p class="loading-text text-center text-muted">Loading...</p>
+        </div>
+    </div>
+</div>
+
+<div class="py-5 center" *ngIf="hasError && !isLoading && !data">
+          <div class="text-center" >
+            <img src="/assets/Images/oops.png" style="height: 150px;" alt="">
+            <p class="loading-text  text-muted py-3">{{ 'Could not load ' + name + '. Click \'Refresh\' to try again.' }}
+        </p>
+            <p class="refresh" (click)="retry.emit()">Refresh <i class="bi bi-arrow-repeat"></i></p>
+          </div>
+        </div>
+
+
+<div *ngIf="isEmpty && !isLoading && !hasError" class="center py-3">
+  <img src="/assets/Images/product-cat.png" style="height: 100px;" alt="No Data">
+  <p class="loading-text text-muted py-3">{{'No ' + name + ' found' }}</p>
+</div>
+
+
+
+<div *ngIf="data && !isLoading && !hasError">
+  <ng-content></ng-content>
+</div>
